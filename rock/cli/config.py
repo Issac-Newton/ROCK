@@ -1,9 +1,11 @@
 import configparser
-import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 
 from rock import env_vars
+from rock.logger import init_logger
+
+logger = init_logger(__name__)
 
 
 @dataclass
@@ -30,10 +32,12 @@ class ConfigManager:
         self.config = CLIConfig()
         self._load_config()
 
-    def _load_config(self) -> None:
+    def _load_config(self):
         """Load configuration file"""
         if not self.config_path.exists():
-            raise FileNotFoundError(f"Warning: Config file {self.config_path} not found.")
+            logger.warning(f"Config file {self.config_path} does not exist. Using default configuration.")
+            return
+
         try:
             parser = configparser.ConfigParser()
             parser.read(self.config_path, encoding="utf-8")
@@ -53,8 +57,8 @@ class ConfigManager:
                         self.config.extra_headers[key] = value.strip()
 
         except Exception as e:
-            print(f"Warning: Failed to load config file {self.config_path}: {e}")
-            sys.exit(1)
+            logger.warning(f"Failed to load config file {self.config_path}: {e}", exc_info=True)
+            raise e
 
     def get_config(self) -> CLIConfig:
         """Get configuration"""
