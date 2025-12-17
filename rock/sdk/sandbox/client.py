@@ -171,6 +171,9 @@ class Sandbox(AbstractSandbox):
         data = {
             "command": command.command,
             "sandbox_id": self.sandbox_id,
+            "timeout": command.timeout,
+            "cwd": command.cwd,
+            "env": command.env
         }
         try:
             response = await HttpUtils.post(url, headers, data)
