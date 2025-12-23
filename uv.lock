@@ -4122,6 +4122,7 @@ sandbox-actor = [
     { name = "apscheduler" },
     { name = "gem-llm" },
     { name = "nacos-sdk-python" },
+    { name = "redis" },
     { name = "sqlmodel" },
 ]
 
@@ -4178,6 +4179,7 @@ requires-dist = [
     { name = "pyyaml" },
     { name = "ray", extras = ["default"], marker = "extra == 'admin'", specifier = "==2.43.0" },
     { name = "redis", marker = "extra == 'admin'" },
+    { name = "redis", marker = "extra == 'sandbox-actor'" },
     { name = "requests" },
     { name = "rich" },
     { name = "rl-rock", extras = ["admin"], marker = "extra == 'all'" },

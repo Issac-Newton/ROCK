@@ -84,8 +84,10 @@ apscheduler==3.11.1
     #   rl-rock
 arckit==0.1.0
     # via reasoning-gym
-async-timeout==5.0.1 ; python_full_version < '3.11'
-    # via aiohttp
+async-timeout==5.0.1 ; python_full_version < '3.11.3'
+    # via
+    #   aiohttp
+    #   redis
 attrs==25.4.0
     # via aiohttp
 bfi==1.0.4
@@ -297,6 +299,8 @@ pyyaml==6.0.3
     #   rl-rock
 reasoning-gym==0.1.23
     # via gem-llm
+redis==7.0.1
+    # via rl-rock
 regex==2025.11.3
     # via nltk
 requests==2.32.5
