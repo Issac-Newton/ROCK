@@ -60,7 +60,9 @@ rocklet = [
 
 sandbox-actor = [
     "apscheduler>=3.11.0",
-    "gem-llm>=0.1.0"
+    "gem-llm>=0.1.0",
+    "sqlmodel",
+    "nacos-sdk-python>=0.1.14",
 ]
 
 # Legacy optional dependencies for backward compatibility
