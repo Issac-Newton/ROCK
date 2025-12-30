@@ -37,6 +37,7 @@ async def test_arun_nohup(sandbox_instance: Sandbox):
 
     await sandbox_instance.arun(session="default", cmd="rm -rf /tmp/nohup_test.txt")
 
+
 @pytest.mark.need_admin
 @SKIP_IF_NO_DOCKER
 @pytest.mark.asyncio
@@ -52,6 +53,7 @@ async def test_arun_timeout(sandbox_instance: Sandbox):
     assert resp.output.__contains__("Command execution failed due to timeout")
 
     await sandbox_instance.stop()
+
 
 @pytest.mark.need_admin
 @SKIP_IF_NO_DOCKER
@@ -69,6 +71,7 @@ async def test_sandbox_get_status(admin_remote_server):
         await sandbox.start()
     assert "Failed to start sandbox" in str(exc_info.value)
     sandbox.stop()
+
 
 @pytest.mark.need_admin
 @SKIP_IF_NO_DOCKER
@@ -104,6 +107,7 @@ async def test_execute(sandbox_instance: Sandbox):
         resp2 = await sandbox_instance.execute(Command(command="pwd", cwd="/tmp"))
         assert resp2.stdout.strip() == "/tmp"
 
+
 @pytest.mark.parametrize(
     "sandbox_instance",
     [{"cpus": 4}],
@@ -114,5 +118,6 @@ async def test_execute(sandbox_instance: Sandbox):
 @pytest.mark.asyncio
 async def test_start_sandbox_upper_limit(sandbox_instance: Sandbox):
     from rock.actions import SandboxStatusResponse
+
     status: SandboxStatusResponse = await sandbox_instance.get_status()
     assert status.cpus == 4

@@ -4,6 +4,7 @@ from pydantic import BaseModel, Field
 
 from rock._codes import codes
 
+
 class SandboxResponse(BaseModel):
     code: codes | None = None
     exit_code: int | None = None
@@ -62,9 +63,8 @@ class ExecuteBashSessionResponse(BaseModel):
     message: str = ""
 
 
-class CreateBashSessionResponse(BaseModel):
+class CreateBashSessionResponse(SandboxResponse):
     output: str = ""
-
     session_type: Literal["bash"] = "bash"
 
 
