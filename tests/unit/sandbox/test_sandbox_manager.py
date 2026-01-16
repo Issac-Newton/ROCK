@@ -4,52 +4,17 @@ import time
 
 import pytest
 import ray
-from fakeredis import aioredis
 
 from rock.actions import SandboxStatusResponse
 from rock.actions.sandbox.response import State
-from rock.config import RockConfig
 from rock.deployments.config import DockerDeploymentConfig, RayDeploymentConfig
 from rock.deployments.constants import Port
 from rock.deployments.status import ServiceStatus
 from rock.sandbox.sandbox_manager import SandboxManager
 from rock.sdk.common.exceptions import BadRequestRockError
-from rock.utils.providers.redis_provider import RedisProvider
+from tests.unit.conftest import check_sandbox_status_until_alive
 
 logger = logging.getLogger(__file__)
-
-
-@pytest.fixture
-async def redis_provider():
-    provider = RedisProvider(host=None, port=None, password="")
-    provider.client = aioredis.FakeRedis(decode_responses=True)
-    yield provider
-    await provider.close_pool()
-
-
-@pytest.fixture
-async def sandbox_manager(rock_config: RockConfig, redis_provider: RedisProvider, ray_init_shutdown):
-    sandbox_manager = SandboxManager(
-        rock_config,
-        redis_provider=redis_provider,
-        ray_namespace=rock_config.ray.namespace,
-        enable_runtime_auto_clear=rock_config.runtime.enable_auto_clear,
-    )
-    return sandbox_manager
-
-
-async def _check_sandbox_status_until_alive(
-    sandbox_manager: SandboxManager, sandbox_id: str, timeout: int = 60
-) -> bool:
-    cnt = 0
-    while True:
-        sandbox_status = await sandbox_manager.get_status(sandbox_id)
-        if sandbox_status.is_alive:
-            return True
-        await asyncio.sleep(1)
-        cnt += 1
-        if cnt > timeout:
-            raise Exception("sandbox not alive")
 
 
 @pytest.mark.need_ray
@@ -182,7 +147,7 @@ async def test_get_status_state(sandbox_manager):
         DockerDeploymentConfig(),
     )
     sandbox_id = response.sandbox_id
-    await _check_sandbox_status_until_alive(sandbox_manager, sandbox_id)
+    await check_sandbox_status_until_alive(sandbox_manager, sandbox_id)
     sandbox_status = await sandbox_manager.get_status(sandbox_id)
     assert sandbox_status.state == State.RUNNING
     await sandbox_manager.stop(sandbox_id)
