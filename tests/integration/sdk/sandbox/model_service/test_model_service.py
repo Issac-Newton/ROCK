@@ -10,7 +10,6 @@ from tests.integration.conftest import SKIP_IF_NO_DOCKER
 logger = init_logger(__name__)
 
 
-@pytest.mark.skip
 @pytest.mark.need_admin
 @SKIP_IF_NO_DOCKER
 @pytest.mark.asyncio
@@ -36,10 +35,10 @@ async def test_model_service_install_and_start(sandbox_instance: Sandbox):
     logger.info(f"Work directory contents: {result.stdout}")
     assert result.exit_code == 0
     assert "cpython31114.tar.gz" in result.stdout, "Tar archive file missing"
-    assert "python" in result.stdout, "Python directory missing"
+    assert "runtime-env" in result.stdout, "Python directory missing"
 
     # 5. Verify Python executables
-    python_bin_path = f"{model_service_config.workdir}/python/bin"
+    python_bin_path = f"{model_service_config.workdir}/runtime-env/bin"
     result = await sandbox_instance.execute(Command(command="ls", cwd=python_bin_path))
     logger.info(f"Python bin directory contents: {result.stdout}")
     assert result.exit_code == 0
