@@ -34,6 +34,27 @@ class AESGCM256Strategy(EncryptionStrategy):
     _nonce_len = 12
     _tag_len = 16
 
+
+class EncryptionStrategy(ABC):
+    @abstractmethod
+    def encrypt(self, plaintext: bytes) -> str:
+        pass
+
+    @abstractmethod
+    def decrypt(self, ciphertext: str) -> bytes:
+        pass
+
+    @abstractmethod
+    def update_key(self, key: str):
+        pass
+
+    @staticmethod
+    @abstractmethod
+    def generate_key() -> str:
+        pass
+
+
+class AESGCM256Strategy(EncryptionStrategy):
     def __init__(self, key: str | None = None):
         if key:
             self.key = base64.b64decode(key)

@@ -19,6 +19,7 @@ from rock.actions.sandbox.response import IsAliveResponse, State
 from rock.actions.sandbox.sandbox_info import SandboxInfo
 from rock.admin.core.ray_service import RayService
 from rock.admin.core.redis_key import ALIVE_PREFIX, alive_sandbox_key, timeout_sandbox_key
+from rock.admin.metrics.billing import log_billing_info
 from rock.admin.metrics.decorator import monitor_sandbox_operation
 from rock.admin.proto.request import ClusterInfo, UserInfo
 from rock.admin.proto.request import SandboxAction as Action
@@ -37,15 +38,17 @@ from rock.rocklet import __version__ as swe_version
 from rock.sandbox import __version__ as gateway_version
 from rock.sandbox.base_manager import BaseManager
 from rock.sandbox.sandbox_actor import SandboxActor
-from rock.sdk.common.exceptions import BadRequestRockError
 from rock.utils import (
     EAGLE_EYE_TRACE_ID,
     HttpUtils,
     trace_id_ctx_var,
 )
+from rock.utils.crypto_utils import AESEncryption
 from rock.utils.format import convert_to_gb, parse_memory_size
 from rock.utils.providers.redis_provider import RedisProvider
 from rock.utils.service import build_sandbox_from_redis
+from rock.sdk.common.exceptions import BadRequestRockError, InternalServerRockError
+from rock.utils.crypto_utils import AESEncryption
 from rock.utils.system import get_iso8601_timestamp
 
 logger = init_logger(__name__)
@@ -67,7 +70,17 @@ class SandboxManager(BaseManager):
         )
         self._ray_service = ray_service
         self._ray_namespace = ray_namespace
+        self._aes_encrypter = AESEncryption()
         logger.info("sandbox service init success")
+
+    async def refresh_aes_key(self):
+        try:
+            await self.rock_config.update()
+            if aes_encrypt_key := self.rock_config.proxy_service.aes_encrypt_key:
+                self._aes_encrypter.key_update(aes_encrypt_key)
+        except Exception as e:
+            logger.error(f"update aes key failed, error: {e}")
+            raise InternalServerRockError(f"update aes key failed, {str(e)}")
 
     async def async_ray_get(self, ray_future: ray.ObjectRef):
         self._ray_service.increment_ray_request_count()
@@ -119,8 +132,11 @@ class SandboxManager(BaseManager):
         sandbox_info["experiment_id"] = user_info.get("experiment_id", "default")
         sandbox_info["namespace"] = user_info.get("namespace", "default")
         sandbox_info["cluster_name"] = cluster_info.get("cluster_name", "default")
-        sandbox_info["rock_authorization"] = user_info.get("rock_authorization", "default")
+        rock_auth = user_info.get("rock_authorization", "default")
+        sandbox_info["rock_authorization_encrypted"] = self._aes_encrypter.encrypt(rock_auth)
         sandbox_info["state"] = State.PENDING
+        rock_auth = user_info.get("rock_authorization", "default")
+        sandbox_info["rock_authorization_encrypted"] = self._aes_encrypter.encrypt(rock_auth)
         sandbox_info["create_time"] = get_iso8601_timestamp()
 
     @monitor_sandbox_operation()
@@ -151,6 +167,7 @@ class SandboxManager(BaseManager):
                 env_vars.ROCK_SANDBOX_EXPIRE_TIME_KEY: stop_time,
             }
             sandbox_info: SandboxInfo = await self.async_ray_get(sandbox_actor.sandbox_info.remote())
+            await self.refresh_aes_key()
             self._build_sandbox_info_metadata(sandbox_info, user_info, cluster_info)
             if self._redis_provider:
                 await self._redis_provider.json_set(alive_sandbox_key(sandbox_id), "$", sandbox_info)
@@ -192,6 +209,11 @@ class SandboxManager(BaseManager):
     async def stop(self, sandbox_id):
         async with self._ray_service.get_ray_rwlock().read_lock():
             logger.info(f"stop sandbox {sandbox_id}")
+            sandbox_info = await self.build_sandbox_from_redis(sandbox_id)
+            if sandbox_info:
+                sandbox_info["stop_time"] = get_iso8601_timestamp()
+                log_billing_info(sandbox_info=sandbox_info)
+
             try:
                 sandbox_actor = await self.async_ray_get_actor(sandbox_id)
             except ValueError as e:

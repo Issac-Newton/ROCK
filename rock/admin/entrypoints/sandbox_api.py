@@ -14,6 +14,7 @@ from rock.actions import (
     WriteFileResponse,
 )
 from rock.admin.proto.request import (
+    ClusterInfo,
     SandboxBashAction,
     SandboxCloseBashSessionRequest,
     SandboxCommand,
