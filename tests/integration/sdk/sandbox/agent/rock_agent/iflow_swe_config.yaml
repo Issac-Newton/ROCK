@@ -1,0 +1,17 @@
+run_cmd: "iflow -p ${prompt} --yolo"
+
+project_path: "/testbed"
+
+agent_run_timeout: 3600
+
+runtime_env_config:
+  type: node
+  custom_install_cmd: "npm i -g @iflow-ai/iflow-cli@latest"
+
+env:
+  IFLOW_API_KEY: "1C330YAIQG" # whale key
+  IFLOW_SEARCH_KEY: "sk-6796135c0b665d6af852a7551e79f913"
+  IFLOW_BASE_URL: "https://whale-wave.alibaba-inc.com/api/v2/services/aigc/text-generation/v1" # whale url
+  IFLOW_MODEL_NAME: "GLM-4.6"
+
+
