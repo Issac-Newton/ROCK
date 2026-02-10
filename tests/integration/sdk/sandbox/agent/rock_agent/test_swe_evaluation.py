@@ -4,11 +4,15 @@ from pathlib import Path
 
 import pytest
 
+from rock.actions.sandbox.request import CreateBashSessionRequest
 from rock.logger import init_logger
-from rock.sdk.sandbox.client import Sandbox
+from rock.sdk.sandbox.client import RunMode, Sandbox
 from tests.integration.conftest import SKIP_IF_NO_DOCKER
 
 logger = init_logger(__name__)
+
+global_test_timeout_sec = 3600
+global_agent_timeout_sec = 3600
 
 SWE_PROMPT_TEMPLATE = """
  <uploaded_files>
@@ -81,88 +85,74 @@ SWE_PROMPT_TEMPLATE = """
 
 def compress_directory(local_dir, archive_name):
     """压缩本地目录为 .tar.gz"""
-    # print(f"📦 正在压缩 {local_dir} -> {archive_name}")
-    # 使用 gztar 格式压缩
     base_name = archive_name.replace(".tar.gz", "")
     shutil.make_archive(base_name, "gztar", local_dir)
-    # print(f"✅ 压缩完成: {archive_name}")
 
 
 def cleanup_local(archive_name: str):
     """删除本地压缩文件"""
     if os.path.exists(archive_name):
         os.remove(archive_name)
-        # print(f"🗑️ 已删除本地压缩包: {archive_name}")
-    # else:
-    #     print(f"⚠️ 本地压缩包不存在，跳过删除: {archive_name}")
 
 
-# def _setup_test_env_compress(
-#         self, sb: BaseSandbox, test_session_name, trial_handler: TrialHandler
-#     ) -> bool:
-#     test_dir = "/tests"
-#     response = sb.run_command(f"mkdir -p  {test_dir}", test_session_name, True)
-#     if response.exit_code != 0:
-#         self._logger.error(f"Failed to create test directory: {response}")
-#         return False
-#     path = trial_handler.task_paths.run_tests_path
+async def _setup_test_env_compress(
+    sandbox: Sandbox, session_name: str, test_folder: Path, run_tests_scripts: Path
+) -> bool:
+    test_dir = "/tests"
+    response = await sandbox.arun(f"mkdir -p  {test_dir}", session=session_name)
+    if response.exit_code != 0:
+        logger.error(f"Failed to create test directory: {response}")
+        return False
 
-#     response = sb.upload_file(path, f"{test_dir}/{path.name}")
-#     if not response.is_success:
-#         self._logger.error(
-#             f"Sandbox upload failed: path={path}, target={test_dir}/{path.name}"
-#         )
-#         return False
-#     if trial_handler.task_paths.test_dir.exists():
-#         temp = "temp.tar.gz"
-#         compress_directory(
-#             trial_handler.task_paths.test_dir,
-#             f"{trial_handler.task_paths.test_dir.as_posix()}/{temp}",
-#         )
-#         response = sb.upload_file(
-#             f"{trial_handler.task_paths.test_dir.as_posix()}/{temp}",
-#             f"{test_dir}/{temp}",
-#         )
-#         if not response.is_success:
-#             self._logger.error(
-#                 f"Sandbox upload failed: path={path}, target={test_dir}/{temp}"
-#             )
-#             return False
-#         response = sb.run_command(
-#             f"tar -xzf {test_dir}/{temp}  -C {test_dir}", test_session_name, False
-#         )
-#         if response.exit_code != 0:
-#             self._logger.error(f"Failed to extract test files: {response}")
-#             return False
-#         cleanup_local(trial_handler.task_paths.test_dir / temp)
-#     return True
+    response = await sandbox.upload_by_path(run_tests_scripts, f"{test_dir}/{run_tests_scripts.name}")
+    if not response.success:
+        logger.error(f"Sandbox upload failed: path={run_tests_scripts}, target={test_dir}/{run_tests_scripts.name}")
+        return False
+
+    temp = "temp.tar.gz"
+    compress_directory(
+        test_folder,
+        f"{test_folder.as_posix()}/{temp}",
+    )
+    response = await sandbox.upload_by_path(
+        f"{test_folder.as_posix()}/{temp}",
+        f"{test_dir}/{temp}",
+    )
+    if not response.success:
+        logger.error(f"Sandbox upload failed: path={f'{test_folder.as_posix()}/{temp}'}, target={test_dir}/{temp}")
+        return False
+    response = await sandbox.arun(f"tar -xzf {test_dir}/{temp}  -C {test_dir}", session=session_name)
+    if response.exit_code != 0:
+        logger.error(f"Failed to extract test files: {response}")
+        return False
+    cleanup_local(test_folder / temp)
+    return True
 
 
-# def _run_tests(
-#     self,
-#     sb: BaseSandbox,
-#     test_session_name: str,
-#     trial_handler: TrialHandler,
-#     ) -> tuple[str, str]:
-#     is_success = self._setup_test_env_compress(sb, test_session_name, trial_handler)
-#     if not is_success:
-#         return "", "Setup test env failed"
+# async def _run_tests(sandbox: Sandbox, session_name: str, test_scripts: Path) -> tuple[str, str]:
 #     # 5、进行评测
 #     test_dir = "/tests"
-#     resp = sb.run_command_with_timeout(
-#         f"bash {test_dir}/{trial_handler.task_paths.run_tests_path.name}",
-#         int(self._global_test_timeout_sec),
-#         f"{test_dir}/test.txt",
-#         test_session_name,
-#         True,
-#         trial_handler.trial_paths.test_log_path,
+#     resp = await sandbox.arun(
+#         f"bash {test_dir}/{test_scripts.name}",
+#         session=session_name,
+#         timeout=global_test_timeout_sec,
+#         output_file=f"{test_dir}/test.txt",
 #     )
-#     if resp.run_status != RunStatus.SUCCESS:
-#         if resp.run_status == RunStatus.TIMEOUT:
-#             return "", FailureMode.TEST_TIMEOUT
-#     return resp.output, FailureMode.NONE
+#     # if resp.exit_code != 0:
+#     #     if resp.run_status == RunStatus.TIMEOUT:
+#     #         return "", FailureMode.TEST_TIMEOUT
+#     # return resp.output, FailureMode.NONE
 
 
+@pytest.mark.parametrize(
+    "sandbox_instance",
+    [
+        {
+            "image": "rock-registry.cn-hangzhou.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.astropy__astropy-12907"
+        }
+    ],
+    indirect=True,
+)
 @pytest.mark.need_admin_and_network
 @SKIP_IF_NO_DOCKER
 @pytest.mark.asyncio
@@ -170,11 +160,60 @@ async def test_iflow_run_swe_evaluation(sandbox_instance: Sandbox, monkeypatch) 
     config_path = "iflow_swe_config.yaml"
     test_dir = Path(__file__).resolve().parent
     monkeypatch.chdir(test_dir)
-
+    logger.info(f"Current working directory: {os.getcwd()}")
     await sandbox_instance.agent.install(config=config_path)
 
     # 1. 先把prompt模版抄过来
     question = "InheritDocstrings metaclass doesn't work for properties\nInside the InheritDocstrings metaclass it uses `inspect.isfunction` which returns `False` for properties.\n"
     prompt = SWE_PROMPT_TEMPLATE.format(workdir=sandbox_instance.agent.config.project_path, question=question)
     result = await sandbox_instance.agent.run(prompt)
-    logger.info(result)
+    logger.info(f"install agent result is {result}")
+
+    # 2. 安装 uv
+    uv_install_script_commands = [
+        "wget http://nebula-cv-hz2.oss-cn-hangzhou.aliyuncs.com/user/eval/uv-x86_64-unknown-linux-gnu.tar.gz",
+        "tar -xzf uv-x86_64-unknown-linux-gnu.tar.gz --strip-components=1 -C /usr/local/bin",
+        # 'export UV_PYTHON_INSTALL_MIRROR="https://registry.npmmirror.com/-/binary/python-build-standalone"',
+    ]
+    session_name = "swe-evaluation"
+    await sandbox_instance.create_session(
+        CreateBashSessionRequest(
+            session=session_name,
+            env_enable=True,
+            env={"UV_PYTHON_INSTALL_MIRROR": "https://registry.npmmirror.com/-/binary/python-build-standalone"},
+        )
+    )
+    for uv_install_script in uv_install_script_commands:
+        logger.info(f"uv install script: {uv_install_script}")
+        result = await sandbox_instance.arun(
+            uv_install_script, session=session_name, mode=RunMode.NOHUP, wait_timeout=global_agent_timeout_sec
+        )
+    logger.info(f"uv install result: {result}")
+
+    # 3. 上传两个文件，一个是run_test.sh，一个是test_dir
+    test_name = "astropy__astropy-12907"
+    instance_dir = Path(__file__).resolve().parent / test_name
+    test_dir = Path(__file__).resolve().parent / test_name / "tests"
+    is_success = await _setup_test_env_compress(sandbox_instance, session_name, test_dir, instance_dir / "run-tests.sh")
+    if not is_success:
+        logger.error("Failed to setup test environment")
+        return
+    # 4. 运行测试
+    logger.info("Start to run tests")
+    test_dir = "/tests"
+    resp = await sandbox_instance.arun(
+        f"bash {test_dir}/run-tests.sh",
+        session=session_name,
+        wait_timeout=global_test_timeout_sec,
+        output_file=f"{test_dir}/test.txt",
+        mode=RunMode.NOHUP,
+    )
+    logger.info(f"""test result: {resp}""")
+
+    # 5. 解析结果
+    test_response = await sandbox_instance.arun(f"cat {test_dir}/test.txt", session=session_name)
+    logger.info(f"test response: {test_response}")
+
+
+if __name__ == "__main__":
+    pytest.main([__file__])

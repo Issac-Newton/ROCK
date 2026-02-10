@@ -177,7 +177,13 @@ async def sandbox_instance(request, admin_remote_server):
     memory = getattr(request, "param", {}).get("memory", "4g")
 
     config = SandboxConfig(
-        image=image, memory=memory, cpus=cpus, base_url=f"{admin_remote_server.endpoint}:{admin_remote_server.port}"
+        image=image,
+        memory=memory,
+        cpus=cpus,
+        base_url="http://xrl.alibaba-inc.com",
+        cluster="zb-a",
+        auto_clear_seconds=3600,
+        xrl_authorization="t-f8276d9f7afd4b38",
     )
     sandbox = Sandbox(config)
     try:
