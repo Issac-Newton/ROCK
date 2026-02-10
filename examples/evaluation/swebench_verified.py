@@ -1,7 +1,10 @@
 import sys
 
+from rock.logger import init_logger
 from rock.sdk.sandbox.client import Sandbox
 from rock.sdk.sandbox.config import SandboxConfig
+
+logger = init_logger(__name__)
 
 
 async def start_sandbox(swe_task_name: str) -> Sandbox:
@@ -16,6 +19,8 @@ async def start_sandbox(swe_task_name: str) -> Sandbox:
 async def install_iflow_agent(sandbox: Sandbox, config_path: str) -> None:
     """Install iflow agent in sandbox."""
     await sandbox.agent.install(config=config_path)
+    await sandbox.agent.runtime_env.run("iflow -v")
+    logger.info("iflow agent installed successfully.")
 
 
 if __name__ == "__main__":
