@@ -16,6 +16,55 @@ logger = init_logger(__name__)
 
 test_result_parser = SWEBenchParser()
 
+task_in_sg = [
+    "matplotlib__matplotlib-20826",
+    "psf__requests-1724",
+    "pydata__xarray-4687",
+    "django__django-12965",
+    "django__django-15731",
+    "matplotlib__matplotlib-20488",
+    "matplotlib__matplotlib-23412",
+    "django__django-13741",
+    "pylint-dev__pylint-6903",
+    "matplotlib__matplotlib-23476",
+    "matplotlib__matplotlib-20859",
+    "matplotlib__matplotlib-26113",
+    "sphinx-doc__sphinx-7985",
+    "sphinx-doc__sphinx-10323",
+    "django__django-16454",
+    "django__django-12406",
+    "django__django-10880",
+    "scikit-learn__scikit-learn-14710",
+    "django__django-13810",
+    "django__django-11820",
+    "django__django-11815",
+    "django__django-13568",
+    "matplotlib__matplotlib-23314",
+    "django__django-11451",
+    "django__django-16642",
+    "django__django-10097",
+    "django__django-12858",
+    "psf__requests-1766",
+    "django__django-13794",
+    "matplotlib__matplotlib-26342",
+    "pydata__xarray-6744",
+    "sphinx-doc__sphinx-8475",
+    "django__django-13297",
+    "django__django-13315",
+    "django__django-15554",
+    "pylint-dev__pylint-4970",
+    "sphinx-doc__sphinx-8269",
+    "django__django-11400",
+    "django__django-14500",
+    "django__django-11885",
+    "django__django-14238",
+    "pylint-dev__pylint-7277",
+    "pydata__xarray-7233",
+    "django__django-11141",
+    "pydata__xarray-3305",
+    "django__django-16255",
+]
+
 
 def is_resolved(parser_results: dict[str, UnitTestStatus] | None) -> bool:
     if parser_results is None:
@@ -60,10 +109,16 @@ async def _setup_test_env_compress(
 
 async def start_sandbox(swe_task_name: str) -> Sandbox:
     """Start a sandbox instance for evaluation."""
-    image = f"rock-registry.cn-hangzhou.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.{swe_task_name}"
+    acr_url = (
+        "rock-registry.cn-hangzhou.cr.aliyuncs.com/slimshetty/swebench-verified"
+        if swe_task_name not in task_in_sg
+        else "rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified"
+    )
+    image = f"{acr_url}:sweb.eval.x86_64.{swe_task_name}"
+    cluster = "zb-a" if swe_task_name not in task_in_sg else "sg-a"
     config = SandboxConfig(
         image=image,
-        cluster="zb-a",
+        cluster=cluster,
         xrl_authorization="t-f8276d9f7afd4b38",
         user_id="400231",
         experiment_id="swebench-verified-test",
