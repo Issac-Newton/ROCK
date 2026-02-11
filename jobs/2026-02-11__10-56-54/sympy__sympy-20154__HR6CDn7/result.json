@@ -1,0 +1,75 @@
+{
+    "id": "0457761a-e45b-42f2-abfb-2603e5a4667a",
+    "task_name": "sympy__sympy-20154",
+    "trial_name": "sympy__sympy-20154__HR6CDn7",
+    "trial_uri": "file:///root/rock_opensource/ROCK/jobs/2026-02-11__10-56-54/sympy__sympy-20154__HR6CDn7",
+    "task_id": {
+        "git_url": "https://github.com/laude-institute/harbor-datasets.git",
+        "git_commit_id": "0d48cdd78e14a1e22afa09abcfc1bf210427d66f",
+        "path": "datasets/swebench-verified/sympy__sympy-20154"
+    },
+    "source": "swebench-verified",
+    "task_checksum": "2863d8d2aa42b7267974fbeacc63e1b8bb7f674f097f4b867a3b55d2cec809d8",
+    "config": {
+        "task": {
+            "path": "datasets/swebench-verified/sympy__sympy-20154",
+            "git_url": "https://github.com/laude-institute/harbor-datasets.git",
+            "git_commit_id": "0d48cdd78e14a1e22afa09abcfc1bf210427d66f",
+            "overwrite": false,
+            "download_dir": null,
+            "source": "swebench-verified"
+        },
+        "trial_name": "sympy__sympy-20154__HR6CDn7",
+        "trials_dir": "jobs/2026-02-11__10-56-54",
+        "timeout_multiplier": 1.0,
+        "agent": {
+            "name": "openhands",
+            "import_path": null,
+            "model_name": "GLM-4.6",
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "kwargs": {}
+        },
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": true,
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "suppress_override_warnings": false,
+            "kwargs": {}
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "disable": false
+        },
+        "job_id": "ece78323-92eb-44b9-a62e-37f7ab9683bd"
+    },
+    "agent_info": {
+        "name": "openhands",
+        "version": "unknown",
+        "model_info": null
+    },
+    "agent_result": null,
+    "verifier_result": null,
+    "exception_info": {
+        "exception_type": "RuntimeError",
+        "exception_message": "Docker compose command failed for environment sympy__sympy-20154. Command: docker compose -p sympy__sympy-20154__hr6cdn7 --project-directory /root/.cache/harbor/tasks/FoYRY4MHfyK99hZgh6JQZ5/sympy__sympy-20154/environment -f /root/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/environments/docker/docker-compose-base.yaml -f /root/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/environments/docker/docker-compose-build.yaml build. Return code: 1. Stdout: #1 [internal] load local bake definitions\n#1 reading from stdin 633B done\n#1 DONE 0.0s\n\n#2 [internal] booting buildkit\n#2 pulling image moby/buildkit:buildx-stable-1\n#2 pulling image moby/buildkit:buildx-stable-1 15.0s done\n#2 pulling failed, using local image moby/buildkit:buildx-stable-1 done\n#2 creating container buildx_buildkit_xrl-builder0\n#2 creating container buildx_buildkit_xrl-builder0 3.0s done\n#2 DONE 18.0s\n\n#3 [internal] load build definition from Dockerfile\n#3 transferring dockerfile: 2.17kB done\n#3 DONE 0.0s\n\n#4 [internal] load metadata for docker.io/swebench/sweb.eval.x86_64.sympy_1776_sympy-20154:latest\n#4 ERROR: failed to do request: Head \"https://registry-1.docker.io/v2/swebench/sweb.eval.x86_64.sympy_1776_sympy-20154/manifests/latest\": dial tcp 159.65.107.38:443: i/o timeout\n------\n > [internal] load metadata for docker.io/swebench/sweb.eval.x86_64.sympy_1776_sympy-20154:latest:\n------\nDockerfile:19\n\n--------------------\n\n  17 |     # FROM ghcr.io/laude-institute/t-bench/ubuntu-24-04:latest\n\n  18 |     # FROM python:3.9-slim-bookworm\n\n  19 | >>> FROM swebench/sweb.eval.x86_64.sympy_1776_sympy-20154:latest\n\n  20 |     \n\n  21 |     # View the list of available base images here:\n\n--------------------\n\nfailed to solve: DeadlineExceeded: swebench/sweb.eval.x86_64.sympy_1776_sympy-20154:latest: failed to resolve source metadata for docker.io/swebench/sweb.eval.x86_64.sympy_1776_sympy-20154:latest: failed to do request: Head \"https://registry-1.docker.io/v2/swebench/sweb.eval.x86_64.sympy_1776_sympy-20154/manifests/latest\": dial tcp 159.65.107.38:443: i/o timeout\n\n. Stderr: None. ",
+        "exception_traceback": "Traceback (most recent call last):\n  File \"/root/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/trial/trial.py\", line 356, in run\n    await self._setup_environment()\n  File \"/root/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/trial/trial.py\", line 202, in _setup_environment\n    await self._start_environment_with_retry()\n  File \"/root/.local/share/uv/tools/harbor/lib/python3.13/site-packages/tenacity/asyncio/__init__.py\", line 193, in async_wrapped\n    return await copy(fn, *args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/.local/share/uv/tools/harbor/lib/python3.13/site-packages/tenacity/asyncio/__init__.py\", line 112, in __call__\n    do = await self.iter(retry_state=retry_state)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/.local/share/uv/tools/harbor/lib/python3.13/site-packages/tenacity/asyncio/__init__.py\", line 157, in iter\n    result = await action(retry_state)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/.local/share/uv/tools/harbor/lib/python3.13/site-packages/tenacity/_utils.py\", line 111, in inner\n    return call(*args, **kwargs)\n  File \"/root/.local/share/uv/tools/harbor/lib/python3.13/site-packages/tenacity/__init__.py\", line 393, in <lambda>\n    self._add_action_func(lambda rs: rs.outcome.result())\n                                     ~~~~~~~~~~~~~~~~~^^\n  File \"/usr/local/lib/python3.13/concurrent/futures/_base.py\", line 449, in result\n    return self.__get_result()\n           ~~~~~~~~~~~~~~~~~^^\n  File \"/usr/local/lib/python3.13/concurrent/futures/_base.py\", line 401, in __get_result\n    raise self._exception\n  File \"/root/.local/share/uv/tools/harbor/lib/python3.13/site-packages/tenacity/asyncio/__init__.py\", line 116, in __call__\n    result = await fn(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/trial/trial.py\", line 214, in _start_environment_with_retry\n    await asyncio.wait_for(\n    ...<4 lines>...\n    )\n  File \"/usr/local/lib/python3.13/asyncio/tasks.py\", line 507, in wait_for\n    return await fut\n           ^^^^^^^^^\n  File \"/root/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/environments/docker/docker.py\", line 231, in start\n    await self._run_docker_compose_command([\"build\"])\n  File \"/root/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/environments/docker/docker.py\", line 212, in _run_docker_compose_command\n    raise RuntimeError(\n    ...<5 lines>...\n    )\nRuntimeError: Docker compose command failed for environment sympy__sympy-20154. Command: docker compose -p sympy__sympy-20154__hr6cdn7 --project-directory /root/.cache/harbor/tasks/FoYRY4MHfyK99hZgh6JQZ5/sympy__sympy-20154/environment -f /root/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/environments/docker/docker-compose-base.yaml -f /root/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/environments/docker/docker-compose-build.yaml build. Return code: 1. Stdout: #1 [internal] load local bake definitions\n#1 reading from stdin 633B done\n#1 DONE 0.0s\n\n#2 [internal] booting buildkit\n#2 pulling image moby/buildkit:buildx-stable-1\n#2 pulling image moby/buildkit:buildx-stable-1 15.0s done\n#2 pulling failed, using local image moby/buildkit:buildx-stable-1 done\n#2 creating container buildx_buildkit_xrl-builder0\n#2 creating container buildx_buildkit_xrl-builder0 3.0s done\n#2 DONE 18.0s\n\n#3 [internal] load build definition from Dockerfile\n#3 transferring dockerfile: 2.17kB done\n#3 DONE 0.0s\n\n#4 [internal] load metadata for docker.io/swebench/sweb.eval.x86_64.sympy_1776_sympy-20154:latest\n#4 ERROR: failed to do request: Head \"https://registry-1.docker.io/v2/swebench/sweb.eval.x86_64.sympy_1776_sympy-20154/manifests/latest\": dial tcp 159.65.107.38:443: i/o timeout\n------\n > [internal] load metadata for docker.io/swebench/sweb.eval.x86_64.sympy_1776_sympy-20154:latest:\n------\nDockerfile:19\n\n--------------------\n\n  17 |     # FROM ghcr.io/laude-institute/t-bench/ubuntu-24-04:latest\n\n  18 |     # FROM python:3.9-slim-bookworm\n\n  19 | >>> FROM swebench/sweb.eval.x86_64.sympy_1776_sympy-20154:latest\n\n  20 |     \n\n  21 |     # View the list of available base images here:\n\n--------------------\n\nfailed to solve: DeadlineExceeded: swebench/sweb.eval.x86_64.sympy_1776_sympy-20154:latest: failed to resolve source metadata for docker.io/swebench/sweb.eval.x86_64.sympy_1776_sympy-20154:latest: failed to do request: Head \"https://registry-1.docker.io/v2/swebench/sweb.eval.x86_64.sympy_1776_sympy-20154/manifests/latest\": dial tcp 159.65.107.38:443: i/o timeout\n\n. Stderr: None. \n",
+        "occurred_at": "2026-02-11T10:57:55.572081"
+    },
+    "started_at": "2026-02-11T02:57:07.078302Z",
+    "finished_at": "2026-02-11T02:57:55.704178Z",
+    "environment_setup": {
+        "started_at": "2026-02-11T02:57:07.079512Z",
+        "finished_at": "2026-02-11T02:57:55.564791Z"
+    },
+    "agent_setup": null,
+    "agent_execution": null,
+    "verifier": null
+}

@@ -1,10 +1,11 @@
 import argparse
-import logging
 
 from rock.cli.command.command import Command
+from rock.logger import init_logger
 from rock.sdk.builder.image_mirror import ImageMirror
 
-logger = logging.getLogger(__name__)
+# logger = logging.getLogger(__name__)
+logger = init_logger(__name__)
 
 
 class ImageCommand(Command):
@@ -58,6 +59,7 @@ class ImageCommand(Command):
                 target_registry=target_registry,
                 target_username=target_username,
                 target_password=target_password,
+                base_url=args.base_url,
             )
 
     @staticmethod

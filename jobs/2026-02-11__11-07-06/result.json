@@ -1,0 +1,27 @@
+{
+    "id": "2c869129-16f0-4df9-b923-1473aab30d32",
+    "started_at": "2026-02-11T11:07:11.185385",
+    "finished_at": "2026-02-11T11:07:45.748930",
+    "n_total_trials": 1,
+    "stats": {
+        "n_trials": 1,
+        "n_errors": 1,
+        "evals": {
+            "openhands__swebench-verified": {
+                "n_trials": 0,
+                "n_errors": 1,
+                "metrics": [
+                    {
+                        "mean": 0.0
+                    }
+                ],
+                "reward_stats": {},
+                "exception_stats": {
+                    "RuntimeError": [
+                        "sympy__sympy-20154__Fng5feP"
+                    ]
+                }
+            }
+        }
+    }
+}

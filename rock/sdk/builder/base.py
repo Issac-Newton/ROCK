@@ -1,6 +1,5 @@
 import asyncio
 import json
-import logging
 import os
 import traceback
 from abc import ABC, abstractmethod
@@ -8,11 +7,13 @@ from datetime import datetime
 from enum import Enum
 
 from rock.actions import Command, CommandResponse, CreateBashSessionRequest
+from rock.logger import init_logger
 from rock.sdk.sandbox.client import Sandbox, SandboxGroup
 from rock.sdk.sandbox.config import SandboxGroupConfig
 from rock.utils import FileUtil, retry_async
 
-logger = logging.getLogger(__name__)
+# logger = logging.getLogger(__name__)
+logger = init_logger(__name__)
 
 
 class EnvBuilderStatus(Enum):
@@ -72,6 +73,7 @@ class EnvBuilder(ABC):
     ):
         filename = dataset
         tmp_dir = f"tmp/dest-dir-{datetime.now().timestamp()}"
+        base_url = kwargs.get("base_url", "http://localhost:8000")
 
         if not os.path.exists(tmp_dir):
             os.makedirs(tmp_dir)
@@ -91,6 +93,7 @@ class EnvBuilder(ABC):
                 experiment_id=f"{dataset}",
                 xrl_authorization=authorization,
                 cluster=cluster,
+                base_url=base_url,
             )
         )
         await sandbox_group.start()
