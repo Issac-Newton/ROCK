@@ -16,54 +16,54 @@ logger = init_logger(__name__)
 
 test_result_parser = SWEBenchParser()
 
-task_in_sg = [
-    "matplotlib__matplotlib-20826",
-    "psf__requests-1724",
-    "pydata__xarray-4687",
-    "django__django-12965",
-    "django__django-15731",
-    "matplotlib__matplotlib-20488",
-    "matplotlib__matplotlib-23412",
-    "django__django-13741",
-    "pylint-dev__pylint-6903",
-    "matplotlib__matplotlib-23476",
-    "matplotlib__matplotlib-20859",
-    "matplotlib__matplotlib-26113",
-    "sphinx-doc__sphinx-7985",
-    "sphinx-doc__sphinx-10323",
-    "django__django-16454",
-    "django__django-12406",
-    "django__django-10880",
-    "scikit-learn__scikit-learn-14710",
-    "django__django-13810",
-    "django__django-11820",
-    "django__django-11815",
-    "django__django-13568",
-    "matplotlib__matplotlib-23314",
-    "django__django-11451",
-    "django__django-16642",
-    "django__django-10097",
-    "django__django-12858",
-    "psf__requests-1766",
-    "django__django-13794",
-    "matplotlib__matplotlib-26342",
-    "pydata__xarray-6744",
-    "sphinx-doc__sphinx-8475",
-    "django__django-13297",
-    "django__django-13315",
-    "django__django-15554",
-    "pylint-dev__pylint-4970",
-    "sphinx-doc__sphinx-8269",
-    "django__django-11400",
-    "django__django-14500",
-    "django__django-11885",
-    "django__django-14238",
-    "pylint-dev__pylint-7277",
-    "pydata__xarray-7233",
-    "django__django-11141",
-    "pydata__xarray-3305",
-    "django__django-16255",
-]
+# task_in_sg = [
+#     "matplotlib__matplotlib-20826",
+#     "psf__requests-1724",
+#     "pydata__xarray-4687",
+#     "django__django-12965",
+#     "django__django-15731",
+#     "matplotlib__matplotlib-20488",
+#     "matplotlib__matplotlib-23412",
+#     "django__django-13741",
+#     "pylint-dev__pylint-6903",
+#     "matplotlib__matplotlib-23476",
+#     "matplotlib__matplotlib-20859",
+#     "matplotlib__matplotlib-26113",
+#     "sphinx-doc__sphinx-7985",
+#     "sphinx-doc__sphinx-10323",
+#     "django__django-16454",
+#     "django__django-12406",
+#     "django__django-10880",
+#     "scikit-learn__scikit-learn-14710",
+#     "django__django-13810",
+#     "django__django-11820",
+#     "django__django-11815",
+#     "django__django-13568",
+#     "matplotlib__matplotlib-23314",
+#     "django__django-11451",
+#     "django__django-16642",
+#     "django__django-10097",
+#     "django__django-12858",
+#     "psf__requests-1766",
+#     "django__django-13794",
+#     "matplotlib__matplotlib-26342",
+#     "pydata__xarray-6744",
+#     "sphinx-doc__sphinx-8475",
+#     "django__django-13297",
+#     "django__django-13315",
+#     "django__django-15554",
+#     "pylint-dev__pylint-4970",
+#     "sphinx-doc__sphinx-8269",
+#     "django__django-11400",
+#     "django__django-14500",
+#     "django__django-11885",
+#     "django__django-14238",
+#     "pylint-dev__pylint-7277",
+#     "pydata__xarray-7233",
+#     "django__django-11141",
+#     "pydata__xarray-3305",
+#     "django__django-16255",
+# ]
 
 
 def is_resolved(parser_results: dict[str, UnitTestStatus] | None) -> bool:
@@ -109,20 +109,22 @@ async def _setup_test_env_compress(
 
 async def start_sandbox(swe_task_name: str) -> Sandbox:
     """Start a sandbox instance for evaluation."""
-    acr_url = (
-        "rock-registry.cn-hangzhou.cr.aliyuncs.com/slimshetty/swebench-verified"
-        if swe_task_name not in task_in_sg
-        else "rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified"
-    )
+    acr_url = "rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified"
+    # acr_url = (
+    #     "rock-registry.cn-hangzhou.cr.aliyuncs.com/slimshetty/swebench-verified"
+    #     if swe_task_name not in task_in_sg
+    #     else "rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified"
+    # )
     image = f"{acr_url}:sweb.eval.x86_64.{swe_task_name}"
-    cluster = "zb-a" if swe_task_name not in task_in_sg else "sg-a"
     config = SandboxConfig(
         image=image,
-        cluster=cluster,
+        cluster="sg-a",
         xrl_authorization="t-f8276d9f7afd4b38",
         user_id="400231",
         experiment_id="swebench-verified-test",
         base_url="http://xrl.alibaba-inc.com",
+        auto_clear_seconds=3600,
+        startup_timeout=500,
     )
     sandbox = Sandbox(config)
     await sandbox.start()
@@ -152,7 +154,7 @@ async def run_command_with_timeout(
     safe_cmd = shlex.quote(command)
     sandbox_cmd = f"nohup sh -c {safe_cmd} < /dev/null > {output_file}  2>&1 &"
 
-    response = await sandbox.arun(sandbox_cmd, session=session_name, wait_timeout=timeout_sec)
+    response = await sandbox.arun(sandbox_cmd, session=session_name)
     pid = _extract_pid(response.output)
     if not pid:
         logger.error(f"Failed to extract PID from command output: {response.output}")
@@ -182,9 +184,8 @@ async def run_swe_evaluation(
     logger.info(f"Task name: {task_name}, sandbox id : {sandbox.sandbox_id}, Agent run result: {result}")
 
     # 3. Install uv
-    # TODO: 将uv install内化到rock sandbox里面，提供一个接口让用户调用，而不是在外面执行安装命令
     uv_install_script_commands = [
-        "wget http://nebula-cv-hz2.oss-cn-hangzhou.aliyuncs.com/user/eval/uv-x86_64-unknown-linux-gnu.tar.gz",
+        "wget http://xrl-sandbox-bucket.oss-cn-hangzhou.aliyuncs.com/uv-files/uv-x86_64-unknown-linux-gnu.tar.gz",
         "tar -xzf uv-x86_64-unknown-linux-gnu.tar.gz --strip-components=1 -C /usr/local/bin",
     ]
     session_name = "swe-evaluation"
@@ -207,18 +208,11 @@ async def run_swe_evaluation(
     is_success = await _setup_test_env_compress(sandbox, session_name, test_dir, task_dir / "run-tests.sh")
     if not is_success:
         logger.error("Failed to setup test environment")
-        return
+        return False, None
 
     # 5. Run tests
     logger.info(f"Task name: {task_name}, sandbox id : {sandbox.sandbox_id}, Start to run tests")
     test_dir_path = "/tests"
-    resp = await sandbox.arun(
-        f"bash {test_dir_path}/run-tests.sh",
-        session=session_name,
-        wait_timeout=global_test_timeout_sec,
-        output_file=f"{test_dir_path}/test.txt",
-        mode=RunMode.NOHUP,
-    )
     resp = await run_command_with_timeout(
         sandbox,
         f"bash {test_dir_path}/run-tests.sh",
@@ -294,8 +288,6 @@ async def run_parallel_evaluations(tasks_dir: Path, parallel_num: int, config_pa
         logger.error(f"No valid task directories found in {tasks_dir}")
         return []
 
-    task_dirs = task_dirs[:parallel_num]  # Limit to parallel_num tasks for testing
-
     logger.info(f"Found {len(task_dirs)} tasks to evaluate")
     logger.info(f"Running with parallelism: {parallel_num}")
 
@@ -332,7 +324,7 @@ if __name__ == "__main__":
     print(f"Parallel number: {parallel_num}")
     print(f"Config path: {config_path}")
 
-    result_file = open("result.json", "w")
+    result_file = open("result-sandbox-failed.json", "w")
 
     async def main():
         results = await run_parallel_evaluations(tasks_dir, parallel_num, config_path)

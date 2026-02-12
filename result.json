@@ -1,0 +1,3368 @@
+[
+    {
+        "task_name": "sympy__sympy-20154",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=150384ec5e6446d8b38d3729e55372c3, host_name='rock-worker-sg-a-347.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.2.229.8, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.sympy__sympy-20154, cluster=sg-a)"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-25931",
+        "sandbox_id": "9bd82d457547446a81c3e51239be5c5b",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-12308",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=293eb521fbef490a8efd5d288050be62, host_name='rock-worker-sg-a-284.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.2.237.38, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.django__django-12308, cluster=sg-a)"
+    },
+    {
+        "task_name": "sympy__sympy-13480",
+        "sandbox_id": "fe1c4839b9794e48910dbef886163349",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-15349",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=ae6b3e37bef647ea846015a39f52e698, host_name='rock-worker-sg-a-313.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.2.238.23, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.sympy__sympy-15349, cluster=sg-a)"
+    },
+    {
+        "task_name": "sympy__sympy-12481",
+        "sandbox_id": "8f4798bd7abc4274aa92b4895a1a7bee",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-16560",
+        "sandbox_id": "7fe4c494fbdc42888feeb1c85f5df3ab",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-15022",
+        "sandbox_id": "7c7605f86a9a40aab9c567f0628cd7a5",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-13779",
+        "sandbox_id": "94214b1161094b20ba5852d1fdeea011",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-16595",
+        "sandbox_id": "3c4d6a9924404dc298e7a2a9500d6367",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-7440",
+        "sandbox_id": "f5d0486694344d24a18f60390789d523",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-26323",
+        "sandbox_id": "cee9a7aed94847ab994111a6a335d4a2",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-15695",
+        "sandbox_id": "72ed8a3daa9f4658b01b378494f1e3c3",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pytest-dev__pytest-10051",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=704b70290b1848db9242b8fe314acf7d, host_name='rock-worker-sg-a-219.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.65.23.204, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.pytest-dev__pytest-10051, cluster=sg-a)"
+    },
+    {
+        "task_name": "sympy__sympy-15599",
+        "sandbox_id": "25b09c332dca48a8a8f63874e92c4652",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-15037",
+        "sandbox_id": "bc01712463e341f699afb56de2a40f16",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "astropy__astropy-7336",
+        "sandbox_id": "255f4049cf0a4466a87b8a3dde2939c4",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-13551",
+        "sandbox_id": "37ccd29fc542407394818ba0b0982717",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-13449",
+        "sandbox_id": "d66be92ac7ee4e5a97d5e1773babc0d2",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-14248",
+        "sandbox_id": "9bf29da544c3413f820ffb7cd941f3b3",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-24627",
+        "sandbox_id": "0c141302a5964c41837a4e2a75f7e93e",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-13410",
+        "sandbox_id": "ebb86487eb5348689cdb2c30dec3ee58",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-26466",
+        "sandbox_id": "4cbf372528b14c4db95dd89fe34018ce",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-11239",
+        "sandbox_id": "77cdc2f84ae24ddc8a9d9c14dc54f15e",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pylint-dev__pylint-7080",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=a5e7e76fe04e4c86888be6391f117467, host_name='rock-worker-sg-a-308.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.65.22.210, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.pylint-dev__pylint-7080, cluster=sg-a)"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-20826",
+        "sandbox_id": "9ad42b8bd53946edac0b96774bb79df6",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pytest-dev__pytest-10081",
+        "sandbox_id": "f8c65db817ee4c68932140cd15d307a7",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11119",
+        "sandbox_id": "a048d6c792e742adb79d396c45967267",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-11578",
+        "sandbox_id": "240d76d60aea4c558d6554e263fb91a0",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11211",
+        "sandbox_id": "4960863764c84a76856ef4379bfc1002",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-13417",
+        "sandbox_id": "dbbd97f0aa3543bdaf0e91a5844339c2",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-12741",
+        "sandbox_id": "22c9c6059ae94524b0b50405c7cd66a9",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-14725",
+        "sandbox_id": "e2cad061feb642999376152c6fdef247",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-22714",
+        "sandbox_id": "d860bd992f86482a8742e95438815184",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-13877",
+        "sandbox_id": "8349719d98e745b989bf65520d79a7b7",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "psf__requests-1724",
+        "sandbox_id": "35efc63fcd4146a5a63ec059b1508f1a",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11138",
+        "sandbox_id": "70d4514102324b7b9b426563bf900820",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-11206",
+        "sandbox_id": "02c3252b5d3c4cae9123f7070c4ac229",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-14915",
+        "sandbox_id": "27c34fc7c1b846aaba0211ab11d9e51e",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "astropy__astropy-14369",
+        "sandbox_id": "d5befc1b741c4bc6b21630e72a4a4e9f",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-11333",
+        "sandbox_id": "adb4adb747994953997d88ec5e75df2e",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-13212",
+        "sandbox_id": "53d4b642eb934566bdab1bd5d29f4f89",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-26208",
+        "sandbox_id": "4bdfd65bc3ba4c2286f58ba2b542dea6",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "astropy__astropy-13977",
+        "sandbox_id": "4cbc4006e7fa4ee0a566c0bede4d91b7",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-16082",
+        "sandbox_id": "212d7ecff7f64459bd7f48a46f70cdc7",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-14983",
+        "sandbox_id": "120e44408d484db2adf960753348ea3d",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "pydata__xarray-6721",
+        "sandbox_id": "bc1ad7dbbf6c4940aaa37358158ed8b8",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-12096",
+        "sandbox_id": "51d2edaddf90457ebb8c7a804b9061db",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-12050",
+        "sandbox_id": "64b3968803d54a3893eab10b7f063a58",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pydata__xarray-4687",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=cfb22387e6db4891aef2ecf56dd50d9c, host_name='rock-worker-sg-a-332.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.81.240.27, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.pydata__xarray-4687, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-15572",
+        "sandbox_id": "e4c7ecf059d3417a813d18b894800a2c",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-12965",
+        "sandbox_id": "05d5f9674bbb4d7cb80133d8985408b6",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-11510",
+        "sandbox_id": "d9be97cc5ba246fc93f17423bb2fe070",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "pydata__xarray-4075",
+        "sandbox_id": "7706b30b344746fa818b9070b99e1a25",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pytest-dev__pytest-7432",
+        "sandbox_id": "643204d6f0bc4478980934e0daa151b3",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-14122",
+        "sandbox_id": "77a3def788a9407e973b95591bb5e909",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-16139",
+        "sandbox_id": "2a3cc140208243ccbd8430ec48d94c1a",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-15731",
+        "sandbox_id": "2391e3786cad4a0bb810922a938feafa",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pylint-dev__pylint-4604",
+        "sandbox_id": "fdcbec36d6774829876be81521f05090",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-14007",
+        "sandbox_id": "7c9ac58562e547d3a0e739c02ec03ff0",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11734",
+        "sandbox_id": "768eaf54c8db4503b1db6ce544b3a447",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "astropy__astropy-13579",
+        "sandbox_id": "5b076fe54f274241824da512c47b7c05",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11299",
+        "sandbox_id": "389eb43c22e5423d828e93e943d06b06",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-14559",
+        "sandbox_id": "19483c3ea1a044deac2684aeee87c10d",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pytest-dev__pytest-5262",
+        "sandbox_id": "55223e0fbbba448faa8d32ee6bb6088d",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-10554",
+        "sandbox_id": "df978fa875a242faad36daa21a3496ad",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-20488",
+        "sandbox_id": "ddefdfdcccd843d28b61520d7535b476",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-13786",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=1cbc804fda4d4cfb9e33355bb50467c8, host_name='rock-worker-sg-a-363.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=11.175.201.12, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.django__django-13786, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-15127",
+        "sandbox_id": "29efbd609eb04a6585bca1cb1d1fc4e4",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-13496",
+        "sandbox_id": "3b5ae2f3bbe34643929da69035286375",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-15161",
+        "sandbox_id": "7b0ccfced1424c25a88739547b30cbc6",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-24066",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=ad5b93bcc6874b48b219e3376960304f, host_name='rock-worker-sg-a-198.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=11.20.200.43, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.sympy__sympy-24066, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-15814",
+        "sandbox_id": "58fa64014bb24ea1bbd9d021fbde3c73",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-19954",
+        "sandbox_id": "9dc47a8863d84d148a3135eeba1ca834",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-14053",
+        "sandbox_id": "27f1a9b8f8304b37a63c377535b4f796",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11532",
+        "sandbox_id": "221a2d660bad4cb9a665281c2e7d9599",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-23412",
+        "sandbox_id": "f7ad97177c2c4134b890f74b8b4b858e",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-12419",
+        "sandbox_id": "936d97706f334b4980908850a5e4ab1e",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-8459",
+        "sandbox_id": "94fb9472bd404ef095e0a133108d0d0a",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-14771",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=3ad1750dcea34f3ca9f6b86d52607e1c, host_name='rock-worker-sg-a-365.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.81.241.175, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.django__django-14771, cluster=sg-a)"
+    },
+    {
+        "task_name": "sympy__sympy-24539",
+        "sandbox_id": "ced6d3af151b45cd990966918b5477aa",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pylint-dev__pylint-6386",
+        "sandbox_id": "6dec3d349cf94107a8d73676d42570e3",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-14539",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=31b2e94c2aec454a967660749608d2c0, host_name='rock-worker-sg-a-215.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.42.124.82, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.django__django-14539, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-13741",
+        "sandbox_id": "5e92577e801d4d71961a3080284b28aa",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "astropy__astropy-14096",
+        "sandbox_id": "3bb4892ce8b4490197123dc53a54ba0e",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-25775",
+        "sandbox_id": "40108bf97a3742f49ed5dc79a2be9c8b",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-11477",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=bd20df6b83494d86b9c70d868b89ddaa, host_name='rock-worker-sg-a-280.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.81.235.118, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.django__django-11477, cluster=sg-a)"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-7454",
+        "sandbox_id": "42e20e1e9c77417f93a7ebb2f7a3b9c9",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-12125",
+        "sandbox_id": "cfc8a6391675482593bec564b5ee0ac6",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-17084",
+        "sandbox_id": "f4aca110aac2482496b970617c897175",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-10466",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=b852df265dba42b5b908081d0f920018, host_name='rock-worker-sg-a-256.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.2.237.208, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.sphinx-doc__sphinx-10466, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-12774",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=e3f2a8df1a68459c8099cdd12b9832e0, host_name='rock-worker-sg-a-303.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.2.239.102, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.django__django-12774, cluster=sg-a)"
+    },
+    {
+        "task_name": "astropy__astropy-7606",
+        "sandbox_id": "0773b19e8cb74ec4886ffd22f19d98ca",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-15375",
+        "sandbox_id": "36ea681afeae497596286b42763d6882",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pylint-dev__pylint-6903",
+        "sandbox_id": "cff9b7d41231475a8765e08a980b7aa7",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-10297",
+        "sandbox_id": "c950a018f8c144d58565a01c34ea3bdc",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-18189",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=4d6d89e9628142d5a6c064c2ac582897, host_name='rock-worker-sg-a-212.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.65.24.18, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.sympy__sympy-18189, cluster=sg-a)"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-23476",
+        "sandbox_id": "3218c51a22eb496fa1389d26f29a2f80",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-17655",
+        "sandbox_id": "1709e378bdf04b4d83dbd7e7b5e47666",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-25747",
+        "sandbox_id": "b869fff5f7ba44fbbc41f27de78ed75c",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-13135",
+        "sandbox_id": "07341d5b6a444542b727cca44090f788",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "astropy__astropy-13398",
+        "sandbox_id": "1f8395eb54554cabb8314175f78aa4d2",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-24213",
+        "sandbox_id": "0f045393306c44feaa8c20dad6f71904",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-7530",
+        "sandbox_id": "3e667b2e53b44a25baf84e6f0f0f7e4a",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-20428",
+        "sandbox_id": "ced647e2d2414e4794f53f27962ccda4",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-11555",
+        "sandbox_id": "2e202e4cbc3b42048e96860fa089ffbc",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-20859",
+        "sandbox_id": "f6f9848f8dfd4dcf8609c2a6ee537e04",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11276",
+        "sandbox_id": "c6188aed5a5b4560b419b2df6a75fb98",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11728",
+        "sandbox_id": "4767f4c51cce4424ba203bda0ce8a3ee",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-26113",
+        "sandbox_id": "7979f142993a4492ae5e06f9b5a19cda",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-7985",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=c6f7858fd0c74d10b8484dea736b0ace, host_name='rock-worker-sg-a-366.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.65.25.10, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.sphinx-doc__sphinx-7985, cluster=sg-a)"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-9320",
+        "sandbox_id": "deca6f6af30c4ba7961e429d34e3ea39",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11179",
+        "sandbox_id": "fc1f74ed95624be9bb72d314235e0a9a",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-16032",
+        "sandbox_id": "bd39386eaf554fea949d46f89a344d12",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-10323",
+        "sandbox_id": "7f84ab0209d34c8f8b47a6fc901b0189",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-8120",
+        "sandbox_id": "ead63d45e43f4adb82e72bdeefdf9bd6",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-16256",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=4944c72112544c78838ceeb400a8e53e, host_name='rock-worker-sg-a-334.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.42.124.85, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.django__django-16256, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-14349",
+        "sandbox_id": "bc4b0e07858b4590938c62463956ddf5",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-9673",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=e389aaf50bda4df78bd8df8d4cb72517, host_name='rock-worker-sg-a-331.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.81.242.204, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.sphinx-doc__sphinx-9673, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-14315",
+        "sandbox_id": "e7f39d17fb0f41feb69c4af8f58c87ae",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-16792",
+        "sandbox_id": "2b40dbca7b3e4e9a829521544ff71974",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-18763",
+        "sandbox_id": "3b5d9a1b03f84ccbb647bc1cf3c3a76a",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-14017",
+        "sandbox_id": "2a9b1f36ea054a6a8befe895c9c3a6ea",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-13109",
+        "sandbox_id": "ba0584cf8f7d4ac6b05b1388d7a3046f",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11133",
+        "sandbox_id": "fbdf3c99121443e2a9c3acc7739744c2",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-13925",
+        "sandbox_id": "5f7c85b250e143b29c6e5d616a2da28b",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-15315",
+        "sandbox_id": "74f053511e5b45bf91e534fdc3bc59ce",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11433",
+        "sandbox_id": "a39b8b47cf914bee8d3685adf549ce45",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-11066",
+        "sandbox_id": "130fc3abc123499484642d1a05aa3711",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pytest-dev__pytest-5809",
+        "sandbox_id": "2f61e0729574418c8e228d660c284fa0",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-16662",
+        "sandbox_id": "bf939cc0d075491e98771ad3c470da0f",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pallets__flask-5014",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=c03f238da4b64ba2a7d7be6343e3d6d6, host_name='rock-worker-sg-a-228.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.65.38.236, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.pallets__flask-5014, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-14140",
+        "sandbox_id": "12901809e9b04479be63aaae08e07f9d",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-13658",
+        "sandbox_id": "514735a1462d43888c250eb088ca40aa",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-18211",
+        "sandbox_id": "d3a9c7fa992c411a94c985bb4fa9f25f",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11880",
+        "sandbox_id": "528747af0c4346bc9f379335b1458a97",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-16454",
+        "sandbox_id": "fccba7f8a14b44e3b6f1f0b91f5c48dc",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-13837",
+        "sandbox_id": "718eb16821ad47b59d91ae6305fb0f6d",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-13401",
+        "sandbox_id": "6984351ef2a04000a2b75d27b243ecbd",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-15280",
+        "sandbox_id": "1e6e592d51af45878a30977997024938",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-13670",
+        "sandbox_id": "898148ab63d84749a6ae1f15c2ce1207",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "astropy__astropy-12907",
+        "sandbox_id": "f734229827264b399703b7593695dd65",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-16333",
+        "sandbox_id": "defbed208e35497b8fdae3f6fd79016b",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-25232",
+        "sandbox_id": "76431b73179a47c1a32ccb23614aa738",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-13142",
+        "sandbox_id": "5eb740aa1f6e4ad4a455a2cd7c1245e0",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-12304",
+        "sandbox_id": "542630b15e9147d0b1bc6965b117cca0",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-10999",
+        "sandbox_id": "a43fb7b23bfe406bb1060f944bdb5d72",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-16901",
+        "sandbox_id": "9f0f18f9e07441899fbee21383e7bf45",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-14087",
+        "sandbox_id": "e3e766cc5c824f8cbdd12bb685a65898",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11964",
+        "sandbox_id": "5eea2efb52a046498389d3a2276468ce",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-15875",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=6741a9f093ac404fa8f05cd61ebdb686, host_name='rock-worker-sg-a-273.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.65.20.132, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.sympy__sympy-15875, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-12406",
+        "sandbox_id": "f50e6350c12f421c8210a09bff5e58dc",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-10880",
+        "sandbox_id": "cb15edde8748433bb291994663171821",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-13933",
+        "sandbox_id": "aad3e17138df4e08b5855cf1dd71c694",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-15277",
+        "sandbox_id": "ba838dd94fa64a298e66f1a43217eeea",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-15563",
+        "sandbox_id": "fe9203e5355f4f9a830bb0af0831e8ae",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-14710",
+        "sandbox_id": "555511beb19b4af1909bfc224c302db2",
+        "status": "failed",
+        "error": "Couldn't find SWEBench results between the start/end markers. Skipping this task as it is an issue from the server end."
+    },
+    {
+        "task_name": "django__django-13810",
+        "sandbox_id": "29e5b6ff6b6e4e9d832e18c25aa88bdf",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11820",
+        "sandbox_id": "57f211fd795f42f997f040535f7290a6",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-13590",
+        "sandbox_id": "23098ecd00504a7c978f6da220944da6",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "mwaskom__seaborn-3069",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=5c13f5d860314eb58efb7fb6b46eb714, host_name='rock-worker-sg-a-218.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.81.251.137, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.mwaskom__seaborn-3069, cluster=sg-a)"
+    },
+    {
+        "task_name": "pydata__xarray-3677",
+        "sandbox_id": "ba6377c136544c8597b6f51f89969bdf",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-17630",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=80cb7ce7f153463d824c030755ab80c9, host_name='rock-worker-sg-a-314.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.81.240.51, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.sympy__sympy-17630, cluster=sg-a)"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-9711",
+        "sandbox_id": "a09d08b5a24841fd83ae18640dd94c0d",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-10449",
+        "sandbox_id": "5d817d9e18dd42058cec836b58ba85e3",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-7748",
+        "sandbox_id": "ca7eb43c1279465d980530e16144b97f",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-25122",
+        "sandbox_id": "bc072258d0cb4a9ba675a4207ee0e744",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-24443",
+        "sandbox_id": "7cea817fcf3240aeb149484345a0cd40",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11815",
+        "sandbox_id": "83201646a6c443e88860c40c1924782c",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "astropy__astropy-14539",
+        "sandbox_id": "d38dbe4e2688424e88a3e849e4217c33",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-13513",
+        "sandbox_id": "2f3a2cf9914a4f81a0685f0ce902fc70",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-14672",
+        "sandbox_id": "908c9bf0a48a4235bf84a87645b80d3c",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-14711",
+        "sandbox_id": "ce813dc443714feebb7e27d98cb1fb22",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-21568",
+        "sandbox_id": "9354460eefcf4926bbe74aad6e564e96",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-12155",
+        "sandbox_id": "461bfe9693c4468991d8b53e5d01be26",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-22914",
+        "sandbox_id": "ff9a1d224b2949299dacf40e1e866604",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-24870",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=d77a7b056d894ba7bbdb1c5ed73e10f6, host_name='rock-worker-sg-a-313.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.2.238.23, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.matplotlib__matplotlib-24870, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-12419",
+        "sandbox_id": "70e241df4c4046c38a8290b483817940",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pydata__xarray-7393",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=b2807c70a11e4c9ca746184a28861738, host_name='rock-worker-sg-a-347.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.2.229.8, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.pydata__xarray-7393, cluster=sg-a)"
+    },
+    {
+        "task_name": "astropy__astropy-14598",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=890fdcaf41a74ccc87a88f2d012b4313, host_name='rock-worker-sg-a-226.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.81.230.101, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.astropy__astropy-14598, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-13568",
+        "sandbox_id": "bd320dd6b6884b2e97e8d89349beafde",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-16886",
+        "sandbox_id": "ca939dce218e477089fd473b1346ece7",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-14894",
+        "sandbox_id": "bbf65ddbaca74b029cfc66076cd89585",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pytest-dev__pytest-7236",
+        "sandbox_id": "52c57c1338514f4c860d4ca6383c7049",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-16899",
+        "sandbox_id": "5d5eb841a9c74837b78a34c604049d86",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-15268",
+        "sandbox_id": "97e00d0f03d64e76a4d91338b0840db2",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "psf__requests-5414",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=ec592e72fc164c0ebdbf0f04eda25262, host_name='rock-worker-sg-a-266.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.65.21.94, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.psf__requests-5414, cluster=sg-a)"
+    },
+    {
+        "task_name": "pydata__xarray-4356",
+        "sandbox_id": "4ae53d2f212c4b35b9932470717662b6",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-23314",
+        "sandbox_id": "6d0f6173f21544f4bc601afe9d3efed6",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pydata__xarray-4094",
+        "sandbox_id": "80b8da54e8534eba95c34740dcea0ff2",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-16661",
+        "sandbox_id": "759e52f0381b40bfa15f9e718d1fcb71",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-13807",
+        "sandbox_id": "31f108a942aa4c6f82d9c47224274439",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-12143",
+        "sandbox_id": "0aa285faa3ef40dbac109dcf49dc0a1a",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11451",
+        "sandbox_id": "81f1c175c2c049b5a8f0ca65406c09f9",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-22865",
+        "sandbox_id": "fd3ad6cad5c94d8b854721010599b914",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-13031",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=de24bf8feff84c4b8599b219256a0620, host_name='rock-worker-sg-a-287.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.65.43.93, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.sympy__sympy-13031, cluster=sg-a)"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-14496",
+        "sandbox_id": "929ac67eccfd40daaf861b5b9f356b8a",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-14141",
+        "sandbox_id": "ca5e2153c1ee453fb9ed62c37a34b6e1",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-16642",
+        "sandbox_id": "20290e6e618e4a289d8133d98090cfdc",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-14404",
+        "sandbox_id": "5f55e2357eeb4547b65dbc03383c7ff8",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-14976",
+        "sandbox_id": "d8e0d9691c9943d3a35464e4f0ad63d4",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-16145",
+        "sandbox_id": "bde492bde79a4418b86bde0e9552082e",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pytest-dev__pytest-7324",
+        "sandbox_id": "c5c180b7e71348c4a7af25a8f5d1ea26",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-13647",
+        "sandbox_id": "90c46e6aa31a420a96b12c7b2e9a7892",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-10097",
+        "sandbox_id": "e6419fc8f87b47f1956741e97c81f7bc",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "pydata__xarray-6599",
+        "sandbox_id": "9f270655db084b92b2e719bfe7cd4489",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-13439",
+        "sandbox_id": "96ce96cf26c5419d8dcf0d6b505ea245",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-12858",
+        "sandbox_id": "64c8b6703a1c40b89852e1f9b6815650",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-15561",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=fcdafcb752a247a09a2c0e12e1ce866b, host_name='rock-worker-sg-a-247.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.2.236.230, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.django__django-15561, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-11951",
+        "sandbox_id": "6845e8cb00044af8835d4af3a4e69b77",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-15098",
+        "sandbox_id": "fab5b4563e924f76aa42f27cc806ba94",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "psf__requests-1766",
+        "sandbox_id": "826f21517fd341f5818d04a72639e10d",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-15128",
+        "sandbox_id": "77e01b7039c14233a262447580e47a03",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-13794",
+        "sandbox_id": "067b3636ad2d44cbbf50b038c6b3720c",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-15809",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=1b4217a38a484b66a1222081ec3df0c9, host_name='rock-worker-sg-a-294.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.46.85.197, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.sympy__sympy-15809, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-15569",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=1cee70c94bb448219865a99d8b5b31d0, host_name='rock-worker-sg-a-262.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.46.84.144, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.django__django-15569, cluster=sg-a)"
+    },
+    {
+        "task_name": "astropy__astropy-13033",
+        "sandbox_id": "9ed1849bae254f9eb04367bcec69bbbe",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-24562",
+        "sandbox_id": "88465c05a4d745d0952c52e9f07baa0d",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-8265",
+        "sandbox_id": "8b144b1232994952b9e974280cdc37bc",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "astropy__astropy-14309",
+        "sandbox_id": "56d57a687fc84642aeef5c6dc299d0c3",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-24177",
+        "sandbox_id": "331e41a30d9f4763b17c25379c8cf630",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-26342",
+        "sandbox_id": "c1854133aea6455a9e81e35cc2877625",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-22871",
+        "sandbox_id": "f5483f675228442f9bbad2cb92e700cb",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-13124",
+        "sandbox_id": "0fa3b41199014fa382b0db7d08fd9408",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-13363",
+        "sandbox_id": "ac8ac0d31fbe41cc97f82bf64d33b49e",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pytest-dev__pytest-7205",
+        "sandbox_id": "2d3184f6db3b4d879946ea9edc8b7007",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-15851",
+        "sandbox_id": "5f548e5312c445e6865976b1fd02c22a",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-13195",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=7146e21f434c4bd5a4a367680ecf4692, host_name='rock-worker-sg-a-280.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.81.235.118, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.django__django-13195, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-17029",
+        "sandbox_id": "de39b8ef5a68456cbdcc563af8f593b3",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-13112",
+        "sandbox_id": "d9bf0e6b5ed44aecb0a7619f28f92abb",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-14765",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=2cdb48ceb29e4e989c822e34ce98aad5, host_name='rock-worker-sg-a-203.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.65.24.137, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.django__django-14765, cluster=sg-a)"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-9658",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=073bc64030f6415aac9d97488b0ae640, host_name='rock-worker-sg-a-282.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.81.242.206, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.sphinx-doc__sphinx-9658, cluster=sg-a)"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-15100",
+        "sandbox_id": "e98f8c31f65349388db8fed43f768327",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11551",
+        "sandbox_id": "07f14881f2584cdd8add0dbbf5a138d5",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pydata__xarray-4695",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=fbd8a79a62db48f1ac19f804472a93e5, host_name='rock-worker-sg-a-304.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.46.85.225, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.pydata__xarray-4695, cluster=sg-a)"
+    },
+    {
+        "task_name": "astropy__astropy-7671",
+        "sandbox_id": "cc224c658913492cbdb188303fde7be8",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "astropy__astropy-14995",
+        "sandbox_id": "4edf185ad55747dcb90cb8c404526b28",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-18199",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=44e94e44e34a4f39bb36eebb6c2d54ec, host_name='rock-worker-sg-a-220.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.81.241.171, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.sympy__sympy-18199, cluster=sg-a)"
+    },
+    {
+        "task_name": "astropy__astropy-8707",
+        "sandbox_id": "47b727e31918429ba8850117e94e0999",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-11087",
+        "sandbox_id": "77120a3b30394ec2858398c9f8d8bc1f",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-25102",
+        "sandbox_id": "468e61987a0f43709168cd649fd4f8a5",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-14373",
+        "sandbox_id": "2b959b4a59824945b26c1a972774ec07",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pydata__xarray-6992",
+        "sandbox_id": "af0bdf9bc4514a11b766dd03ba2d0e59",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "astropy__astropy-13236",
+        "sandbox_id": "fb637c91697d402d91280b58a5cde778",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-12276",
+        "sandbox_id": "e128f0d0d73441e991cd79d1b275bfe9",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-13091",
+        "sandbox_id": "3a1b8e29ec2546999e40cef7faf6a550",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pytest-dev__pytest-7490",
+        "sandbox_id": "4a17bc653f8645d4ba5a7acc18b3fc6d",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-7590",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=86ca40bd9a9e4380a9fb28850d07e444, host_name='rock-worker-sg-a-299.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.81.242.117, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.sphinx-doc__sphinx-7590, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-15930",
+        "sandbox_id": "373c19cb47ff4b7092d5d14894a381a8",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-7910",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=56d2a4e9ce7c4bf8b2fb233059873128, host_name='rock-worker-sg-a-212.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.65.24.18, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.sphinx-doc__sphinx-7910, cluster=sg-a)"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-11445",
+        "sandbox_id": "ae9d478ba53348f1a4a8bae9f90034d1",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pydata__xarray-3095",
+        "sandbox_id": "4542afcdf16b451a8644166febd4b45b",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pydata__xarray-7229",
+        "sandbox_id": "ea64345f78af4f5d937c9ed0bc8e64c2",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-13023",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=3de0c4734b23485db9cde099b989883f, host_name='rock-worker-sg-a-317.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.81.240.244, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.django__django-13023, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-11095",
+        "sandbox_id": "bb9122d9249a4eccbb3edaefe04b504d",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-16116",
+        "sandbox_id": "f17f922a13064523988d4ffbfebea255",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-13798",
+        "sandbox_id": "bbc509f8500e4892889e9763a99e682c",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-14311",
+        "sandbox_id": "2366e298996c43ca893a7faeacdb1b3b",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-19783",
+        "sandbox_id": "71601b5a32ca4eed8a25e9abee35cd82",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-13551",
+        "sandbox_id": "c7a63b4bceee492ab4e3e8680461962d",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-15017",
+        "sandbox_id": "10385e9c1e494bb5a7e1e4ec1d96510f",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-15103",
+        "sandbox_id": "dd096cde30c14e879ca3180a5a7b024a",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "mwaskom__seaborn-3187",
+        "sandbox_id": "ba937f7313fd49ab904879f62e34e938",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-22456",
+        "sandbox_id": "61ae5b20599b4500b39fcb70e4f40b34",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-16136",
+        "sandbox_id": "a7ed5ff81b084726a0076059357f6811",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-25479",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=c0e0a0dcc10c4d35b50c87c5e31d30a7, host_name='rock-worker-sg-a-237.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.65.19.234, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.matplotlib__matplotlib-25479, cluster=sg-a)"
+    },
+    {
+        "task_name": "sympy__sympy-21596",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=433e38834ad44ba1992eac6d556fdc90, host_name='rock-worker-sg-a-366.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.65.25.10, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.sympy__sympy-21596, cluster=sg-a)"
+    },
+    {
+        "task_name": "sympy__sympy-13974",
+        "sandbox_id": "b02e912c91854e9b877a92ed249743e8",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-14034",
+        "sandbox_id": "a04c195df18a40ef9214dc92e95f0c52",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-15252",
+        "sandbox_id": "07942919cfd34065b957b18d05ee6f7c",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-23413",
+        "sandbox_id": "642b1a27ef034c67bc4a64636d0b21cc",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-12663",
+        "sandbox_id": "2981b612cd8f43c0b3cee098891b0b1a",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-14608",
+        "sandbox_id": "39e096ef051747efa5eab20cf9286fdd",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-9602",
+        "sandbox_id": "5735f2a92e3545109e0437e6558608fd",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-10614",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=3154b955aaf4401eb14a1de56543d097, host_name='rock-worker-sg-a-334.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.42.124.85, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.sphinx-doc__sphinx-10614, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-12708",
+        "sandbox_id": "58db93debfaa47e9872ad4ce7525645e",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pydata__xarray-3993",
+        "sandbox_id": "7e60a9720fb541758b1f88b870ea4a2b",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-9296",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=802ce9ce9f134f02b2c6dde55b7d356a, host_name='rock-worker-sg-a-331.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.81.242.204, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.django__django-9296, cluster=sg-a)"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-25332",
+        "sandbox_id": "3dfe5b351b474580a38cc47293cb1502",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-14631",
+        "sandbox_id": "adb7f11542604389bb961845b3bb979f",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "psf__requests-6028",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=6654ba44eb8949c295f19cf7c5da11af, host_name='rock-worker-sg-a-364.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.42.123.193, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.psf__requests-6028, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-10914",
+        "sandbox_id": "af6f76a092da4a27abc3ce3eb9a23097",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-12325",
+        "sandbox_id": "f0f44dce39d0438ca0a3f531b7aeb480",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pydata__xarray-6744",
+        "sandbox_id": "944e1da30d524b3b962236b7c00eefd9",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-16612",
+        "sandbox_id": "9b8dc1c241c5419db8ca93556ee02484",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pylint-dev__pylint-4661",
+        "sandbox_id": "4d3c84c8c93a41e6a294d039c6ccbbb2",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "pytest-dev__pytest-7571",
+        "sandbox_id": "28dabbd792e248ecaf1db33ef1aa4188",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-16100",
+        "sandbox_id": "52800692251047159a5b3ec415bc7179",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-19637",
+        "sandbox_id": "885135d4f07842f89708e667c3a735da",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-12682",
+        "sandbox_id": "b19179d8f1354e919cde46a86db9b19b",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-12713",
+        "sandbox_id": "9aee72a19dca4d84b6662d63718f513d",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-8475",
+        "sandbox_id": "96c9c86f9efd4969b2f3828a5e749661",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-10973",
+        "sandbox_id": "1c89f428ce1542368697450b06c9ffc8",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-23262",
+        "sandbox_id": "271ce9937cca4202ac006db0725914d1",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-8721",
+        "sandbox_id": "83be5b31a55b485f83e84454d8b6e1b0",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-13346",
+        "sandbox_id": "12ae198d6fcb49a9ac74c42768ca1b1a",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-24970",
+        "sandbox_id": "9f66e2d8af1c4103852633de96eb6e38",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-13343",
+        "sandbox_id": "76b62b37c16445ef9ad45bfac47274c2",
+        "status": "failed",
+        "error": "Failed to execute command: {'status': 'Failed', 'message': None, 'error': 'Request processing timed out after 85 seconds.', 'result': None}"
+    },
+    {
+        "task_name": "sympy__sympy-13757",
+        "sandbox_id": "7675a3cf690c43e1a3d948cf4272a963",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-22080",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=886cf040a91049e7ba659aa16d44e0d8, host_name='rock-worker-sg-a-202.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.42.123.109, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.sympy__sympy-22080, cluster=sg-a)"
+    },
+    {
+        "task_name": "sympy__sympy-20916",
+        "sandbox_id": "309158fc1a53474c8512b73be454cbe6",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-13121",
+        "sandbox_id": "8223f6fa20dd44ce9c4ab146dfde8dad",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-10844",
+        "sandbox_id": "6bbd8de9f6044cc78d96217a0c48f319",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pylint-dev__pylint-8898",
+        "sandbox_id": "4f69fc395a9a407baa562c633dac7400",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-24570",
+        "sandbox_id": "97b56976e6604d78aee49bb639e13f9b",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-14999",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=d895ac591dad408aa54112fb02d27edc, host_name='rock-worker-sg-a-211.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.81.240.57, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.django__django-14999, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-16263",
+        "sandbox_id": "617c428cb9fd46fe8b6232a439ab65a7",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-11749",
+        "sandbox_id": "7c89264e68114482ab9375eba161a6ce",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-20590",
+        "sandbox_id": "f89162570cd44e3a916d39b215a3ef49",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-13852",
+        "sandbox_id": "d89bad88b70d405b90973f7a1d693a08",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-13878",
+        "sandbox_id": "386cfcfe6c4c4fe6bcb0395267fc3879",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-13158",
+        "sandbox_id": "b9ec784b859f46aba561b3b5d2a61dd0",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-9591",
+        "sandbox_id": "e395b74fa0ef4d8895a7997108b47331",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "pydata__xarray-6461",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=708d6a5400b7423ea40acf4580fc6de8, host_name='rock-worker-sg-a-245.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.42.123.187, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.pydata__xarray-6461, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-16631",
+        "sandbox_id": "f631cd6e8bab4239b78ca2283cf56b32",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-15278",
+        "sandbox_id": "43043fa01d1c4747b180878280eb6ecf",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-14787",
+        "sandbox_id": "46c89fcb9b494edd9ca7b806ee76bac4",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-16527",
+        "sandbox_id": "498af9cc5ff64566a524816784334def",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-22719",
+        "sandbox_id": "57e40d55174b49cc9109a8209f0d3802",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-8595",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=d23eff1efb104811a4c2fc7ec92bb2b0, host_name='rock-worker-sg-a-218.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.81.251.137, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.sphinx-doc__sphinx-8595, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-13344",
+        "sandbox_id": "2d3f228881dc4c7a896e6c0bb87f9163",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-13279",
+        "sandbox_id": "9e273b4a0368428eb027955d48581a23",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-16485",
+        "sandbox_id": "904d1180ceda439d8cad4f3ea7424fd6",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-8548",
+        "sandbox_id": "432071fc51cd46e1ab7280c9d0ea513b",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-15467",
+        "sandbox_id": "0a3005a0c5a74404bd24f490cfff190e",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-15503",
+        "sandbox_id": "9e46c4039e324874b610451aa3d3d964",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "pytest-dev__pytest-5787",
+        "sandbox_id": "b6fae080e8e3437a971db514129c7e71",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-13809",
+        "sandbox_id": "88e4416d99a641f2945a3e096f9efe11",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-13297",
+        "sandbox_id": "dcb81f44210e4d34b3fdb99714eb867b",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pydata__xarray-2905",
+        "sandbox_id": "482f68e07f7b4f2697d10b7f89a775f8",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-13516",
+        "sandbox_id": "e63b82b78dad4149a45e5b8578102224",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "astropy__astropy-13453",
+        "sandbox_id": "bc9546278ce14f7cbd7fc63d98b1a8ba",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-16667",
+        "sandbox_id": "4689e4bb8dab45baa247ecb51ce6a8c2",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-14053",
+        "sandbox_id": "e225f40a73ba4b63a6005330e489bdef",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-23299",
+        "sandbox_id": "9976530cd4e44214ba6593f74864ebac",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-12585",
+        "sandbox_id": "c1d9ce8a02ef4aa69ac3ff057b188082",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "psf__requests-2931",
+        "sandbox_id": "e685d47477e24835891546848bf2bb98",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-14351",
+        "sandbox_id": "ad39a5a477c54cd1a26b7b5f379bdd96",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-21379",
+        "sandbox_id": "8bf2839378ed4ff7a87e968c93325a1e",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "pytest-dev__pytest-6197",
+        "sandbox_id": "900eeb9b751840b4a2b8b72db6dfbbfe",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-12273",
+        "sandbox_id": "20431f383f94482391da2f07f2d97576",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-8035",
+        "sandbox_id": "faa982eda3e44d8e8ad70601025e6f4a",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11099",
+        "sandbox_id": "9b1345d59d344b72a64ded475d317c0e",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-16766",
+        "sandbox_id": "15c17722328c4e5ebf933306eec5ff39",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-21930",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=6a879f0a51f546b1a3fa0041c4e24b28, host_name='rock-worker-sg-a-351.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.65.21.48, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.sympy__sympy-21930, cluster=sg-a)"
+    },
+    {
+        "task_name": "sympy__sympy-15345",
+        "sandbox_id": "071f2a6f14c2424aa484f172655c72f8",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-12754",
+        "sandbox_id": "0f802ce2f1e5408fa254921fc0f22fce",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-14376",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=045bc5f5893e4036ba3ea81b77f4bcf5, host_name='rock-worker-sg-a-320.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.46.86.36, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.django__django-14376, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-13569",
+        "sandbox_id": "4c86707c0d6b45689fceffec7a1dd1f2",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-20438",
+        "sandbox_id": "57bc2239d1964a49a49f2c0cebb3a579",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-13128",
+        "sandbox_id": "abea8eab7a9140be9c66beea5ca99224",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-13964",
+        "sandbox_id": "128eeb74c4604422a413304012680ab7",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11265",
+        "sandbox_id": "779ad8bcc8c24e99ae88cbea581d5b12",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-13820",
+        "sandbox_id": "e75b70d7b0604eabbe2d37e41ae4591b",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-13315",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=d83b98a39e35478a918ed8cfaaeaf6ee, host_name='rock-worker-sg-a-259.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.2.236.253, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.django__django-13315, cluster=sg-a)"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-24637",
+        "sandbox_id": "536f93e1b40341b3b409935ebc8a2071",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-8056",
+        "sandbox_id": "9b22ba122fbd41d6a48438bd3c77570b",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-15554",
+        "sandbox_id": "bf2e2287081b40ceac0a2f615bf01481",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-13512",
+        "sandbox_id": "bb23a6d1ff5e4898a2fd7307126d3133",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-24026",
+        "sandbox_id": "168dab28c8374ae181e7fe7c2ad6e25b",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-12489",
+        "sandbox_id": "936a2b59e84d4519affc15fecb66d30b",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-20801",
+        "sandbox_id": "deb59c2624c340a5bf36f02e74cf8df4",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-15732",
+        "sandbox_id": "214421c99dbe49fbb0b619ee6c19ea3b",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-18698",
+        "sandbox_id": "bcc65bd3a7824de497968d2428909572",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "pylint-dev__pylint-4970",
+        "sandbox_id": "9261b83e437942fa9e09a41f524ea44a",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-24149",
+        "sandbox_id": "e745da3ad48d48f4b88754b158923831",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-9367",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=898b75c072d049f491a21ea2b68def4f, host_name='rock-worker-sg-a-238.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.65.13.210, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.sphinx-doc__sphinx-9367, cluster=sg-a)"
+    },
+    {
+        "task_name": "pydata__xarray-3151",
+        "sandbox_id": "6b1c1ac6a8054c599fbe29f335b45f55",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-11999",
+        "sandbox_id": "70063a4f729f493089b885fafbc756d1",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "astropy__astropy-14508",
+        "sandbox_id": "c8962af4e96b4c658b653e57f7e4dfc5",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-23950",
+        "sandbox_id": "4056a3134d334e0bb3d76bd16f315424",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-8269",
+        "sandbox_id": "b698543dd2dd455aad06e2fc659b7f16",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-14792",
+        "sandbox_id": "a66709a489aa485499269b9fb178083e",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-17087",
+        "sandbox_id": "089d70d933b84f4593b22ba6737db3f5",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-16569",
+        "sandbox_id": "94f83539987e408fa438e792ac500658",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-13012",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=8fc2733ac90047668924475577aa4c31, host_name='rock-worker-sg-a-251.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.46.84.180, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.django__django-13012, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-13089",
+        "sandbox_id": "11666a702b4b4f519edbd440819cc8d3",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-16597",
+        "sandbox_id": "c4aa477a87a1476ebb37cbf2319550d0",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "pytest-dev__pytest-8399",
+        "sandbox_id": "dde2d899859744bc8d1c193949a0fc44",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-9288",
+        "sandbox_id": "4965156f81854cf4a04a38af13284e97",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11490",
+        "sandbox_id": "7d1b9b3b4e074c23aa74f4d049be09ee",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-10673",
+        "sandbox_id": "25ddf4db4b7540d7bf53719b2d7ec774",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-9698",
+        "sandbox_id": "16c09dc812d94f88a451ffc0528f3d9e",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "psf__requests-1921",
+        "sandbox_id": "a538a24f1aff4c37b65112a90e33c219",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-15741",
+        "sandbox_id": "8e8b7af2955e4a9ea0b444e67f21c8d5",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-15380",
+        "sandbox_id": "533e57a41fb74ab786990c67ead8f24f",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-11310",
+        "sandbox_id": "fd752fbe4cb84e16aa1125429734f0f2",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11163",
+        "sandbox_id": "443cd1ca67c346c6b4ac31f1ef2f2e26",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-8638",
+        "sandbox_id": "b8e53e67a7a340a3bc8cd06e5eddf293",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-14580",
+        "sandbox_id": "1f5291ceab3e45c58526fa83437fc48f",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-8593",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=ae0e29ca51a94fafa088983f48e74115, host_name='rock-worker-sg-a-368.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.81.230.88, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.sphinx-doc__sphinx-8593, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-16819",
+        "sandbox_id": "12e99fb8771e4ec4b90cca576961c4a2",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-13372",
+        "sandbox_id": "f20dbed4745244e1bcc9c6b9ecffae5d",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11790",
+        "sandbox_id": "5d9246cacfe2409aa4568250b6ebacc1",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "pytest-dev__pytest-10356",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=fa7c6641b5e244538bcbb1b2b6ec1bbd, host_name='rock-worker-sg-a-344.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.46.84.88, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.pytest-dev__pytest-10356, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-14752",
+        "sandbox_id": "03a1eac9b26044d586db6ee161a2505e",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11400",
+        "sandbox_id": "e8fd6fe159374c989caf2dd2eeae3f80",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-21847",
+        "sandbox_id": "d920b5b0f9b54a4bac04aaca41ad3973",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-16877",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=27e77319e0a843068e32fe81a04cac93, host_name='rock-worker-sg-a-313.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.2.238.23, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.django__django-16877, cluster=sg-a)"
+    },
+    {
+        "task_name": "pytest-dev__pytest-5840",
+        "sandbox_id": "fc56db4b713f43cd8cabace58e7c74c0",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-13328",
+        "sandbox_id": "87523871fb2b4ffa92fb445de1659e8f",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "astropy__astropy-14182",
+        "sandbox_id": "0b321d7012ba400e88756ec8778b9dea",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-15973",
+        "sandbox_id": "d49ec271aade4660a271d71a362a8053",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-9230",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=97cfe41db0584acc91f99b88d663fc30, host_name='rock-worker-sg-a-347.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.2.229.8, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.sphinx-doc__sphinx-9230, cluster=sg-a)"
+    },
+    {
+        "task_name": "pytest-dev__pytest-5631",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=cfa29b064e6e4bb7b2ce486d904eadfa, host_name='rock-worker-sg-a-284.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.2.237.38, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.pytest-dev__pytest-5631, cluster=sg-a)"
+    },
+    {
+        "task_name": "sympy__sympy-16450",
+        "sandbox_id": "cba7028a1a284b05a74cd4314d5752ae",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-20676",
+        "sandbox_id": "2dcea898da1c43a291df3ceeb6069053",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-14855",
+        "sandbox_id": "9b08287f9415473f80478cd377b70545",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-15104",
+        "sandbox_id": "973c1a3b51184121882b3312e42a712d",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-15916",
+        "sandbox_id": "67b56b99417447c39f4ff8d29b527393",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-23824",
+        "sandbox_id": "3b077df0885844648724fabdcb35ee84",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11740",
+        "sandbox_id": "3560af943cfd45feb9170178c857c7af",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "psf__requests-1142",
+        "sandbox_id": "c8a5301b7dd24af6a9f9cc0498e84e56",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-9229",
+        "sandbox_id": "887108073f2f427597c79412f4465562",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-16429",
+        "sandbox_id": "ae18cea8c8844651830ee2ef22c93c68",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11292",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=5ba89ef029c94202921042e1219a8082, host_name='rock-worker-sg-a-226.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.81.230.101, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.django__django-11292, cluster=sg-a)"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-13989",
+        "sandbox_id": "f6ff4b022488464d85152edf9c586feb",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-15957",
+        "sandbox_id": "333cc22268f44fa4a70cdd990ca378d6",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-14500",
+        "sandbox_id": "fe66d01af8a04ea5a330346767379e0f",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pylint-dev__pylint-6528",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=4b8b16e7fc8b4427bf9ef4baf2b1caae, host_name='rock-worker-sg-a-266.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.65.21.94, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.pylint-dev__pylint-6528, cluster=sg-a)"
+    },
+    {
+        "task_name": "sympy__sympy-23534",
+        "sandbox_id": "b4f509a7e10f4ae1a31d49df99ff86a6",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-14155",
+        "sandbox_id": "e94abe1f3d834658b2fd30e7453a3b7f",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-19346",
+        "sandbox_id": "35a165466e5942d5b070fe930eb44db5",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11149",
+        "sandbox_id": "a3240bbb4cd5471cad7f3a8c6df95a91",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11885",
+        "sandbox_id": "035de83270ec45fca8a6d84c2af2d83f",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-13615",
+        "sandbox_id": "c911aa9da35b48adbbbbee36a8eac80e",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-24661",
+        "sandbox_id": "754a61498e0046e4a156fe5209e9e0e7",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-19495",
+        "sandbox_id": "0fb44f2c0bdc4ecd865612fd210c15af",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "astropy__astropy-7166",
+        "sandbox_id": "0c580136bde148ef958338ec3795f468",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-8551",
+        "sandbox_id": "094076da340248adadb9556266232759",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-17318",
+        "sandbox_id": "013bd14ec27146f28e7656e59f3fcd36",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-14493",
+        "sandbox_id": "8d42a369ef1547b3a586ee3e87c71016",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-11618",
+        "sandbox_id": "0f09f3b5ab8d437c8bead6497fe45089",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-16938",
+        "sandbox_id": "7ff69eeaf350475597e19a1ca3be48b7",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "astropy__astropy-14365",
+        "sandbox_id": "bdc807763e6f4ac088029852fba79117",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-14534",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=2b6686cf94bb4aaba6bf5d358cd4ed60, host_name='rock-worker-sg-a-332.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.81.240.27, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.django__django-14534, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-16315",
+        "sandbox_id": "9880977838074c6f87eccc40c3b9e897",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-10908",
+        "sandbox_id": "fa408b61c9624f169e7df79595f8b782",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-9258",
+        "sandbox_id": "c4f1f8afed654f7aba24608ad17f0c84",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "pytest-dev__pytest-7521",
+        "sandbox_id": "b878f1be6e4341c99a17d03f3c5711d0",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-25973",
+        "sandbox_id": "e8927bf97c01472daf8e844cc7f956f7",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-14011",
+        "sandbox_id": "7c529ed44052415caa215d5e13f4dcbf",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-15499",
+        "sandbox_id": "e2056c1401124536a0512fd50ce7f07b",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-15525",
+        "sandbox_id": "9f2b48a1b4f042099b54bef8a071ffad",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "psf__requests-2317",
+        "sandbox_id": "8b0a7fe6e1bb40759307c4ce61bfe87f",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-12039",
+        "sandbox_id": "1d66788962db4b96829c3ac5cfc0238c",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-12973",
+        "sandbox_id": "09bc3bf5d0e64374898700d97e0a5a22",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-14434",
+        "sandbox_id": "0ea25474e6334198b2b02956e9f3bb6f",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-9461",
+        "sandbox_id": "289d82189dfc471d9f5e1acf253baa80",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-16502",
+        "sandbox_id": "7f659a4e12974eb194e1e5bb681a8d32",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-12209",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=25a46b0ef47f4e76ba9bd4632ccafa75, host_name='rock-worker-sg-a-247.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.2.236.230, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.django__django-12209, cluster=sg-a)"
+    },
+    {
+        "task_name": "pytest-dev__pytest-6202",
+        "sandbox_id": "2828692be5c0466eaeac72b3220ced80",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-14238",
+        "sandbox_id": "f6fb5f85d56d4a4da029177281bf99a6",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pylint-dev__pylint-7277",
+        "sandbox_id": "298fd671b1c64b46b5ca881cf94bec4b",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "astropy__astropy-8872",
+        "sandbox_id": "fd82595e9f324ff1b1040dcc148436fe",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "pydata__xarray-7233",
+        "sandbox_id": "fcf9b8e14153431684988dc146053038",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-7889",
+        "sandbox_id": "0dda60bb218f4362ad74bea4e4f94056",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-13028",
+        "sandbox_id": "5cf89c5537284f1c94a81571978d610e",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-15987",
+        "sandbox_id": "eb6637b968644c648e91dd4c723aa892",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-15368",
+        "sandbox_id": "c11400e2552c42b19434b29412322da9",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-25311",
+        "sandbox_id": "ca58ed97aedc4f65b992632c2b5d4c64",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pydata__xarray-4966",
+        "sandbox_id": "8473abb709cc4a1a9d8ca526a0f99acc",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-19040",
+        "sandbox_id": "5f64436c6f594d91be257d5afd779d07",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-10435",
+        "sandbox_id": "76d39718ae614ae19040f03eb3d359ce",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-25287",
+        "sandbox_id": "0db50cc4bcbb4bf4834ac481a97e963f",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-15863",
+        "sandbox_id": "66458d8aeb13409b89537478db667b90",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-13821",
+        "sandbox_id": "0a59b34628e8447192b7deb3efcce6d3",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-14531",
+        "sandbox_id": "3d21f08dbfa24eaf8a18a172e402660b",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-16801",
+        "sandbox_id": "9552493003db4310b71e9087ae6d695a",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-9281",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=9da593d8487e4606823de69ea3ec4437, host_name='rock-worker-sg-a-262.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.46.84.144, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.sphinx-doc__sphinx-9281, cluster=sg-a)"
+    },
+    {
+        "task_name": "sympy__sympy-15976",
+        "sandbox_id": "dc1fc50cbf994d80981a6ef88fc1eaeb",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-16950",
+        "sandbox_id": "72eee13a37bd474cb3b2c6579c3bd607",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-17139",
+        "sandbox_id": "79a638e3ff2d42a2a989e64ccbe389db",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11141",
+        "sandbox_id": "9afd539a6e864ae0a7649e18aec595e0",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-14623",
+        "sandbox_id": "be5f7bdd651e4093b220ee008e8f459c",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-26194",
+        "sandbox_id": "79abd55c5ee64ce3a717237ad63acebf",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-15629",
+        "sandbox_id": "73a0f90c548f4c448975501f471c59eb",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-16493",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=b59edccee6cb4dceab333d47e01529e3, host_name='rock-worker-sg-a-208.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.46.87.101, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.django__django-16493, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-12262",
+        "sandbox_id": "34800690600b464e9d1731dc3b373296",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-15382",
+        "sandbox_id": "0907314900664a0ab7094901b04a2338",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-13406",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=4c0ab3288aaf4033ade8b68573be013c, host_name='rock-worker-sg-a-363.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=11.175.201.12, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.django__django-13406, cluster=sg-a)"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-7462",
+        "sandbox_id": "722aac67a12e4cf2a095d2b4d0f52fa0",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "pytest-dev__pytest-7982",
+        "sandbox_id": "166ed856f3ab467e90e8f25ae37c555a",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-14089",
+        "sandbox_id": "1f4bed642abb445cab285601d1eec618",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-13033",
+        "sandbox_id": "9776db61122c49cdb1610c8cbe458a8f",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pydata__xarray-3305",
+        "sandbox_id": "b24c5806078641648f2761b945dcfed2",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-26291",
+        "sandbox_id": "97b1e45824404177a0b34120b4fc8dca",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "pydata__xarray-4629",
+        "sandbox_id": "16562a0f392c4eebbb3107e5178907fa",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "django__django-11603",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=41d769d38a634e42b9366e4a08fd0e6f, host_name='rock-worker-sg-a-361.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.46.85.102, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.django__django-11603, cluster=sg-a)"
+    },
+    {
+        "task_name": "pylint-dev__pylint-4551",
+        "sandbox_id": "eb99418c2d9d4093a45f52fab220e3db",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-14170",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=f57c53e51cf544b7925c10455228ec8d, host_name='rock-worker-sg-a-198.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=11.20.200.43, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.django__django-14170, cluster=sg-a)"
+    },
+    {
+        "task_name": "scikit-learn__scikit-learn-14629",
+        "sandbox_id": "b56388a82d52492192954d7491d95caf",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-8621",
+        "sandbox_id": "c1dfd33559e34099a423bde3e83024b3",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    },
+    {
+        "task_name": "matplotlib__matplotlib-25960",
+        "sandbox_id": "361d0d9b6f04458b906578b89898681f",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-11848",
+        "sandbox_id": "5e55e95e22a24672bbb6bf3c712da194",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "pydata__xarray-6938",
+        "sandbox_id": "a7c84c7f49d14ff5ad3a14ae6ac22f47",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sympy__sympy-21612",
+        "sandbox_id": "6949b4a1a3a644a3940bb5f0ff4dbca1",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-7757",
+        "status": "failed",
+        "error": "Failed to start sandbox within 500.0s, sandbox: Sandbox(sandbox_id=386a74d256d3465db79b8eba10d4e028, host_name='rock-worker-sg-a-352.rock-worker-sg-a-hs.chatos.svc.cluster.local', host_ip=33.2.238.42, image=rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.sphinx-doc__sphinx-7757, cluster=sg-a)"
+    },
+    {
+        "task_name": "django__django-12193",
+        "sandbox_id": "53c2b1c41d51461ebd03a5633367e287",
+        "status": "success",
+        "resolved": false,
+        "results": "{'tests': <UnitTestStatus.FAILED: 'failed'>}"
+    },
+    {
+        "task_name": "django__django-16255",
+        "sandbox_id": "fb3fb50f64504e7982aabfbfb30f0e80",
+        "status": "success",
+        "resolved": true,
+        "results": "{'tests': <UnitTestStatus.PASSED: 'passed'>}"
+    }
+]

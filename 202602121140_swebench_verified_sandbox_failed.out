@@ -1,0 +1,63 @@
+nohup: ignoring input
+Starting SWE evaluation
+Tasks directory: /root/rock_opensource/ROCK/swebench-verified-sandbox-failed
+Parallel number: 6
+Config path: /root/rock_opensource/ROCK/examples/evaluation/iflow_swe_config.yaml
+[32m2026-02-12T11:41:54.656+08:00 INFO:swebench_verified.py:291 [__main__] [] [] --[0m Found 68 tasks to evaluate
+[32m2026-02-12T11:41:54.656+08:00 INFO:swebench_verified.py:292 [__main__] [] [] --[0m Running with parallelism: 6
+[32m2026-02-12T11:41:54.657+08:00 INFO:swebench_verified.py:243 [__main__] [] [] --[0m Starting evaluation for task: sympy__sympy-20154
+[32m2026-02-12T11:41:54.769+08:00 INFO:swebench_verified.py:243 [__main__] [] [] --[0m Starting evaluation for task: django__django-12308
+[32m2026-02-12T11:41:54.771+08:00 INFO:swebench_verified.py:243 [__main__] [] [] --[0m Starting evaluation for task: sympy__sympy-15349
+[32m2026-02-12T11:41:54.774+08:00 INFO:swebench_verified.py:243 [__main__] [] [] --[0m Starting evaluation for task: pytest-dev__pytest-10051
+[32m2026-02-12T11:41:54.776+08:00 INFO:swebench_verified.py:243 [__main__] [] [] --[0m Starting evaluation for task: pylint-dev__pylint-7080
+[32m2026-02-12T11:41:54.788+08:00 INFO:swebench_verified.py:243 [__main__] [] [] --[0m Starting evaluation for task: pydata__xarray-4687
+[32m2026-02-12T11:42:06.460+08:00 INFO:rock_agent.py:219 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [f136348d847b4b40a2f6c037c1bc31e1] Starting agent initialization
+[32m2026-02-12T11:42:06.460+08:00 INFO:rock_agent.py:294 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [f136348d847b4b40a2f6c037c1bc31e1] Creating bash session: agent-session-122adedcac984630b060dcc246a929c4
+[32m2026-02-12T11:42:07.133+08:00 INFO:rock_agent.py:304 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [f136348d847b4b40a2f6c037c1bc31e1] Setup Session completed: Bash session 'agent-session-122adedcac984630b060dcc246a929c4' created successfully
+[32m2026-02-12T11:42:07.133+08:00 INFO:utils.py:63 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m Agent pre-init cmds completed (elapsed: 0.00s)
+[32m2026-02-12T11:42:07.531+08:00 INFO:rock_agent.py:219 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [95b52c1c858e4402a29709787a3e9093] Starting agent initialization
+[32m2026-02-12T11:42:07.531+08:00 INFO:rock_agent.py:294 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [95b52c1c858e4402a29709787a3e9093] Creating bash session: agent-session-bc4ffcda2883422890ce30188efff6ae
+[32m2026-02-12T11:42:08.276+08:00 INFO:rock_agent.py:304 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [95b52c1c858e4402a29709787a3e9093] Setup Session completed: Bash session 'agent-session-bc4ffcda2883422890ce30188efff6ae' created successfully
+[32m2026-02-12T11:42:08.276+08:00 INFO:utils.py:63 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m Agent pre-init cmds completed (elapsed: 0.00s)
+[32m2026-02-12T11:42:14.459+08:00 INFO:rock_agent.py:219 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [72fc1a52bfd74befab6cdb326bc8670f] Starting agent initialization
+[32m2026-02-12T11:42:14.460+08:00 INFO:rock_agent.py:294 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [72fc1a52bfd74befab6cdb326bc8670f] Creating bash session: agent-session-288212796730481ba2653484f89000d3
+[32m2026-02-12T11:42:14.567+08:00 INFO:rock_agent.py:219 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [1a4d119180f24a778fc8bfc39b096aee] Starting agent initialization
+[32m2026-02-12T11:42:14.567+08:00 INFO:rock_agent.py:294 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [1a4d119180f24a778fc8bfc39b096aee] Creating bash session: agent-session-752a973b52f84ced8d822fabacd3b52e
+[32m2026-02-12T11:42:15.147+08:00 INFO:rock_agent.py:304 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [72fc1a52bfd74befab6cdb326bc8670f] Setup Session completed: Bash session 'agent-session-288212796730481ba2653484f89000d3' created successfully
+[32m2026-02-12T11:42:15.148+08:00 INFO:utils.py:63 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m Agent pre-init cmds completed (elapsed: 0.00s)
+[32m2026-02-12T11:42:15.224+08:00 INFO:rock_agent.py:304 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [1a4d119180f24a778fc8bfc39b096aee] Setup Session completed: Bash session 'agent-session-752a973b52f84ced8d822fabacd3b52e' created successfully
+[32m2026-02-12T11:42:15.224+08:00 INFO:utils.py:63 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m Agent pre-init cmds completed (elapsed: 0.00s)
+[32m2026-02-12T11:42:19.912+08:00 INFO:utils.py:63 [rock.sdk.sandbox.runtime_env.base] [] [] --[0m Installing runtime completed (elapsed: 11.69s)
+[32m2026-02-12T11:42:21.544+08:00 INFO:utils.py:63 [rock.sdk.sandbox.runtime_env.base] [] [] --[0m Installing runtime completed (elapsed: 12.07s)
+[32m2026-02-12T11:42:28.048+08:00 INFO:utils.py:63 [rock.sdk.sandbox.runtime_env.base] [] [] --[0m Installing runtime completed (elapsed: 11.67s)
+[32m2026-02-12T11:42:28.292+08:00 INFO:utils.py:63 [rock.sdk.sandbox.runtime_env.base] [] [] --[0m Installing runtime completed (elapsed: 11.98s)
+[32m2026-02-12T11:42:28.512+08:00 INFO:rock_agent.py:219 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [80f5e1da58164429add9f3d67e5edddf] Starting agent initialization
+[32m2026-02-12T11:42:28.512+08:00 INFO:rock_agent.py:294 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [80f5e1da58164429add9f3d67e5edddf] Creating bash session: agent-session-5e3997ce89344d828f17876a0b3f4802
+[32m2026-02-12T11:42:29.220+08:00 INFO:rock_agent.py:304 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [80f5e1da58164429add9f3d67e5edddf] Setup Session completed: Bash session 'agent-session-5e3997ce89344d828f17876a0b3f4802' created successfully
+[32m2026-02-12T11:42:29.220+08:00 INFO:utils.py:63 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m Agent pre-init cmds completed (elapsed: 0.00s)
+[32m2026-02-12T11:42:32.877+08:00 INFO:utils.py:63 [rock.sdk.sandbox.runtime_env.base] [] [] --[0m Running custom install completed (elapsed: 11.68s)
+[32m2026-02-12T11:42:32.877+08:00 INFO:utils.py:63 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m Agent post-init cmds completed (elapsed: 0.00s)
+[32m2026-02-12T11:42:32.877+08:00 INFO:rock_agent.py:242 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [f136348d847b4b40a2f6c037c1bc31e1] Agent initialization completed (elapsed: 26.42s)
+[32m2026-02-12T11:42:33.302+08:00 INFO:rock_agent.py:481 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [f136348d847b4b40a2f6c037c1bc31e1] Agent process started with PID: 230
+[32m2026-02-12T11:42:34.651+08:00 INFO:utils.py:63 [rock.sdk.sandbox.runtime_env.base] [] [] --[0m Running custom install completed (elapsed: 11.67s)
+[32m2026-02-12T11:42:34.651+08:00 INFO:utils.py:63 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m Agent post-init cmds completed (elapsed: 0.00s)
+[32m2026-02-12T11:42:34.651+08:00 INFO:rock_agent.py:242 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [95b52c1c858e4402a29709787a3e9093] Agent initialization completed (elapsed: 27.12s)
+[32m2026-02-12T11:42:35.157+08:00 INFO:rock_agent.py:481 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [95b52c1c858e4402a29709787a3e9093] Agent process started with PID: 230
+[32m2026-02-12T11:42:41.559+08:00 INFO:utils.py:63 [rock.sdk.sandbox.runtime_env.base] [] [] --[0m Running custom install completed (elapsed: 11.98s)
+[32m2026-02-12T11:42:41.559+08:00 INFO:utils.py:63 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m Agent post-init cmds completed (elapsed: 0.00s)
+[32m2026-02-12T11:42:41.559+08:00 INFO:rock_agent.py:242 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [72fc1a52bfd74befab6cdb326bc8670f] Agent initialization completed (elapsed: 27.10s)
+[32m2026-02-12T11:42:42.218+08:00 INFO:rock_agent.py:481 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [72fc1a52bfd74befab6cdb326bc8670f] Agent process started with PID: 230
+[32m2026-02-12T11:42:42.351+08:00 INFO:utils.py:63 [rock.sdk.sandbox.runtime_env.base] [] [] --[0m Installing runtime completed (elapsed: 11.85s)
+[32m2026-02-12T11:42:51.441+08:00 INFO:utils.py:63 [rock.sdk.sandbox.runtime_env.base] [] [] --[0m Running custom install completed (elapsed: 22.12s)
+[32m2026-02-12T11:42:51.442+08:00 INFO:utils.py:63 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m Agent post-init cmds completed (elapsed: 0.00s)
+[32m2026-02-12T11:42:51.442+08:00 INFO:rock_agent.py:242 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [1a4d119180f24a778fc8bfc39b096aee] Agent initialization completed (elapsed: 36.88s)
+[32m2026-02-12T11:42:51.869+08:00 INFO:rock_agent.py:481 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [1a4d119180f24a778fc8bfc39b096aee] Agent process started with PID: 232
+[32m2026-02-12T11:42:55.526+08:00 INFO:utils.py:63 [rock.sdk.sandbox.runtime_env.base] [] [] --[0m Running custom install completed (elapsed: 11.88s)
+[32m2026-02-12T11:42:55.526+08:00 INFO:utils.py:63 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m Agent post-init cmds completed (elapsed: 0.00s)
+[32m2026-02-12T11:42:55.526+08:00 INFO:rock_agent.py:242 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [80f5e1da58164429add9f3d67e5edddf] Agent initialization completed (elapsed: 27.01s)
+[32m2026-02-12T11:42:55.963+08:00 INFO:rock_agent.py:481 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [80f5e1da58164429add9f3d67e5edddf] Agent process started with PID: 175
+[32m2026-02-12T11:43:06.501+08:00 INFO:rock_agent.py:219 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [6a9fe345a3e64a2796aea5033967c959] Starting agent initialization
+[32m2026-02-12T11:43:06.501+08:00 INFO:rock_agent.py:294 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [6a9fe345a3e64a2796aea5033967c959] Creating bash session: agent-session-bc92c9787c69499da7f97781f963ea78
+[32m2026-02-12T11:43:07.320+08:00 INFO:rock_agent.py:304 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m [6a9fe345a3e64a2796aea5033967c959] Setup Session completed: Bash session 'agent-session-bc92c9787c69499da7f97781f963ea78' created successfully
+[32m2026-02-12T11:43:07.320+08:00 INFO:utils.py:63 [rock.sdk.sandbox.agent.rock_agent] [] [] --[0m Agent pre-init cmds completed (elapsed: 0.00s)
+[32m2026-02-12T11:43:20.372+08:00 INFO:utils.py:63 [rock.sdk.sandbox.runtime_env.base] [] [] --[0m Installing runtime completed (elapsed: 11.81s)

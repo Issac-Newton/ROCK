@@ -511,20 +511,21 @@ class Sandbox(AbstractSandbox):
             Tuple of (PID, error_observation). If successful, returns (pid, None).
             If failed, returns (None, error_observation) or (None, None) if PID extraction failed.
         """
-        # Use a temporary script file to avoid complex quote escaping issues
-        timestamp = str(time.time_ns())
-        script_path = f"/tmp/nohup_script_{timestamp}.sh"
+        nohup_command = f"nohup {cmd} < /dev/null > {tmp_file} 2>&1 & echo {PID_PREFIX}${{!}}{PID_SUFFIX};disown"
+        # # Use a temporary script file to avoid complex quote escaping issues
+        # timestamp = str(time.time_ns())
+        # script_path = f"/tmp/nohup_script_{timestamp}.sh"
 
-        # Write command to script file
-        script_content = f"#!/bin/bash\n{cmd}\n"
-        write_result = await self.write_file_by_path(script_content, script_path)
+        # # Write command to script file
+        # script_content = f"#!/bin/bash\n{cmd}\n"
+        # write_result = await self.write_file_by_path(script_content, script_path)
 
-        if not write_result.success:
-            error_msg = f"Failed to create nohup script: {write_result.message}"
-            return None, Observation(output=error_msg, exit_code=1, failure_reason=error_msg)
+        # if not write_result.success:
+        #     error_msg = f"Failed to create nohup script: {write_result.message}"
+        #     return None, Observation(output=error_msg, exit_code=1, failure_reason=error_msg)
 
-        # Make script executable and execute it with nohup
-        nohup_command = f"chmod +x {script_path} && nohup bash {script_path} < /dev/null > {tmp_file} 2>&1 & echo {PID_PREFIX}${{!}}{PID_SUFFIX};disown"
+        # # Make script executable and execute it with nohup
+        # nohup_command = f"chmod +x {script_path} && nohup bash {script_path} < /dev/null > {tmp_file} 2>&1 & echo {PID_PREFIX}${{!}}{PID_SUFFIX};disown"
 
         # todo:
         # Theoretically, the nohup command should return in a very short time, but the total time online is longer,
@@ -565,11 +566,11 @@ class Sandbox(AbstractSandbox):
             Observation containing the result
         """
         # Ensure all file system buffers are flushed before reading output
-        try:
-            await self._run_in_session(BashAction(session=session, command="sync"))
-            await asyncio.sleep(5.0)  # Wait 1 second to ensure all writes are complete
-        except Exception:
-            pass  # Best-effort; ignore sync failures
+        # try:
+        #     await self._run_in_session(BashAction(session=session, command="sync"))
+        #     await asyncio.sleep(5.0)  # Wait 1 second to ensure all writes are complete
+        # except Exception:
+        #     pass  # Best-effort; ignore sync failures
 
         if ignore_output:
             # Get file size to help user decide how to read it
