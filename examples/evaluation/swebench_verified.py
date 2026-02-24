@@ -1,42 +1,16 @@
-import re
 import shlex
 import sys
 from pathlib import Path
 
-from examples.evaluation.common import load_task_config
+from examples.evaluation.common import load_task_config, parse_swebench_result, setup_test_env
 from examples.evaluation.constants import SWE_PROMPT_TEMPLATE, global_agent_timeout_sec, global_test_timeout_sec
-from examples.evaluation.parser.base_parser import UnitTestStatus
-from examples.evaluation.parser.swebench_parser import SWEBenchParser
-from rock.actions.sandbox.request import Action, CreateBashSessionRequest
+from rock.actions.sandbox.request import CreateBashSessionRequest
+from rock.actions.sandbox.response import Observation
 from rock.logger import init_logger
 from rock.sdk.sandbox.client import RunMode, Sandbox
 from rock.sdk.sandbox.config import SandboxConfig
 
 logger = init_logger(__name__)
-
-test_result_parser = SWEBenchParser()
-
-
-def is_resolved(parser_results: dict[str, UnitTestStatus] | None) -> bool:
-    if parser_results is None:
-        return False
-
-    return all(result == UnitTestStatus.PASSED for result in parser_results.values())
-
-
-async def _setup_test_env(sandbox: Sandbox, test_folder: Path, run_tests_scripts: Path) -> bool:
-    test_dir = "/tests"
-    res = await sandbox.fs.upload_dir(test_folder, test_dir)
-    if res.exit_code != 0:
-        logger.error(f"Failed to upload test folder: {res}")
-        return False
-
-    res = await sandbox.upload_by_path(run_tests_scripts, f"{test_dir}/{run_tests_scripts.name}")
-    if not res.success:
-        logger.error(f"Failed to upload run-tests.sh: {res}")
-        return False
-
-    return True
 
 
 async def start_sandbox(swe_task_name: str) -> Sandbox:
@@ -69,43 +43,7 @@ async def install_iflow_agent(sandbox: Sandbox, config_path: str) -> None:
     logger.info("iflow agent installed successfully.")
 
 
-def _extract_pid(output: str) -> str:
-    # 统一换行并分割
-    lines = output.splitlines()
-    if not lines:
-        return ""
-    last_line = lines[-1].strip()
-    match = re.match(r"\[\d+\]\s+(\d+)", last_line)
-    return match.group(1) if match else ""
-
-
-async def run_command_with_timeout(
-    sandbox: Sandbox, command: str, session_name: str, timeout_sec: int, output_file: str
-) -> str:
-    """Run a command in sandbox with timeout."""
-    safe_cmd = shlex.quote(command)
-    sandbox_cmd = f"nohup sh -c {safe_cmd} < /dev/null > {output_file}  2>&1 &"
-
-    response = await sandbox.arun(sandbox_cmd, session=session_name)
-    pid = _extract_pid(response.output)
-    if not pid:
-        logger.error(f"Failed to extract PID from command output: {response.output}")
-        return "execute error"
-    while timeout_sec > 0:
-        response = await sandbox.run_in_session(Action(command=f"kill -0 {pid}", session=session_name, check="silent"))
-        if response.exit_code != 0:
-            break
-        await asyncio.sleep(1)
-        timeout_sec -= 1
-    if timeout_sec == 0:
-        return "timeout"
-    response = await sandbox.arun(f"cat {output_file}", session=session_name)
-    return response.output
-
-
-async def run_swe_evaluation(
-    sandbox: Sandbox, task_dir: Path, task_name: str, question: str, config_path: str
-) -> tuple[bool, dict[str, UnitTestStatus] | None]:
+async def run_swe_evaluation(sandbox: Sandbox, task_dir: Path, task_name: str, question: str, config_path: str) -> bool:
     """Run SWE evaluation on the sandbox."""
     # 1. Install agent
     await sandbox.agent.install(config=config_path)
@@ -117,7 +55,7 @@ async def run_swe_evaluation(
 
     # # 3. Install uv
     uv_install_script_commands = [
-        "wget http://xrl-sandbox-bucket.oss-cn-hangzhou.aliyuncs.com/uv-files/uv-x86_64-unknown-linux-gnu.tar.gz",
+        "wget https://github.com/astral-sh/uv/releases/download/0.10.5/uv-x86_64-unknown-linux-gnu.tar.gz",
         "tar -xzf uv-x86_64-unknown-linux-gnu.tar.gz --strip-components=1 -C /usr/local/bin",
     ]
     session_name = "swe-evaluation"
@@ -135,37 +73,27 @@ async def run_swe_evaluation(
 
     logger.info(f"Task name: {task_name}, sandbox id : {sandbox.sandbox_id}, UV install result: {result}")
 
-    # 4. Setup test environment
-    test_dir = task_dir / "tests"
-    is_success = await _setup_test_env(sandbox, test_dir, task_dir / "run-tests.sh")
+    # 4. Setup upload test files
+    test_file_dir = task_dir / "tests"
+    sandbox_test_dir = "/tests"
+    is_success = await setup_test_env(sandbox, test_file_dir, sandbox_test_dir, task_dir / "run-tests.sh")
     if not is_success:
         logger.error("Failed to setup test environment")
-        return False, None
+        return False
 
     # 5. Run tests
     logger.info(f"Task name: {task_name}, sandbox id : {sandbox.sandbox_id}, Start to run tests")
-    test_dir_path = "/tests"
-    resp = await run_command_with_timeout(
-        sandbox,
-        f"bash {test_dir_path}/run-tests.sh",
-        session_name,
-        global_test_timeout_sec,
-        f"{test_dir_path}/test.txt",
+    test_scripts = sandbox_test_dir + "/run-tests.sh"
+    run_tests_command = f"sh -c {shlex.quote('bash ' + test_scripts)}"
+    resp: Observation = await sandbox.arun(
+        run_tests_command, session=session_name, mode=RunMode.NOHUP, wait_timeout=global_test_timeout_sec
     )
     logger.info(f"Task name: {task_name}, sandbox id : {sandbox.sandbox_id}, Run tests result: {resp}")
-    if resp == "timeout":
-        return False, None
-    elif resp == "execute error":
-        logger.error(f"Failed to execute test command for task {task_name}")
-        return False, None
 
     # 6. Parse results
-    parserd_result = test_result_parser.parse(resp)
-    resolve_result = is_resolved(parserd_result)
-    logger.info(
-        f"Task name: {task_name}, sandbox id : {sandbox.sandbox_id}, Parsed test result: {parserd_result}, is_resolved: {resolve_result}"
-    )
-    return resolve_result, parserd_result
+    resolve_result = parse_swebench_result(resp.output)
+    logger.info(f"Task name: {task_name}, sandbox id : {sandbox.sandbox_id}, is_resolved: {resolve_result}")
+    return resolve_result
 
 
 async def run_single_task(task_dir: Path, config_path: str, semaphore) -> dict:
@@ -188,16 +116,13 @@ async def run_single_task(task_dir: Path, config_path: str, semaphore) -> dict:
 
             try:
                 # Run evaluation
-                resolve_result, parse_result = await run_swe_evaluation(
-                    sandbox, task_dir, task_name, question, config_path
-                )
+                resolve_result = await run_swe_evaluation(sandbox, task_dir, task_name, question, config_path)
                 logger.info(f"Completed evaluation for task: {task_name}")
                 return {
                     "task_name": task_name,
                     "sandbox_id": sandbox.sandbox_id,
                     "status": "success",
                     "resolved": resolve_result,
-                    "results": str(parse_result),
                 }
             except Exception as e:
                 logger.error(f"Error running evaluation for {task_name}: {e}")

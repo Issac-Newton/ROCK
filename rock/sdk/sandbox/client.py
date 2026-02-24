@@ -565,12 +565,6 @@ class Sandbox(AbstractSandbox):
         Returns:
             Observation containing the result
         """
-        # Ensure all file system buffers are flushed before reading output
-        # try:
-        #     await self._run_in_session(BashAction(session=session, command="sync"))
-        #     await asyncio.sleep(5.0)  # Wait 1 second to ensure all writes are complete
-        # except Exception:
-        #     pass  # Best-effort; ignore sync failures
 
         if ignore_output:
             # Get file size to help user decide how to read it
