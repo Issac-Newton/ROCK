@@ -3,7 +3,7 @@ import shlex
 import sys
 from pathlib import Path
 
-from examples.evaluation.common import cleanup_local, compress_directory, load_task_config
+from examples.evaluation.common import load_task_config
 from examples.evaluation.constants import SWE_PROMPT_TEMPLATE, global_agent_timeout_sec, global_test_timeout_sec
 from examples.evaluation.parser.base_parser import UnitTestStatus
 from examples.evaluation.parser.swebench_parser import SWEBenchParser
@@ -24,37 +24,18 @@ def is_resolved(parser_results: dict[str, UnitTestStatus] | None) -> bool:
     return all(result == UnitTestStatus.PASSED for result in parser_results.values())
 
 
-async def _setup_test_env_compress(
-    sandbox: Sandbox, session_name: str, test_folder: Path, run_tests_scripts: Path
-) -> bool:
+async def _setup_test_env(sandbox: Sandbox, test_folder: Path, run_tests_scripts: Path) -> bool:
     test_dir = "/tests"
-    response = await sandbox.arun(f"mkdir -p  {test_dir}", session=session_name)
-    if response.exit_code != 0:
-        logger.error(f"Failed to create test directory: {response}")
+    res = await sandbox.fs.upload_dir(test_folder, test_dir)
+    if res.exit_code != 0:
+        logger.error(f"Failed to upload test folder: {res}")
         return False
 
-    response = await sandbox.upload_by_path(run_tests_scripts, f"{test_dir}/{run_tests_scripts.name}")
-    if not response.success:
-        logger.error(f"Sandbox upload failed: path={run_tests_scripts}, target={test_dir}/{run_tests_scripts.name}")
+    res = await sandbox.upload_by_path(run_tests_scripts, f"{test_dir}/{run_tests_scripts.name}")
+    if not res.success:
+        logger.error(f"Failed to upload run-tests.sh: {res}")
         return False
 
-    temp = "temp.tar.gz"
-    compress_directory(
-        test_folder,
-        f"{test_folder.as_posix()}/{temp}",
-    )
-    response = await sandbox.upload_by_path(
-        f"{test_folder.as_posix()}/{temp}",
-        f"{test_dir}/{temp}",
-    )
-    if not response.success:
-        logger.error(f"Sandbox upload failed: path={f'{test_folder.as_posix()}/{temp}'}, target={test_dir}/{temp}")
-        return False
-    response = await sandbox.arun(f"tar -xzf {test_dir}/{temp}  -C {test_dir}", session=session_name)
-    if response.exit_code != 0:
-        logger.error(f"Failed to extract test files: {response}")
-        return False
-    cleanup_local(test_folder / temp)
     return True
 
 
@@ -134,7 +115,7 @@ async def run_swe_evaluation(
     result = await sandbox.agent.run(prompt)
     logger.info(f"Task name: {task_name}, sandbox id : {sandbox.sandbox_id}, Agent run result: {result}")
 
-    # 3. Install uv
+    # # 3. Install uv
     uv_install_script_commands = [
         "wget http://xrl-sandbox-bucket.oss-cn-hangzhou.aliyuncs.com/uv-files/uv-x86_64-unknown-linux-gnu.tar.gz",
         "tar -xzf uv-x86_64-unknown-linux-gnu.tar.gz --strip-components=1 -C /usr/local/bin",
@@ -156,7 +137,7 @@ async def run_swe_evaluation(
 
     # 4. Setup test environment
     test_dir = task_dir / "tests"
-    is_success = await _setup_test_env_compress(sandbox, session_name, test_dir, task_dir / "run-tests.sh")
+    is_success = await _setup_test_env(sandbox, test_dir, task_dir / "run-tests.sh")
     if not is_success:
         logger.error("Failed to setup test environment")
         return False, None
