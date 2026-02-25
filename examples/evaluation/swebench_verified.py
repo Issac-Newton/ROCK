@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 
 from examples.evaluation.common import load_task_config, parse_swebench_result, setup_test_env
-from examples.evaluation.constants import SWE_PROMPT_TEMPLATE, global_agent_timeout_sec, global_test_timeout_sec
+from examples.evaluation.constants import global_agent_timeout_sec, global_test_timeout_sec
 from rock.actions.sandbox.request import CreateBashSessionRequest
 from rock.actions.sandbox.response import Observation
 from rock.logger import init_logger
@@ -49,13 +49,13 @@ async def run_swe_evaluation(sandbox: Sandbox, task_dir: Path, task_name: str, q
     await sandbox.agent.install(config=config_path)
 
     # 2. Prepare prompt
-    prompt = SWE_PROMPT_TEMPLATE.format(workdir=sandbox.agent.config.project_path, question=question)
-    result = await sandbox.agent.run(prompt)
+    # prompt = SWE_PROMPT_TEMPLATE.format(workdir=sandbox.agent.config.project_path, question=question)
+    result = await sandbox.agent.run(question)
     logger.info(f"Task name: {task_name}, sandbox id : {sandbox.sandbox_id}, Agent run result: {result}")
 
     # # 3. Install uv
     uv_install_script_commands = [
-        "wget https://github.com/astral-sh/uv/releases/download/0.10.5/uv-x86_64-unknown-linux-gnu.tar.gz",
+        "wget http://xrl-sandbox-bucket.oss-cn-hangzhou.aliyuncs.com/uv-files/uv-x86_64-unknown-linux-gnu.tar.gz",
         "tar -xzf uv-x86_64-unknown-linux-gnu.tar.gz --strip-components=1 -C /usr/local/bin",
     ]
     session_name = "swe-evaluation"
