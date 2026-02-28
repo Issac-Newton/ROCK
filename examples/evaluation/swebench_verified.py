@@ -15,16 +15,21 @@ logger = init_logger(__name__)
 
 async def start_sandbox(swe_task_name: str) -> Sandbox:
     """Start a sandbox instance for evaluation."""
-    acr_url = "rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified"
+    # acr_url = "rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified"
+    # acr_url = "rock-registry.cn-hangzhou.cr.aliyuncs.com/slimshetty/swebench-verified"
+    # acr_url = 'slimshetty/swebench-verified'
     # acr_url = (
     #     "rock-registry.cn-hangzhou.cr.aliyuncs.com/slimshetty/swebench-verified"
     #     if swe_task_name not in task_in_sg
     #     else "rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified"
     # )
-    image = f"{acr_url}:sweb.eval.x86_64.{swe_task_name}"
+    # image = f"{acr_url}:sweb.eval.x86_64.{swe_task_name}"
+    image_name = swe_task_name.replace("__", "_1776_")
+    image = f"rock-registry.cn-hangzhou.cr.aliyuncs.com/swebench/sweb.eval.x86_64.{image_name}"
     config = SandboxConfig(
         image=image,
-        cluster="sg-a",
+        cluster="nt-a",
+        # cluster='zb-a',
         xrl_authorization="t-f8276d9f7afd4b38",
         user_id="400231",
         experiment_id="swebench-verified-test",
@@ -49,7 +54,6 @@ async def run_swe_evaluation(sandbox: Sandbox, task_dir: Path, task_name: str, q
     await sandbox.agent.install(config=config_path)
 
     # 2. Prepare prompt
-    # prompt = SWE_PROMPT_TEMPLATE.format(workdir=sandbox.agent.config.project_path, question=question)
     result = await sandbox.agent.run(question)
     logger.info(f"Task name: {task_name}, sandbox id : {sandbox.sandbox_id}, Agent run result: {result}")
 
@@ -127,8 +131,8 @@ async def run_single_task(task_dir: Path, config_path: str, semaphore) -> dict:
             except Exception as e:
                 logger.error(f"Error running evaluation for {task_name}: {e}")
                 return {"task_name": task_name, "sandbox_id": sandbox.sandbox_id, "status": "failed", "error": str(e)}
-            # finally:
-            #     await sandbox.stop()
+            finally:
+                await sandbox.stop()
         except Exception as e:
             logger.error(f"Error loading task config for {task_name}: {e}")
             return {"task_name": task_name, "status": "failed", "error": str(e)}
@@ -181,7 +185,7 @@ if __name__ == "__main__":
     print(f"Parallel number: {parallel_num}")
     print(f"Config path: {config_path}")
 
-    result_file = open("result-sandbox-failed.json", "w")
+    result_file = open("swe-result.json", "w")
 
     async def main():
         results = await run_parallel_evaluations(tasks_dir, parallel_num, config_path)

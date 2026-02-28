@@ -10,7 +10,7 @@ runtime_env_config:
 
 env:
   IFLOW_API_KEY: "1C330YAIQG" # whale key
-  IFLOW_SEARCH_KEY: "sk-6796135c0b665d6af852a7551e79f913"
+  IFLOW_SEARCH_KEY: "sk-020c4155037918ef55c692896f64f6c6"
   IFLOW_BASE_URL: "https://whale-wave.alibaba-inc.com/api/v2/services/aigc/text-generation/v1" # whale url
   IFLOW_MODEL_NAME: "GLM-4.6"
 

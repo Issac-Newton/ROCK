@@ -1,0 +1,11 @@
+run_cmd: "qwen -y ${prompt}"
+
+runtime_env_config:
+  type: node
+  npm_registry: "https://registry.npmmirror.com"
+  custom_install_cmd: "npm install -g @qwen-code/qwen-code@latest"
+
+env:
+  OPENAI_API_KEY: "1C330YAIQG"         # replace
+  OPENAI_BASE_URL: "https://whale-wave.alibaba-inc.com/api/v2/services/aigc/text-generation/compatible/v1"       # replace
+  OPENAI_MODEL: "GLM-4.6"        # replace
