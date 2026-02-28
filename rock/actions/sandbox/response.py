@@ -49,13 +49,12 @@ class SandboxStatusResponse(BaseModel):
     memory: str | None = None
 
 
-class CommandResponse(BaseModel):
+class CommandResponse(SandboxResponse):
     stdout: str = ""
     stderr: str = ""
-    exit_code: int | None = None
 
 
-class WriteFileResponse(BaseModel):
+class WriteFileResponse(SandboxResponse):
     success: bool = False
     message: str = ""
 
@@ -70,7 +69,7 @@ class ExecuteBashSessionResponse(BaseModel):
     message: str = ""
 
 
-class CreateBashSessionResponse(BaseModel):
+class CreateBashSessionResponse(SandboxResponse):
     output: str = ""
 
     session_type: Literal["bash"] = "bash"
@@ -80,18 +79,16 @@ CreateSessionResponse = Annotated[CreateBashSessionResponse, Field(discriminator
 """Union type for all create session responses. Do not use this directly."""
 
 
-class BashObservation(BaseModel):
+class BashObservation(SandboxResponse):
     session_type: Literal["bash"] = "bash"
     output: str = ""
-    exit_code: int | None = None
-    failure_reason: str = ""
     expect_string: str = ""
 
 
 Observation = BashObservation
 
 
-class CloseBashSessionResponse(BaseModel):
+class CloseBashSessionResponse(SandboxResponse):
     session_type: Literal["bash"] = "bash"
 
 
@@ -99,12 +96,12 @@ CloseSessionResponse = Annotated[CloseBashSessionResponse, Field(discriminator="
 """Union type for all close session responses. Do not use this directly."""
 
 
-class ReadFileResponse(BaseModel):
+class ReadFileResponse(SandboxResponse):
     content: str = ""
     """Content of the file as a string."""
 
 
-class UploadResponse(BaseModel):
+class UploadResponse(SandboxResponse):
     success: bool = False
     message: str = ""
     file_name: str = ""
