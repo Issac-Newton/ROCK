@@ -6,7 +6,7 @@ agent_run_timeout: 3600
 
 runtime_env_config:
   type: node
-  custom_install_cmd: "npm i -g @iflow-ai/iflow-cli@latest"
+  custom_install_cmd: "npm i -g https://xrl-sandbox-bucket.oss-cn-hangzhou.aliyuncs.com/wanqi-test/iflow-ai-iflow-cli-0.4.9-beta-20251219-v2_agentv1.tgz"
 
 env:
   IFLOW_API_KEY: "1C330YAIQG" # whale key

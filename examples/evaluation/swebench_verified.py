@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 
 from examples.evaluation.common import load_task_config, parse_swebench_result, setup_test_env
-from examples.evaluation.constants import global_agent_timeout_sec, global_test_timeout_sec
+from examples.evaluation.constants import SWE_PROMPT_TEMPLATE, SWE_TASK_INSTANCES_SG, global_agent_timeout_sec, global_test_timeout_sec
 from rock.actions.sandbox.request import CreateBashSessionRequest
 from rock.actions.sandbox.response import Observation
 from rock.logger import init_logger
@@ -15,27 +15,23 @@ logger = init_logger(__name__)
 
 async def start_sandbox(swe_task_name: str) -> Sandbox:
     """Start a sandbox instance for evaluation."""
-    # acr_url = "rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified"
-    # acr_url = "rock-registry.cn-hangzhou.cr.aliyuncs.com/slimshetty/swebench-verified"
-    # acr_url = 'slimshetty/swebench-verified'
-    # acr_url = (
-    #     "rock-registry.cn-hangzhou.cr.aliyuncs.com/slimshetty/swebench-verified"
-    #     if swe_task_name not in task_in_sg
-    #     else "rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified"
-    # )
-    # image = f"{acr_url}:sweb.eval.x86_64.{swe_task_name}"
-    image_name = swe_task_name.replace("__", "_1776_")
-    image = f"rock-registry.cn-hangzhou.cr.aliyuncs.com/swebench/sweb.eval.x86_64.{image_name}"
+    if swe_task_name not in SWE_TASK_INSTANCES_SG:
+        cluster = 'vpc-nt-b'
+        image_name = swe_task_name.replace("__", "_1776_")
+        image = f"rock-registry.cn-hangzhou.cr.aliyuncs.com/swebench/sweb.eval.x86_64.{image_name}"
+    else:
+        cluster = 'sg-a'
+        image = f"rock-registry.ap-southeast-1.cr.aliyuncs.com/slimshetty/swebench-verified:sweb.eval.x86_64.{swe_task_name}"
+    
     config = SandboxConfig(
         image=image,
-        cluster="nt-a",
-        # cluster='zb-a',
+        cluster = cluster,
         xrl_authorization="t-f8276d9f7afd4b38",
         user_id="400231",
         experiment_id="swebench-verified-test",
         base_url="http://xrl.alibaba-inc.com",
         auto_clear_seconds=3600,
-        startup_timeout=500,
+        startup_timeout=1000,
     )
     sandbox = Sandbox(config)
     await sandbox.start()
@@ -54,7 +50,8 @@ async def run_swe_evaluation(sandbox: Sandbox, task_dir: Path, task_name: str, q
     await sandbox.agent.install(config=config_path)
 
     # 2. Prepare prompt
-    result = await sandbox.agent.run(question)
+    prompt = SWE_PROMPT_TEMPLATE.format(workdir="/testbed", question=question)
+    result = await sandbox.agent.run(prompt)
     logger.info(f"Task name: {task_name}, sandbox id : {sandbox.sandbox_id}, Agent run result: {result}")
 
     # # 3. Install uv
@@ -174,7 +171,8 @@ if __name__ == "__main__":
     cur_dir = Path(__file__).resolve().parent
     tasks_dir = Path(sys.argv[1])
     parallel_num = int(sys.argv[2]) if len(sys.argv) > 2 else 1
-    config_path = sys.argv[3] if len(sys.argv) > 3 else f"{cur_dir}/iflow_swe_config.yaml"
+    result_file_path = sys.argv[3] if len(sys.argv) > 3 else f"{cur_dir}/swe-result.json"
+    config_path = sys.argv[4] if len(sys.argv) > 4 else f"{cur_dir}/iflow_swe_config.yaml"
 
     if not tasks_dir.exists():
         print(f"Error: Tasks directory does not exist: {tasks_dir}")
@@ -185,7 +183,7 @@ if __name__ == "__main__":
     print(f"Parallel number: {parallel_num}")
     print(f"Config path: {config_path}")
 
-    result_file = open("swe-result.json", "w")
+    result_file = open(result_file_path, "w")
 
     async def main():
         results = await run_parallel_evaluations(tasks_dir, parallel_num, config_path)

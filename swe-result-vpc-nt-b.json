@@ -1,2725 +1,2720 @@
 [
     {
         "task_name": "sympy__sympy-20154",
-        "sandbox_id": "87cfd23dfa3742cda4c32821e4e96601",
+        "sandbox_id": "20c5285dc83b41f89d5fca02f3ce435e",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "scikit-learn__scikit-learn-25931",
-        "sandbox_id": "abced7eab94642b0bc97177fb8c5d427",
+        "sandbox_id": "4a2c7a420b66476e859a286b6ce5bd04",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-12308",
-        "sandbox_id": "cd019d956cca4d5498c566a99184aef8",
-        "status": "success",
-        "resolved": false
-    },
-    {
-        "task_name": "sympy__sympy-13480",
-        "sandbox_id": "08a1329d659a4b63b3bbe1a3f2f0b723",
+        "sandbox_id": "1b156537bfbd412885cb4e0e3a3d3c60",
         "status": "success",
         "resolved": true
     },
     {
+        "task_name": "sympy__sympy-13480",
+        "status": "failed",
+        "error": "Failed to start sandbox because image_pull: Failed to pull image rock-registry.cn-hangzhou.cr.aliyuncs.com/swebench/sweb.eval.x86_64.sympy_1776_sympy-13480. Error: failed to copy: httpReadSeeker: failed open: failed to do request: Get \"https://cri-t2bdp4c3lfspoi0t-registry.oss-cn-hangzhou.aliyuncs.com/docker%2Fregistry%2Fv2%2Fblobs%2Fsha256%2Fc3%2Fc307ee91e0966b85f6daf2a6045e820fcba571b6f4fb24851850ce59e8b4671b%2Fdata?versionId=null&x-oss-credential=STS.NZecHJTWJtmsNnY5jnnYLUmy7%2F20260301%2Fcn-hangzhou%2Foss%2Faliyun_v4_request&x-oss-date=20260301T091628Z&x-oss-expires=1199&x-oss-security-token=CAIS3gJ1q6Ft5B2yfSjIr5nQKPL%2BuYhrw6%2BYTEjo0Wo7YtZguqjS1Tz2IHhMe3RtAOwYtvgxm2lR6PoblrkqF88VGhCcNpQhsc0Pr1P4OxRDXiYWtu5qsoasPETOITyZtZagToeUZdfZfejXGDKgvyRvwLz8WCy%2FVli%2BS%2FOggoJmadJlNWvRL0AxZrFsKxBltdUROFbIKP%2BpKWSKuGfLC1dysQcO4gEWq4bHm5HMukWC1Aalm7BM%2F9qhe6LJNZc8YM1NNP6ux%2FFze6b71ypd1gNH7q8ejtYfoW%2BY44zEXwcJv0vZarOKroR1ZgZ9Z7knHaVDquT1lPt1oPbemIXs1wxcMexbWjnbWJqnxMbUtVZWrUSsl9wRUla6MbDnXvGd22tM6uIFMZKzQHQLnt5h223NW7DnWz5qwiq%2BRi2JZcYrrs%2FIr9Tb4SuWU3SkydYBIdG7lRJ8EPtayys0L18kgwSJGhqAAXnbMKNOgZTfMcAX1PtY8%2FHLG6i80GtLrMBdYEXw%2FaXix1qsB48NaJST%2BBGhk0jhVXFtt9eFyd2K%2F59bN6Fc67CQCKzKfXWIH5NrF7oesBAhNp8KtA2cLZ7G5Nv3MBvC%2BYCb6GWsVrLPnc1YHP2SLdToi0xm8d44zNhkW8pike9PIAA%3D&x-oss-signature=6a21f2fe03a7ec116c47f7dee5315f222d649ca18502ab06e12a722ef30dcf9c&x-oss-signature-version=OSS4-HMAC-SHA256\": read tcp 10.1.81.186:40140->118.178.60.140:443: read: connection reset by peer\nOutput: Using default tag: latest\nlatest: Pulling from swebench/sweb.eval.x86_64.sympy_1776_sympy-13480\n, sandbox: Sandbox(sandbox_id=a4c7e8852e2b407c97aace895bba7eb0, host_name='rock-worker-vpc-nt-b-337.rock-worker-vpc-nt-b-hs.chatos.svc.cluster.local', host_ip=10.1.81.186, image=rock-registry.cn-hangzhou.cr.aliyuncs.com/swebench/sweb.eval.x86_64.sympy_1776_sympy-13480, cluster=vpc-nt-b)"
+    },
+    {
         "task_name": "sympy__sympy-15349",
-        "sandbox_id": "b664ea39b5884fba8bfbdf5bea9a5453",
+        "sandbox_id": "331cf6f114e14ce6a3573e57ef18b14d",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-12481",
-        "sandbox_id": "268434d1a5d9407984f3ffaa44162870",
+        "sandbox_id": "13616165628643e3bb3176c35cf351e3",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "django__django-16560",
-        "sandbox_id": "74bda7a95a324b869a824ced0b837590",
+        "sandbox_id": "dd126a0161f040df84f69904f0fa1c4d",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-15022",
-        "sandbox_id": "dd821e16195c480a8312d69ac00fee12",
+        "sandbox_id": "248a5bfceab54edc8eb54d52a07cec7e",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "scikit-learn__scikit-learn-13779",
-        "sandbox_id": "ba9067888d7f4a7f9760c1504004c692",
+        "sandbox_id": "02b510da4ce7418ca7ed4c6dbfd05527",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-16595",
-        "sandbox_id": "bc062e3a7d3e429fba23c71ebf49cf94",
+        "status": "failed",
+        "error": "Failed to start sandbox because image_pull: Failed to pull image rock-registry.cn-hangzhou.cr.aliyuncs.com/swebench/sweb.eval.x86_64.django_1776_django-16595. Error: Error response from daemon: failed to resolve reference \"rock-registry.cn-hangzhou.cr.aliyuncs.com/swebench/sweb.eval.x86_64.django_1776_django-16595:latest\": failed to do request: Head \"https://rock-registry.cn-hangzhou.cr.aliyuncs.com/v2/swebench/sweb.eval.x86_64.django_1776_django-16595/manifests/latest\": net/http: TLS handshake timeout\nOutput: Using default tag: latest\n, sandbox: Sandbox(sandbox_id=7ddb385489424a2e88c02292b5280784, host_name='rock-worker-vpc-nt-b-375.rock-worker-vpc-nt-b-hs.chatos.svc.cluster.local', host_ip=10.1.81.234, image=rock-registry.cn-hangzhou.cr.aliyuncs.com/swebench/sweb.eval.x86_64.django_1776_django-16595, cluster=vpc-nt-b)"
+    },
+    {
+        "task_name": "sphinx-doc__sphinx-7440",
+        "sandbox_id": "5d1675dbbd3741b38351593458fbc614",
         "status": "success",
         "resolved": true
     },
     {
-        "task_name": "sphinx-doc__sphinx-7440",
-        "sandbox_id": "9035466e342b4fdfbd9eaa22324ee84b",
-        "status": "success",
-        "resolved": false
-    },
-    {
         "task_name": "scikit-learn__scikit-learn-26323",
-        "sandbox_id": "c2a73ae971f9404aa548026775a915a7",
+        "sandbox_id": "4661b0efe9814ff2ad83736f78f1b559",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-15695",
-        "sandbox_id": "e8fac9feacb440da98ad3078b3a57fcf",
+        "sandbox_id": "bc457f5ef19d44958dfbbb6a9a7c2141",
         "status": "success",
-        "resolved": false
+        "resolved": true
     },
     {
         "task_name": "pytest-dev__pytest-10051",
-        "sandbox_id": "1b58f3f7ecce4926b51e6dfdca6033b8",
+        "sandbox_id": "f5314de635f049dc8646176ea50af656",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-15599",
-        "sandbox_id": "a00a66baaf944120a9eba09348b74a75",
+        "sandbox_id": "f669b46e34c74532a6aa35b431e84b5e",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-15037",
-        "sandbox_id": "bfe822ac0a694f2ebdd2c4e1d3529664",
+        "sandbox_id": "bc37f4e30ce94894b2afc5e4f8fd0ffb",
+        "status": "success",
+        "resolved": true
+    },
+    {
+        "task_name": "astropy__astropy-7336",
+        "sandbox_id": "037189c688d4485080a0d6ac1b0d81ef",
         "status": "success",
         "resolved": false
     },
     {
-        "task_name": "astropy__astropy-7336",
-        "sandbox_id": "c2441ba6a6d44f4bbf3001db7cc73334",
-        "status": "success",
-        "resolved": true
-    },
-    {
         "task_name": "django__django-13551",
-        "sandbox_id": "739d743053a94dcdad8a1f6f3f5d26b0",
+        "sandbox_id": "e7b8db8902e54ee6bb8330ee3e30a1a8",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "django__django-13449",
-        "sandbox_id": "7ba6376560084523b865bc0ba1713ea9",
+        "sandbox_id": "430add190edd432883ff719d4847e669",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-14248",
-        "sandbox_id": "1367850a41de4e62a7051ea1ddf99f5b",
+        "sandbox_id": "cfa36874d15c49308f2f5113c88c788d",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "matplotlib__matplotlib-24627",
-        "sandbox_id": "e30b2aa8af0b441595422cf612b27c7e",
+        "sandbox_id": "78c0646b147c463d9c3efc08043c9e25",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-13410",
-        "sandbox_id": "bd62b7e157bd4e1f9cf5cbd732c67444",
+        "sandbox_id": "c5c6505fa6df4af09c808138b86ecf36",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "matplotlib__matplotlib-26466",
-        "sandbox_id": "6ba31ae407394e21b885b1caeb2f3072",
+        "sandbox_id": "adafb7d98e864e6990225fc65dab17f3",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-11239",
-        "sandbox_id": "2cfdb49e2a7349529754f02b0dc7698b",
+        "sandbox_id": "a6d32e77466d4ea4bbecf1747c646d53",
         "status": "success",
-        "resolved": false
+        "resolved": true
     },
     {
         "task_name": "pylint-dev__pylint-7080",
-        "sandbox_id": "f8a1647c50ba47fa93ba3deaef7b36d5",
+        "sandbox_id": "aa7582758cde409a96bf46c233a1b351",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "pytest-dev__pytest-10081",
-        "sandbox_id": "5be266284661448c93edb0f05f43cf01",
+        "sandbox_id": "ba1e32f634214f568ed78d62ec35de64",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-11119",
-        "sandbox_id": "ee9095c80f05464eaa5fcedfa992305d",
+        "sandbox_id": "c30b6fe74c624b7bbf95ece106913b2d",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "scikit-learn__scikit-learn-11578",
-        "sandbox_id": "d79ae0fb636044c6b879146849c4a359",
+        "sandbox_id": "ea272f7762074a388845300521542a57",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-11211",
-        "sandbox_id": "8f66cc627c8f405a8ee05e8c129697e6",
+        "sandbox_id": "32ff2e87865f4b1d9115bb47aee894b5",
         "status": "success",
-        "resolved": false
+        "resolved": true
     },
     {
         "task_name": "django__django-13417",
-        "sandbox_id": "017c4d035f7d4c3b947bcdf1bebcb608",
+        "sandbox_id": "f8f33cd87b4f479e9c93ecf88f994ee9",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-12741",
-        "sandbox_id": "025e203bc68a49a899dde16c43e8b00c",
+        "sandbox_id": "8c8800b1485d48819e1fef901c6dc865",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "django__django-14725",
-        "sandbox_id": "cd862c10be7c44368932e2bc289545f0",
+        "sandbox_id": "6f8c2ab4fd324ab19a8819065ee9443e",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-22714",
-        "sandbox_id": "0dd6382edf4740f58724f38e207c311e",
+        "sandbox_id": "9eafa6a939ca49f5ad238ff7444496ba",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-13877",
-        "sandbox_id": "e23043ce48784422a7c0d1a352935bac",
+        "sandbox_id": "b0744a6dbd204708b9bb6fef34352d81",
         "status": "success",
-        "resolved": false
+        "resolved": true
     },
     {
         "task_name": "django__django-11138",
-        "sandbox_id": "190627e412674797b2ec91d2dbf0cda5",
+        "sandbox_id": "779150f436a74478aeafdfdc1fa4ebfa",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-11206",
-        "sandbox_id": "1b69e5d6ade544bc8d1b0d3e31b83c6c",
-        "status": "success",
-        "resolved": false
-    },
-    {
-        "task_name": "django__django-14915",
-        "sandbox_id": "8910b14b766842818d405fa640f74f59",
+        "sandbox_id": "4f368f6e816d4de6b693e431de99d4e0",
         "status": "success",
         "resolved": true
     },
     {
+        "task_name": "django__django-14915",
+        "sandbox_id": "0a5405a01ef04afc89ce6e26c720b258",
+        "status": "success",
+        "resolved": false
+    },
+    {
         "task_name": "astropy__astropy-14369",
-        "sandbox_id": "e61cb9d76eff4130b9687b2e51653feb",
+        "sandbox_id": "c759d9f7db1447af8d6567cdb1e4cd78",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-11333",
-        "sandbox_id": "d486bf6b24a846728aaa64bfb9ba2948",
+        "sandbox_id": "4ee3e8fecc1240288f346defe1230dfb",
         "status": "success",
-        "resolved": false
+        "resolved": true
     },
     {
         "task_name": "django__django-13212",
-        "sandbox_id": "c93449a12f0446e68bdb28c5c4a2e253",
+        "sandbox_id": "8505a4e838764603856eabf78b2e1eba",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "matplotlib__matplotlib-26208",
-        "sandbox_id": "3a53868695c9427ca746bd19ada8f0b9",
+        "sandbox_id": "5e33fed4aac34bf48b20b51e1aab543d",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "astropy__astropy-13977",
-        "sandbox_id": "16fa135beafd42e4b8da0f02cc66adf7",
+        "sandbox_id": "cad800b3b03c4f35b10a5abfdf4d6da0",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-16082",
-        "sandbox_id": "dd65456c8e454d579667d16c6dd0ddde",
+        "sandbox_id": "b63f9c85c0544516b941e49ce0b62d48",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "scikit-learn__scikit-learn-14983",
-        "sandbox_id": "1518fac37d4645f48a1c1869918f2f7c",
+        "sandbox_id": "af1478a674f545d088de618ca45936bd",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "pydata__xarray-6721",
-        "sandbox_id": "037275c1d4214c708855510367427950",
+        "sandbox_id": "c63bf7ec262542d883fe3e9c04962b6f",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-12096",
-        "sandbox_id": "8d571f1b26704847b5ede6092abd720f",
+        "sandbox_id": "ad17485ad9aa4cbd9e711d9a3d156ab1",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-12050",
-        "sandbox_id": "fefe1ffb867b4d68953e3e58733b1074",
+        "sandbox_id": "122e3242940e4398b54f0fee63ef83fb",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-15572",
-        "sandbox_id": "7183562ad559494d93cc837c06cc2a79",
+        "sandbox_id": "07b54f4ccdc948f584622bcdb8285b73",
         "status": "success",
-        "resolved": false
+        "resolved": true
     },
     {
         "task_name": "sphinx-doc__sphinx-11510",
-        "sandbox_id": "d56d7fa45e0c446695610c9c5da32f40",
+        "sandbox_id": "7165f55538954445974b4c0d01ac8db5",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "pydata__xarray-4075",
-        "sandbox_id": "ad837d7cefb743b5870d1a09dd21d41b",
+        "sandbox_id": "083a2823fd5647f6952027ed2bef970e",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "pytest-dev__pytest-7432",
-        "sandbox_id": "549598a447e64ff5bed8c149d66d4f5e",
+        "sandbox_id": "0bb0e73919cb4d1a88660ce95692fc5e",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-14122",
-        "sandbox_id": "019c2af3aa91405495f826dceda04220",
+        "sandbox_id": "7743b43d568c4d0e97a24cc2c3422558",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-16139",
-        "sandbox_id": "706593e3c92246cf94589aa3087dcf92",
+        "sandbox_id": "37d995cc35f349a486873b5e1259482a",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "pylint-dev__pylint-4604",
-        "sandbox_id": "e8d2d626687947099d335f347f50f31c",
+        "sandbox_id": "5b638bd4bc884dc9869b0bd6b8802acf",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-14007",
-        "sandbox_id": "a3e3796b243d4465afc60abcad2e3d6c",
+        "sandbox_id": "579595836f1849b8b32d1857f07ee920",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "django__django-11734",
-        "sandbox_id": "dcc53bf67fad4518822c5f458d896879",
+        "sandbox_id": "3038ee35adc64ce5a3d43d7b80db6bc8",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "astropy__astropy-13579",
-        "sandbox_id": "d64492a17c7c42ffb15dd1dd49913ad4",
+        "sandbox_id": "0fb0274e8adb499f916f2b4980150475",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-11299",
-        "sandbox_id": "ea99a3ee69224c46b7295a9d53fc87fe",
+        "sandbox_id": "9d1276ff1bbd40a7b830e3acd5b9683e",
         "status": "success",
-        "resolved": false
+        "resolved": true
     },
     {
         "task_name": "django__django-14559",
-        "sandbox_id": "cdbd37a02b0f47eba90975a6acd434c6",
+        "sandbox_id": "51de93cec83d4c8a8ed4b58ad38ed030",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "pytest-dev__pytest-5262",
-        "sandbox_id": "9536f8199ca342e1a36a8295d712fdee",
+        "sandbox_id": "98952d3eca30440d9a45d6b948cb359c",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-10554",
-        "sandbox_id": "55e7991de7f74be398ce4478eebb107b",
+        "sandbox_id": "ca11aab3cb7943b291840bcfa53df7ec",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-13786",
-        "sandbox_id": "18e872d4b5d6467ab5f8778b2f1db0c2",
+        "sandbox_id": "0b29ae29323e4e92bfc8b00ee316b64f",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-15127",
-        "sandbox_id": "e3c861a75f1b4fbfbdec133e1f3786ad",
+        "sandbox_id": "af1b5606ad30440d94c114c7890d729f",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "scikit-learn__scikit-learn-13496",
-        "sandbox_id": "7a3c0909b5914c4cbe86966665f57faa",
+        "sandbox_id": "7ee53464492a41cab7046197ce63ecf6",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-15161",
-        "sandbox_id": "b3855ad0c6c84bf09e59169fce5c4abc",
+        "sandbox_id": "c8dbf5dea7d141b1933deb63a6f8b7f1",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-24066",
-        "sandbox_id": "c5b5481f19924530810bf6223379522b",
+        "sandbox_id": "b0e2a4e92eac4813a4c8af28e6e70739",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "django__django-15814",
-        "sandbox_id": "d791832ef317467ba4121967fb6adf61",
+        "sandbox_id": "67ec8a863559452b816a21f23ddbedf5",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-19954",
-        "sandbox_id": "9309a378265744e8b61480b07d4c3b10",
+        "sandbox_id": "28c736e274ae431dbf98c2def163cf07",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "scikit-learn__scikit-learn-14053",
-        "sandbox_id": "7b2dfe458a1b46a78437109f82bb9728",
+        "sandbox_id": "349d7b2ad05e4cb5adeab48152686ba9",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-11532",
-        "sandbox_id": "e3d8c26106354c8c9660468c0102b28b",
+        "sandbox_id": "9b7f320627fa4d87ba4976cea841f861",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "sympy__sympy-12419",
-        "sandbox_id": "987ceb27bd15468e9d972371c37f2bef",
+        "sandbox_id": "21a731c4a760435fa0b9cdbc8ac044c0",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sphinx-doc__sphinx-8459",
-        "sandbox_id": "2d94ebe020d04a19a7870f22e7db3024",
+        "sandbox_id": "fe4d0d90ef714f20883a603916624a68",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "django__django-14771",
-        "sandbox_id": "7012492d97e1466e8af823a062ec6928",
+        "sandbox_id": "59b55b50e2f643799aa6d9fe29045615",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-24539",
-        "sandbox_id": "3c194bb4c9fb450c853be8bfd5ad823c",
+        "sandbox_id": "aa76b90de7ed47baa0c73723f4aeb964",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "pylint-dev__pylint-6386",
-        "sandbox_id": "f8fb0166b96c4211a331cb34e5ccc4e9",
+        "sandbox_id": "2ef86f4b0b67464bb7c41e39c90f137c",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "django__django-14539",
-        "sandbox_id": "c08c73a087bb4a32a4f77ccb623e4b69",
+        "sandbox_id": "8e5cccc045a942f886517991cf344224",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "astropy__astropy-14096",
-        "sandbox_id": "342c83bcf41d4b4598a3556100d4f314",
+        "sandbox_id": "8e7e6d7f689d4ee1a8e44a589ac88e23",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "matplotlib__matplotlib-25775",
-        "sandbox_id": "be687c8cea804955b7c607695a2d37a9",
+        "sandbox_id": "bb07f211cf714def8fe212e754e7ec41",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "django__django-11477",
-        "sandbox_id": "1ebfcf92a1d84bf980885032d8267d9e",
+        "sandbox_id": "53e1d9f1841a475596e4e4a2bee82429",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sphinx-doc__sphinx-7454",
-        "sandbox_id": "1d1fc6bca1ac4912b71a73a50c2af0a0",
+        "sandbox_id": "a3308397b0264dc0bda469615d11f668",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-12125",
-        "sandbox_id": "1f47502330064ae5acafc345407aea2b",
+        "sandbox_id": "2b85025e79c9454ea8453a90b5359c0b",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-17084",
-        "sandbox_id": "b8c46cc45ae44da39107c938a8eaa1d7",
+        "sandbox_id": "cb695950222649a28c9b7da2e763ed7e",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sphinx-doc__sphinx-10466",
-        "sandbox_id": "279f4726e14749daa626d5c60502538f",
+        "sandbox_id": "2c4d4a99a3a9468fa4b8be4cc07be47a",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-12774",
-        "sandbox_id": "4b0628bc465b42bcadb966d75a03c9f0",
+        "sandbox_id": "cf7dbee90149474e871b09ab1e158c8d",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "astropy__astropy-7606",
-        "sandbox_id": "ba25cc6fd26547d7bbb3857c99c210c7",
+        "sandbox_id": "09cdcd1c7ea848cab8629def246e2ed4",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-15375",
-        "sandbox_id": "cd5df96281204929843d5e188b4ccea4",
+        "sandbox_id": "dff3d66ba0ed482a83ef93d9ea8cb34d",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "scikit-learn__scikit-learn-10297",
-        "sandbox_id": "e29ba8d2f360457ea0845fe69ebccd76",
+        "sandbox_id": "0ac2e94f91de458eb82cf8adee6e8e3f",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-18189",
-        "sandbox_id": "5c8903cc26454004a788acee55c827f5",
+        "sandbox_id": "3eecad6582c243fd88f4e8ca47881214",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "sympy__sympy-17655",
-        "sandbox_id": "f1ecfc6971b648a0837bbba7f7b44827",
+        "sandbox_id": "a52ce26f5a534fd1b08b398edbbd1d83",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "scikit-learn__scikit-learn-25747",
-        "sandbox_id": "7b4ec678d669449cbf153a571b511ad3",
+        "sandbox_id": "dcdea88cc8c94228be9ecf1313d6a07f",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "scikit-learn__scikit-learn-13135",
-        "sandbox_id": "b8ed5744bc3149b78a4dd2c267726322",
+        "sandbox_id": "7f9fbf568ebc443490c1cef905532b23",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "astropy__astropy-13398",
-        "sandbox_id": "17156d1df57d487c8224ff86b3dc7f62",
+        "sandbox_id": "b7b00e217e03413e8c2d69be2d1c767d",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-24213",
-        "sandbox_id": "f55199740d8f4715945c3b8cf81b290d",
+        "sandbox_id": "5431b52179074c4291b75b6415335c29",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-7530",
-        "sandbox_id": "2d1cbec83a19487099f677025bfd1266",
+        "sandbox_id": "6dcde10089aa4eb48573f2e706ff4027",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "sympy__sympy-20428",
-        "sandbox_id": "bad7aada3de44513977020ed7a750d9c",
+        "sandbox_id": "daf1a711dec146f3940981e3bbe999a3",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-11555",
-        "sandbox_id": "8fc9fd49d0e24563a838af6457745f53",
+        "sandbox_id": "cc8772459c1248c988b4f44cd74587a6",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "django__django-11276",
-        "sandbox_id": "bfc2fc8f9d7c4ad69ca4c76e597be1f7",
+        "sandbox_id": "3dfb1699b1954a26a9968c4d7841b4ff",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-11728",
-        "sandbox_id": "9bf1711890684ebebfb82bde381e7da4",
+        "sandbox_id": "1e2ccdfcda7343d2836fed526855f283",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sphinx-doc__sphinx-9320",
-        "sandbox_id": "78f5490176bd402db31f89cc5f3e02ce",
+        "sandbox_id": "4b8986f8c1fb4bc1949aa9cfb6854610",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-11179",
-        "sandbox_id": "ce2c4b93e37643f5ba0105c3c67c0a53",
+        "sandbox_id": "0ee0632585354e56a62e05c95b9bc3bf",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-16032",
-        "sandbox_id": "509d5a5a37f342deb5fdc08f73d3f9bf",
+        "sandbox_id": "7ad13ee4c64c4fdf86fd7aa37a40c0a5",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sphinx-doc__sphinx-8120",
-        "sandbox_id": "9fd305ca7be9422598bda6fb5164d721",
+        "sandbox_id": "ddff650682564dd89bcc4507e5e4126c",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-16256",
-        "sandbox_id": "2c576afa6327445589259c07ef2eb5f1",
+        "sandbox_id": "5dd4d195f5ec4a1883aea7123342d786",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-14349",
-        "sandbox_id": "ebf7ac2689474b8abcb218e2745b709b",
+        "sandbox_id": "f80784fa446a4a89b6a7bc58647aeb8c",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "sphinx-doc__sphinx-9673",
-        "sandbox_id": "8bdfed25277741b88557d0c08f5918d9",
+        "sandbox_id": "c47d3dc0e09f47af81b79cd936d510ff",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-14315",
-        "sandbox_id": "1288f3b997d14ed29b9d0be939810daa",
+        "sandbox_id": "9b90f2e5469849c7ae4852ee99755288",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-16792",
-        "sandbox_id": "dfd53d614b8c46509bc7289f4b2d42b3",
+        "sandbox_id": "a78043fbd4d7491ba9f510dd94742331",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-18763",
-        "sandbox_id": "15592946ad68451c9924a4c24de7fb09",
+        "sandbox_id": "813318018a1a47b1a55ccfb9a51986b8",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-14017",
-        "sandbox_id": "0dc9adaa501f4df0b52a6d6ef03f40ac",
+        "sandbox_id": "2f5f27d80b9d4fcc81ec5fcc2740ecc1",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "django__django-13109",
-        "sandbox_id": "8b858094b7da4e75abb338fa1442fe34",
+        "sandbox_id": "d5229af1d4504270b5c32ad59fd45927",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-11133",
-        "sandbox_id": "e609a1d263d343b9a52e77ab2d1bec94",
-        "status": "success",
-        "resolved": true
-    },
-    {
-        "task_name": "django__django-13925",
-        "sandbox_id": "9fabf6f61d44436db707583a75140ac1",
+        "sandbox_id": "c758d0a7f47a4b7dbab62ba7e2c95917",
         "status": "success",
         "resolved": false
     },
     {
+        "task_name": "django__django-13925",
+        "sandbox_id": "1cb503abdc3b4a3b9538aebd2a197c0f",
+        "status": "success",
+        "resolved": true
+    },
+    {
         "task_name": "django__django-15315",
-        "sandbox_id": "e2a43082219345d48d6cab9a0eb7e14c",
+        "sandbox_id": "59c23eae22964f80b502253c06c2de6c",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-11433",
-        "sandbox_id": "01dfea07a5ff4d1e950d4ddb323e04b7",
+        "sandbox_id": "00f6208220f04fa8b4de35cc7cf35c9a",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-11066",
-        "sandbox_id": "a6e3ac4d431f45968f212484e3ef2feb",
+        "sandbox_id": "bf3997b1a16b4a0eb62251f31aaa9eca",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "pytest-dev__pytest-5809",
-        "sandbox_id": "d6658c22f0924c65bcc0b291f9fa441b",
+        "sandbox_id": "1496ad6d593e4ac3adb70479ddafb7c8",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-16662",
-        "sandbox_id": "9ee7a65e671c4f2b8bcc8436ac7c7f9f",
+        "sandbox_id": "0c93ad2a0af24d6ab4b60184c2cb2686",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "pallets__flask-5014",
-        "sandbox_id": "4f841375c4b54c9bbf39a998a92b6da5",
+        "sandbox_id": "fc66de8e0441448bb401c652cd5e3e8e",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-14140",
-        "sandbox_id": "af84508a88c54a45a4e4676b89b3c04d",
+        "sandbox_id": "b97e6e7f1ada4c3e8dd2328fd58e7b57",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "django__django-13658",
-        "sandbox_id": "32fbdcaa84f34b32af4f6a9f3ef728b9",
+        "sandbox_id": "394b72d7832a479e82561cd6ddca092d",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-18211",
-        "sandbox_id": "64b6b6243a944d268a7c99bc7dd5a4ba",
+        "sandbox_id": "ebbaa1a2d6ee4d24afd7e89c0597f6fe",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-11880",
-        "sandbox_id": "7b8d4967180f483aa4616ebcf8b73fb5",
+        "sandbox_id": "909cf389031b4a54a211043388030e34",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-13837",
-        "sandbox_id": "ed57531c9c714ea0b69e273608d327fb",
+        "sandbox_id": "443a72fdd1214f28b513c687aad95f97",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-13401",
-        "sandbox_id": "a0a17ea3a0944888a64113fa5a7052d3",
+        "sandbox_id": "07c6c9537cfd47639d88f7c85a54c932",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "django__django-15280",
-        "sandbox_id": "043ee051993f403e8cd030596c592195",
+        "sandbox_id": "76d888774d4140a5aa0aef295ff9fe08",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-13670",
-        "sandbox_id": "6712b415124147c880b463a6c19eb119",
+        "sandbox_id": "bc189c4dcdad4ef0bbcd78421f205a20",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "astropy__astropy-12907",
-        "sandbox_id": "1aa714d7b879474ba3c8bc419118e725",
+        "sandbox_id": "22bdf64fae1e4421880d6218c5d79bde",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-16333",
-        "sandbox_id": "e5d85e0be8524949ab6a003de4bbe969",
+        "sandbox_id": "360e08be7d58445685e7f310f9e4804b",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "scikit-learn__scikit-learn-25232",
-        "sandbox_id": "2f1b4938265b4429b9495d66d11bdb61",
+        "sandbox_id": "a396856545044df8a2534fb78e7b8251",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "scikit-learn__scikit-learn-13142",
-        "sandbox_id": "5b9c3f8bc05f414cb450da421ed99911",
+        "sandbox_id": "bcc7368bc16540e4af2064d988796970",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-12304",
-        "sandbox_id": "9a3efe0baeb5409fb2fe948502fabba5",
+        "sandbox_id": "1eabb1be8a674857bbbae7e78fbe13d2",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-10999",
-        "sandbox_id": "c004c641cd6c4a04bb0af10cc521aa88",
-        "status": "failed",
-        "error": "custom_install_cmd failed with exit code: 1, output: npm warn deprecated har-validator@5.1.5: this library is no longer supported\r\nnpm warn deprecated phin@3.7.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.\r\nnpm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142\r\nnpm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details."
+        "sandbox_id": "3eacc2566b2d4680a407850d979e567a",
+        "status": "success",
+        "resolved": false
     },
     {
         "task_name": "django__django-16901",
-        "sandbox_id": "99d2c09a64744603b3f830cf9bd69a42",
+        "sandbox_id": "1ed9e54bbf84464e8660a0589a173f11",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "scikit-learn__scikit-learn-14087",
-        "sandbox_id": "ab87b8b58d9c423e9f8bae986deb5317",
+        "sandbox_id": "99b83187c88a40329e90e1ee6cdfe5c9",
         "status": "success",
-        "resolved": false
+        "resolved": true
     },
     {
         "task_name": "django__django-11964",
-        "sandbox_id": "159d91200929467eadd4b8516f6c29ae",
+        "sandbox_id": "ea562e24a14f4b84b55a9c800520bc28",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-15875",
-        "sandbox_id": "40b25daaad5c403687f095a33feffa34",
+        "sandbox_id": "e9327219b67541ac83ddfc8d6bd8825c",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "django__django-13933",
-        "sandbox_id": "9bd081a9b1094605b189164c5c7ef478",
+        "sandbox_id": "eb67c6558ce242389357a4aa5e4ebda0",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-15277",
-        "sandbox_id": "f248cd69eef941df857871be9aa6eace",
+        "sandbox_id": "427d3a8d64ff4a9498889a827daa165f",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-15563",
-        "sandbox_id": "70c2a9991ef4467f9b18da5d9197e73d",
+        "sandbox_id": "a300f7517304486db4fabd3503dfbe13",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-13590",
-        "sandbox_id": "66992486c9964adaa82c1fbf26d1e340",
+        "sandbox_id": "1325fd6024a04a34a09ba3581813271c",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "mwaskom__seaborn-3069",
-        "sandbox_id": "6900d188f4e9458ab18d01a406d7d4ed",
+        "sandbox_id": "57fe6202520443ffa754718ab80331ed",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "pydata__xarray-3677",
-        "sandbox_id": "5d99419fd6b34807bdf8d9a504c878c7",
+        "sandbox_id": "07ce8c485e6b4224b6a039042f64c9e6",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-17630",
-        "sandbox_id": "14ce75012a5f41a88685e49c1f0f120e",
+        "sandbox_id": "5b9a6334d8134b2093ca520fb3001d63",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sphinx-doc__sphinx-9711",
-        "sandbox_id": "277a7d538d404741aeccaf8abd87ea08",
+        "sandbox_id": "0f40750c64a8435cb23f2135f5766e77",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sphinx-doc__sphinx-10449",
-        "sandbox_id": "d97f1dc2a1ae4008a0d76c2ace1ce09f",
+        "sandbox_id": "46089e011961448aa77363308ba76775",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sphinx-doc__sphinx-7748",
-        "sandbox_id": "de39cec565d34371944d8076ece908d1",
-        "status": "success",
-        "resolved": false
+        "sandbox_id": "ddce0bf4562b4ce99113011e224e4336",
+        "status": "failed",
+        "error": "custom_install_cmd failed with exit code: 1, output: npm warn deprecated har-validator@5.1.5: this library is no longer supported\r\nnpm warn deprecated phin@3.7.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.\r\nnpm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142\r\nnpm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details."
     },
     {
         "task_name": "matplotlib__matplotlib-25122",
-        "sandbox_id": "4bfe931e876b4ed5bf1a90660e37d869",
-        "status": "success",
-        "resolved": true
-    },
-    {
-        "task_name": "sympy__sympy-24443",
-        "sandbox_id": "68d91c378b384dfc9da80929dd5bf942",
-        "status": "success",
-        "resolved": true
-    },
-    {
-        "task_name": "astropy__astropy-14539",
-        "sandbox_id": "9e1e1241b59c41ecb7e405d83147c2f3",
-        "status": "success",
-        "resolved": true
-    },
-    {
-        "task_name": "django__django-13513",
-        "sandbox_id": "6fcd49ea08bf490795fc0ad75f767bb7",
+        "sandbox_id": "81bd3c38a8eb42deaa56d8da045403a8",
         "status": "success",
         "resolved": false
     },
     {
-        "task_name": "django__django-14672",
-        "sandbox_id": "5dbf71cf6cb942a78772e74fd137d00d",
+        "task_name": "sympy__sympy-24443",
+        "sandbox_id": "2013f2bcd7644d1087a13e296996d09f",
         "status": "success",
-        "resolved": true
+        "resolved": false
+    },
+    {
+        "task_name": "astropy__astropy-14539",
+        "sandbox_id": "e36b9bdca2014aeb85e533425c5d59d7",
+        "status": "failed",
+        "error": "custom_install_cmd failed with exit code: 1, output: npm warn deprecated har-validator@5.1.5: this library is no longer supported\r\nnpm warn deprecated phin@3.7.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.\r\nnpm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142\r\nnpm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details."
+    },
+    {
+        "task_name": "django__django-13513",
+        "sandbox_id": "bc64cd06ed5b47ffacd56e8a354ddbb7",
+        "status": "failed",
+        "error": "custom_install_cmd failed with exit code: 1, output: npm warn deprecated har-validator@5.1.5: this library is no longer supported\r\nnpm warn deprecated phin@3.7.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.\r\nnpm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142\r\nnpm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details."
+    },
+    {
+        "task_name": "django__django-14672",
+        "sandbox_id": "c9028a10d37b42c796d2cc78af5f0965",
+        "status": "failed",
+        "error": "custom_install_cmd failed with exit code: 1, output: npm warn deprecated har-validator@5.1.5: this library is no longer supported\r\nnpm warn deprecated phin@3.7.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.\r\nnpm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142\r\nnpm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details."
     },
     {
         "task_name": "sympy__sympy-14711",
-        "sandbox_id": "96b800692b4045eba1ccce24e52613fe",
+        "sandbox_id": "bf40f1331c66441eb0f4a3b23d59b805",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "matplotlib__matplotlib-21568",
-        "sandbox_id": "49af5dddcd1444d9a17b0b9450b90f60",
+        "sandbox_id": "247edc21d682429e82da2cf45f10b6d1",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-12155",
-        "sandbox_id": "bd8e67f1ed644b699f94d98424a30e4c",
+        "sandbox_id": "afc2cd45456d41f4835ae6c9055963b6",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-22914",
-        "sandbox_id": "d0c15a5eca8c4d47855be7604457c9d3",
-        "status": "success",
-        "resolved": true
+        "status": "failed",
+        "error": "Failed to start sandbox because image_pull: Failed to pull image rock-registry.cn-hangzhou.cr.aliyuncs.com/swebench/sweb.eval.x86_64.sympy_1776_sympy-22914. Error: failed to copy: httpReadSeeker: failed open: failed to do request: Get \"https://cri-t2bdp4c3lfspoi0t-registry.oss-cn-hangzhou.aliyuncs.com/docker%2Fregistry%2Fv2%2Fblobs%2Fsha256%2F30%2F30c3d324a6d1af3c3f801717d80f7d4376c372cb3e8e71d315c03a0a9b5d4eb2%2Fdata?versionId=null&x-oss-credential=STS.NZ2K3D1ThghNAoSgwEbmAfbiR%2F20260301%2Fcn-hangzhou%2Foss%2Faliyun_v4_request&x-oss-date=20260301T145728Z&x-oss-expires=1199&x-oss-security-token=CAIS3gJ1q6Ft5B2yfSjIr5mHAInw3ItJ0KqlQ0nig3cQbuJtiafCsDz2IHhMe3RtAOwYtvgxm2lR6PoblrkqF88VGhCcNpQhsc0Pr1P4O2khYCgWtu5qsoasPETOITyZtZagToeUZdfZfejXGDKgvyRvwLz8WCy%2FVli%2BS%2FOggoJmadJlNWvRL0AxZrFsKxBltdUROFbIKP%2BpKWSKuGfLC1dysQcO4gEWq4bHm5HMukWC1Aalm7BM%2F9qhe6LJNZc8YM1NNP6ux%2FFze6b71ypd1gNH7q8ejtYfoW%2BY44zEXwcJv0vZarOKroR1ZgZ9Z7knHaVDquT1lPt1oPbemIXs1wxcMexbWjnbWJqnxMbUtVZWrUSsl9wRUla6MbDnXvGd22tM6vKNLo3%2BOtForPMkvPiAnq0YzjuduTGsLE7qAMOOs8oVsuF%2BhDaL9tHBDEOULtvUr2B2c%2FFTYSv6tCW9gwSJGhqAAYaoMEck827nZUbhlirhbPzAqO%2FrjdVhVFFU9eXiRR%2FO3CpSvCQ1y0JhuSj7mfpZncX1IipwpjjfVDiAMoIVoeazc5%2BFW2jyVwIroOIsIRGDHgC2%2Bf%2B5i0NxIY1nzT52uAT0OQnXQBZz4T3GRstCRPU0NPunOvYTNeHoqTpY1gzvIAA%3D&x-oss-signature=3b3b6d9a288aa4b8c406dc43c7909d99dceb336a037b51f28f3cf2b8595c9398&x-oss-signature-version=OSS4-HMAC-SHA256\": net/http: TLS handshake timeout\nOutput: Using default tag: latest\nlatest: Pulling from swebench/sweb.eval.x86_64.sympy_1776_sympy-22914\n, sandbox: Sandbox(sandbox_id=4166fdc234d14f39932b81ee9319b33f, host_name='rock-worker-vpc-nt-b-63.rock-worker-vpc-nt-b-hs.chatos.svc.cluster.local', host_ip=10.1.78.248, image=rock-registry.cn-hangzhou.cr.aliyuncs.com/swebench/sweb.eval.x86_64.sympy_1776_sympy-22914, cluster=vpc-nt-b)"
     },
     {
         "task_name": "matplotlib__matplotlib-24870",
-        "sandbox_id": "6cb49e0a5bad40a7a1c2236d5bbaf92b",
+        "sandbox_id": "657d01629a79423eb37110b96a35f45b",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-12419",
-        "sandbox_id": "f6f3d1a5a9ff4046beaea18c906f421a",
+        "sandbox_id": "8ed3e8ecb04e4bd3b78acb6c2f03192d",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "pydata__xarray-7393",
-        "sandbox_id": "1b2c12b23d0e4d6f8e197f327a8b84a8",
+        "sandbox_id": "c41cc5b2b0e94d6fad6e64ee58b75de6",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "astropy__astropy-14598",
-        "sandbox_id": "1f17e53dc9624761a4f7c271f42ee4ec",
+        "sandbox_id": "c08f02959807409a95a7d2178d13dd36",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-16886",
-        "sandbox_id": "92638e08b1b1447ebf1d0cc62ff09938",
+        "sandbox_id": "70375d5d2f344e1b91283fc4643bc08b",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "scikit-learn__scikit-learn-14894",
-        "sandbox_id": "a38cd17d2cab4fe3868b5469d0b7007a",
+        "sandbox_id": "4e5b33d4e6da40118be832b31feb4d5e",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "pytest-dev__pytest-7236",
-        "sandbox_id": "761172808bad434e84e9e3a44fdc309d",
+        "sandbox_id": "1bdad89fc63342fda04587eba730f329",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-16899",
-        "sandbox_id": "91324d412fb24b84877171c903d83a79",
+        "sandbox_id": "265cd1fbddc1402cba587d5b72c968a8",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-15268",
-        "sandbox_id": "d4cec70d499549a2b5a57a767c2526f5",
+        "sandbox_id": "b2249a92b1174d3bb457abe4c0c22693",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "psf__requests-5414",
-        "sandbox_id": "5538f6c6d3f84f048147822b71b52ce8",
+        "sandbox_id": "4f29a1d8d8c8405c8428ce43f1252568",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "pydata__xarray-4356",
-        "sandbox_id": "c70c8be307ed48bd95f357cd39de1a01",
+        "sandbox_id": "2b69861a8da94c42930a1df14dfd47c8",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "pydata__xarray-4094",
-        "sandbox_id": "087df09af03a45ada94d67dda4cfa527",
+        "sandbox_id": "20ca6db8e9b04c54a08d93a64eabe726",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-16661",
-        "sandbox_id": "638b989216d54ea88b5d5a05937b374d",
+        "sandbox_id": "31d3a1528bae47b782d2ccbfa0280ec7",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-13807",
-        "sandbox_id": "2bb2942ee3ae40f7a100319fadc5ad77",
+        "sandbox_id": "32bea02367e74f008efe4405d2c2b9cb",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-12143",
-        "sandbox_id": "72b0ec598971458c8b9680c38ceeba85",
+        "sandbox_id": "21c52d9686a04a1bbb52ec079b82627f",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "matplotlib__matplotlib-22865",
-        "sandbox_id": "c714d1729ca0440aa7a0a597da0fb745",
+        "sandbox_id": "b8b7260bb4f34a8db43e63500e36c001",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-13031",
-        "sandbox_id": "d4f64f13cdcf4fcb93f3052b5338acf1",
+        "sandbox_id": "2e5e1eedfbeb44e188cc2690b088a1b5",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "scikit-learn__scikit-learn-14496",
-        "sandbox_id": "dee2ba0d8bf84f6e914b87cacf7738b5",
+        "sandbox_id": "043cdd20f65b4f0f8e7a87193c797bda",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "scikit-learn__scikit-learn-14141",
-        "sandbox_id": "407b5f73f6e4484db63ff3d6fa43eae2",
+        "sandbox_id": "c48f14f0e04a40e2bbf3d382087ec296",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-14404",
-        "sandbox_id": "9a403d69eb4d4718acf18f6a68c3c342",
+        "sandbox_id": "dffb77f4b770423cad570e887f9b82fe",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-14976",
-        "sandbox_id": "58c40009c3d241c3b1c3b137b393a31d",
+        "sandbox_id": "ab383606d8da4ceb8d9f2040cd12af1f",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "django__django-16145",
-        "sandbox_id": "eaeb6064a5394c7b8809f4887fbddd4e",
+        "sandbox_id": "e7e0ad101ba84daaaaeb2cd6e66f204f",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "pytest-dev__pytest-7324",
-        "sandbox_id": "9485e9d9175f46d297ddacdfb5530355",
+        "sandbox_id": "a8282e4b101840aaa0523c8271f1666a",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-13647",
-        "sandbox_id": "86cc564659444e058802c4c59f9e8d5b",
+        "sandbox_id": "1beca04d43064aad992a5505d47d6c48",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "pydata__xarray-6599",
-        "sandbox_id": "4148d65046284e4da3890ee67e916742",
+        "sandbox_id": "42e186ac5a5c47a3a9b3a5a82f435eba",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "scikit-learn__scikit-learn-13439",
-        "sandbox_id": "e3eb50474a7a40b28f0735db4c1694a8",
+        "sandbox_id": "db5c87bed80b4daa8760679701a9c35a",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "django__django-15561",
-        "sandbox_id": "a876a5fb7dc542cd8921e413bfe3e4aa",
+        "sandbox_id": "1d1e5b2dad614699aa1f151365ae19c2",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-11951",
-        "sandbox_id": "cd68b1ec724a4f5887bcbfc41bb806c7",
+        "sandbox_id": "71c3e238c64b4de29be1da917734e4a9",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-15098",
-        "sandbox_id": "7264028111be414ebd90c384f4962f07",
+        "sandbox_id": "dd6882527c2d4bd8b8e2a8ab8e397d62",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-15128",
-        "sandbox_id": "8e66b8f87a7a4ad4a1d63ce616da892f",
+        "sandbox_id": "30bf616fee2f43588cf359ebaa93136d",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-15809",
-        "sandbox_id": "770aeb002fc04766a473e93c40e7cf96",
+        "sandbox_id": "49d8d16e6531492ca5065a3613aa4601",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-15569",
-        "sandbox_id": "586842e4b5514ba188021cda9352a18d",
+        "sandbox_id": "d8fb50c2f16c47abb15cd40e7b9c66f8",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "astropy__astropy-13033",
-        "sandbox_id": "97df4b6e1e8347cb90cb294e4d4e359d",
+        "sandbox_id": "66dfa4ded56747f4ba3e0d313d162a65",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-24562",
-        "sandbox_id": "9ee874d367d0406fb89481c678dbf38d",
+        "sandbox_id": "3a2996a6b80f415086138fce87b7c7cc",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sphinx-doc__sphinx-8265",
-        "sandbox_id": "d7f985a35f39428db995d37141fdc444",
+        "sandbox_id": "da1e4c3f8e9b467d99121e0b3eae100f",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "astropy__astropy-14309",
-        "sandbox_id": "cd9cbb97d5fd4970be866b3fb32d56fc",
+        "sandbox_id": "93c0fe402c83420e98ed2c2f798b8155",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "matplotlib__matplotlib-24177",
-        "sandbox_id": "a02e21516ed0496ab19e4a995d9b2289",
+        "sandbox_id": "8d6fa15ddd6c4ec487fa86844804e4c0",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "matplotlib__matplotlib-22871",
-        "sandbox_id": "e2c46369d3e34feca7dc70f2c8fc9d9a",
+        "sandbox_id": "5a4dd66e244b4b38a1b1e8c8e91ac418",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "scikit-learn__scikit-learn-13124",
-        "sandbox_id": "2390c10df6854257b0a0837d862e3587",
+        "sandbox_id": "022f69cedb7d4718b8e502eaed7e6604",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-13363",
-        "sandbox_id": "0f95cb701f9d474bb5bf1f3f9f532fef",
+        "sandbox_id": "f4e9baba86f34ed0bbe2964eb9c8d920",
         "status": "success",
-        "resolved": false
+        "resolved": true
     },
     {
         "task_name": "pytest-dev__pytest-7205",
-        "sandbox_id": "e933797124644d24b9f42630bef81428",
+        "sandbox_id": "b084c917f7b840deb0e5dabea9e2b5b7",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-15851",
-        "sandbox_id": "6511697b096748739e571f700f0fe1fc",
+        "sandbox_id": "ab5942d163224bf0b93de15fa2f64312",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-13195",
-        "sandbox_id": "649aa1fe21ef4470aea3f4e7c5c58ab3",
+        "sandbox_id": "4e062c4d58b04be6ab6876e4927b7822",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-17029",
-        "sandbox_id": "54c122cde8164de19429687c0c350d10",
+        "sandbox_id": "d55b17d2431d4120a63e7a4ee45cdfb4",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-13112",
-        "sandbox_id": "385268ee9fd84bccb1a2a7db9d4174f8",
+        "sandbox_id": "2a2180dc8c114ac3a56b1c5beaab157c",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-14765",
-        "sandbox_id": "72625b066eda48158c632673349de1a4",
+        "sandbox_id": "f389ef2fea7946609e998c1056f24ec2",
         "status": "success",
-        "resolved": false
+        "resolved": true
     },
     {
         "task_name": "sphinx-doc__sphinx-9658",
-        "sandbox_id": "56c63f07fe28469aa97e73084cb5e6c1",
+        "sandbox_id": "405c66727fb548b18ab2c6dec460e492",
         "status": "success",
-        "resolved": false
+        "resolved": true
     },
     {
         "task_name": "scikit-learn__scikit-learn-15100",
-        "sandbox_id": "20bcc6490617424483fa13eae67f1ac4",
+        "sandbox_id": "26a6469d60884953bc225968dd5ca125",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-11551",
-        "sandbox_id": "770d9b114b7947449cba94963ce9b796",
+        "sandbox_id": "aeddd44fd64b455dae09c593c4d5d075",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "pydata__xarray-4695",
-        "sandbox_id": "75f4001768a849d5bd61d20cff187715",
+        "sandbox_id": "bff6b7902d2c467db09bf4f828ce4327",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "astropy__astropy-7671",
-        "sandbox_id": "95b40f273f864b33ab696e97a6b06ee9",
+        "sandbox_id": "426c805b1808464b8bde7dbb7fcb3318",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "astropy__astropy-14995",
-        "sandbox_id": "a0714bfad93a4555953eca3226f7a548",
+        "sandbox_id": "3bbe72bf3883466b8bd49245fa14bc66",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-18199",
-        "sandbox_id": "e98f0858b0bd45528e82b9c8fde3252e",
+        "sandbox_id": "c7c8d58cba0147399dbf14b6a8d96a72",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "astropy__astropy-8707",
-        "sandbox_id": "95a94bc7893b4426823f966040370868",
+        "sandbox_id": "703d3585b7214b229a32948547531816",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-11087",
-        "sandbox_id": "ffd4490d5c7f4f809408e88feea1ea61",
+        "sandbox_id": "a2d9af59cf1c428ca7461656a0ecc088",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "scikit-learn__scikit-learn-25102",
-        "sandbox_id": "7091ca9bfeea4623be15ed92da889da7",
+        "sandbox_id": "ec10e218c1464ab5a71eb44e7d1ef8ae",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-14373",
-        "sandbox_id": "698ceb1c71774e12a177b20352e1d888",
+        "sandbox_id": "bdf19131db634239bc4e3b8b7c57132d",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "pydata__xarray-6992",
-        "sandbox_id": "c363c4d1786e4c9489643dfeba8483f4",
+        "sandbox_id": "def2d7526a4f4b278a6176cfbe44680c",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "astropy__astropy-13236",
-        "sandbox_id": "d81f56a604ee4959b4b2b805a0c4af18",
+        "sandbox_id": "ee1e248c43754ba2af95f4e88496e9e6",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-12276",
-        "sandbox_id": "e2db34b582cc4af6811da0b95b3405f8",
-        "status": "success",
-        "resolved": true
+        "sandbox_id": "774d2662cf5147c7b443f8512093685e",
+        "status": "failed",
+        "error": "custom_install_cmd failed with exit code: 1, output: npm warn deprecated har-validator@5.1.5: this library is no longer supported\r\nnpm warn deprecated phin@3.7.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.\r\nnpm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142\r\nnpm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details."
     },
     {
         "task_name": "sympy__sympy-13091",
-        "sandbox_id": "abff9a25002b40c1aaefc1575debfebd",
+        "sandbox_id": "8bd2ae778faf4cd6bee3e025f70e5bb9",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "pytest-dev__pytest-7490",
-        "sandbox_id": "22d213280da84c67937b46fbc003d8bb",
+        "sandbox_id": "9d09aba11f4b4daa90215ce4acecc6b1",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sphinx-doc__sphinx-7590",
-        "sandbox_id": "22a8fedacf234892bf8435f507c18f0b",
+        "sandbox_id": "af426567e1bb42cb9eb4083db019ce16",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-15930",
-        "sandbox_id": "19a781640cee407193b81d0f81750c13",
+        "sandbox_id": "8db2c1db5e3f4e2fb8373a0fb6977074",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "sphinx-doc__sphinx-7910",
-        "sandbox_id": "3b2518fb6e1b45899abcfd66d6c7e554",
+        "sandbox_id": "3b4086ee7a1343cf9c505dd71241a91c",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sphinx-doc__sphinx-11445",
-        "sandbox_id": "9459da1646ab45a0b6bb0a215b2ebecc",
+        "sandbox_id": "a8295a364d2143d484bd139b64ee1ee4",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "pydata__xarray-3095",
-        "sandbox_id": "aa1d5e5983a24403b9b679aba896157b",
+        "sandbox_id": "9a6f2c932c85496db0ecdf7c900ce274",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "pydata__xarray-7229",
-        "sandbox_id": "f8ee0ff153944c8baeb758726dfcf7b6",
+        "sandbox_id": "3ab1ab6d35134757894d13947e91a605",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-13023",
-        "sandbox_id": "6b7b8e94638c4d389ea73e69d8c82f68",
+        "sandbox_id": "3e04d3173cc14008bf61b8060d5cfae9",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "django__django-11095",
-        "sandbox_id": "170dce30db394b58927aae36c08f5ddc",
+        "sandbox_id": "c9238952ee7b4ec5b33791b729d66c08",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-16116",
-        "sandbox_id": "075f6402b3224880804f6cb06fba4f7e",
+        "sandbox_id": "0b9a2450a72a45d499004f4db1def72d",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-13798",
-        "sandbox_id": "e7bc5d396de84dfe983d51032cf88826",
+        "sandbox_id": "d0692841658440b6845ea61b94aa93df",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-14311",
-        "sandbox_id": "53bdab8998ab43749f6fb88ebcee2b81",
+        "sandbox_id": "88d50d5dad944fe8b5143db1f3a99f11",
         "status": "success",
-        "resolved": false
+        "resolved": true
     },
     {
         "task_name": "sympy__sympy-19783",
-        "sandbox_id": "8fe8072281aa42dc87dc6cdc65b6e93f",
+        "sandbox_id": "e17b878e41424b588125d5c03a6063e2",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-13551",
-        "sandbox_id": "ae86817b35934e99966da668c16599ef",
+        "sandbox_id": "0215220264dd4ef0aaafdd00f026fb29",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "sympy__sympy-15017",
-        "sandbox_id": "722395c5be094b6cbac9477e92c60cc2",
+        "sandbox_id": "efdd8cbdbe4343a7aa101b7f9e6274f3",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-15103",
-        "sandbox_id": "6436fef9314e4148b882d85de2d03a24",
+        "sandbox_id": "82dde2901dde419b80ccde001e02b763",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "mwaskom__seaborn-3187",
-        "sandbox_id": "ba6d06701985436ab95e28fc1328b2e6",
+        "sandbox_id": "a0e82f9dab5d4fc183c2f272035011f1",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-22456",
-        "sandbox_id": "57a635c2470f4c72a4a92098e33442d8",
-        "status": "success",
-        "resolved": true
-    },
-    {
-        "task_name": "django__django-16136",
-        "sandbox_id": "b3aea109afe84a1c8fe662682d578201",
+        "sandbox_id": "7df2dbb47c074f4ba075de720c201df8",
         "status": "success",
         "resolved": false
     },
     {
+        "task_name": "django__django-16136",
+        "sandbox_id": "718b75074d8547caaf90ed4ddb5f1390",
+        "status": "success",
+        "resolved": true
+    },
+    {
         "task_name": "matplotlib__matplotlib-25479",
-        "sandbox_id": "480d2311a128467aa93bd6e90ee9e6dc",
+        "sandbox_id": "e9903a09cf2d4ed2be6da26f03341066",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-21596",
-        "sandbox_id": "0be3077b57144829882e502796b9f155",
+        "sandbox_id": "8cb3106547a940908efa7998b4854ccc",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-13974",
-        "sandbox_id": "f672463b49ff41b6bb1c20daa471bfdd",
+        "sandbox_id": "7231d53229094dd5ba937a610e998447",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-14034",
-        "sandbox_id": "cf9e48c9b22a4891923d700cdc588b52",
+        "sandbox_id": "088252c9ee724f9cb7a2cdab93d63619",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-15252",
-        "sandbox_id": "000d730da9924c54b337a7f8dc671994",
+        "sandbox_id": "3f8d240b114347038addf1746155e095",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-23413",
-        "sandbox_id": "471f1ab20bd84864a59649e4c2b8a60a",
+        "sandbox_id": "677cb5eab0a0432993e62494689bac11",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-12663",
-        "sandbox_id": "f0d8414a2bf649e680ed356725272847",
+        "sandbox_id": "b990eb8b4f3e47dfb6ebc41226d99729",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-14608",
-        "sandbox_id": "e8d646e124b64b35958b50c172c24dce",
+        "sandbox_id": "1ece546e461c4311b7086eb3dce87c9a",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sphinx-doc__sphinx-9602",
-        "sandbox_id": "637fc266f108406baf5cc347cd5236df",
+        "sandbox_id": "a04a6e57289240d98e649b7aea20a66a",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sphinx-doc__sphinx-10614",
-        "sandbox_id": "894f5bcdc56945c7a1e783e1ebc2eb0a",
+        "sandbox_id": "25fdfc38c6c9437da5915a925abcd698",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-12708",
-        "sandbox_id": "af03939bfb1b4c6d92ee5fd8acbe1683",
+        "sandbox_id": "f68d7ea4877848adb0ca8aec895d8b22",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "pydata__xarray-3993",
-        "sandbox_id": "ce117e5d2b53478abd10002d359f6d3a",
-        "status": "success",
-        "resolved": false
-    },
-    {
-        "task_name": "django__django-9296",
-        "sandbox_id": "8af4d5aeebb74094baa9dece2de4c6b6",
+        "sandbox_id": "45bc3db5b5f24ccbbe7879bedf42a01c",
         "status": "success",
         "resolved": true
     },
     {
-        "task_name": "matplotlib__matplotlib-25332",
-        "sandbox_id": "e3e46ffde79649b28c70cff0e1ab4cab",
+        "task_name": "django__django-9296",
+        "sandbox_id": "95da7bd6bb074d94b6edf6cc691627de",
         "status": "success",
         "resolved": false
     },
     {
+        "task_name": "matplotlib__matplotlib-25332",
+        "sandbox_id": "de2e308be60848c98aa472db198f0f74",
+        "status": "success",
+        "resolved": true
+    },
+    {
         "task_name": "django__django-14631",
-        "sandbox_id": "f9f0a83e210749c0846b3cacaab85cdc",
+        "sandbox_id": "df4bfe5eccc34e8e93e66b97ad70d4a0",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "psf__requests-6028",
-        "sandbox_id": "0590c268a88648d6a926a0eae708fbbb",
+        "sandbox_id": "0b88cbeaf72948a8a82aab97980801b7",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-10914",
-        "sandbox_id": "4b0d902f728a4c88bff5a32cf41d51e2",
+        "sandbox_id": "bd5a75d686cf4d65a90d50f13013f6e2",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-12325",
-        "sandbox_id": "fa322ea607954667b1c320817640dec8",
-        "status": "success",
-        "resolved": false
+        "status": "failed",
+        "error": "Failed to start sandbox because image_pull: Failed to pull image rock-registry.cn-hangzhou.cr.aliyuncs.com/swebench/sweb.eval.x86_64.django_1776_django-12325. Error: failed to copy: httpReadSeeker: failed open: failed to do request: Get \"https://cri-t2bdp4c3lfspoi0t-registry.oss-cn-hangzhou.aliyuncs.com/docker%2Fregistry%2Fv2%2Fblobs%2Fsha256%2Fa3%2Fa36174401179c75dd363cfb795ff37bb8c05c00e8e3e0f36c618299ef2c52b81%2Fdata?versionId=null&x-oss-credential=STS.NXaThR7HPfEQfEj6Bzq6Hq3S3%2F20260301%2Fcn-hangzhou%2Foss%2Faliyun_v4_request&x-oss-date=20260301T180757Z&x-oss-expires=1199&x-oss-security-token=CAIS3gJ1q6Ft5B2yfSjIr5vUH9Lm2pdx0Ye6ZGPb0kIvfblknvb40Tz2IHhMe3RtAOwYtvgxm2lR6PoblrkqF88VGhCcNpQhsc0Pr1P4O1AaFDUWtu5qsoasPETOITyZtZagToeUZdfZfejXGDKgvyRvwLz8WCy%2FVli%2BS%2FOggoJmadJlNWvRL0AxZrFsKxBltdUROFbIKP%2BpKWSKuGfLC1dysQcO4gEWq4bHm5HMukWC1Aalm7BM%2F9qhe6LJNZc8YM1NNP6ux%2FFze6b71ypd1gNH7q8ejtYfoW%2BY44zEXwcJv0vZarOKroR1ZgZ9Z7knHaVDquT1lPt1oPbemIXs1wxcMexbWjnbWJqnxMbUtVZWrUSsl9wRUla6MbDnXvGd22tM6sJHo4rHQHQLnt5h223NW7DnWz5qwiq%2BRi2JZcYrrs%2FIr9Tb4SuWU3SkydYBIdG7lRJ8EPtayyscL93SgwSJGhqAAZOHk36MM7Hl4mrJohzJHKm13ODM93qmMzYUC3jpHI%2BATVQ2CLEet6mYXuPmksQFuvHzmpmk9m2hOG7btmsgGkOYtmEEJ9Bd1S69yhYMDPVRYElVGJiM2UmI5MfBrWUHNBMCo2fE4qT0j%2BFGLtMlmC1nuQ4k1tJd8nSTWjkvYH4WIAA%3D&x-oss-signature=0ef8c07feb5c69b1a32355f8f547477c6a711c75e79417a1d73cd413522089fe&x-oss-signature-version=OSS4-HMAC-SHA256\": read tcp 10.1.80.241:57710->118.178.60.140:443: read: connection reset by peer\nOutput: Using default tag: latest\nlatest: Pulling from swebench/sweb.eval.x86_64.django_1776_django-12325\n3ab6df53b88e: Pulling fs layer\n72a765079ad3: Pulling fs layer\nf8d2d48431b1: Pulling fs layer\n762bedf4b1b7: Pulling fs layer\n7cd589973a38: Pulling fs layer\n3f7fc75e0986: Pulling fs layer\n497f241fe820: Pulling fs layer\n431d64bb7a79: Pulling fs layer\n42b0c553e45f: Pulling fs layer\na36174401179: Pulling fs layer\nae29a35fc358: Pulling fs layer\ne8fd821c2d4f: Pulling fs layer\nd2fc30fba3ca: Pulling fs layer\n96bcb7c07c7f: Pulling fs layer\n218b9a900e2f: Pulling fs layer\n431d64bb7a79: Download complete\n3ab6df53b88e: Download complete\n96bcb7c07c7f: Download complete\n7cd589973a38: Download complete\n42b0c553e45f: Download complete\n, sandbox: Sandbox(sandbox_id=2530ec2ba3694426bc9936823e3fd939, host_name='rock-worker-vpc-nt-b-219.rock-worker-vpc-nt-b-hs.chatos.svc.cluster.local', host_ip=10.1.80.241, image=rock-registry.cn-hangzhou.cr.aliyuncs.com/swebench/sweb.eval.x86_64.django_1776_django-12325, cluster=vpc-nt-b)"
     },
     {
         "task_name": "django__django-16612",
-        "sandbox_id": "c05edc3c91d24e2ea74955cc0092a8ee",
+        "sandbox_id": "08d734d70f9045b49a1055677ef43c0e",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "pylint-dev__pylint-4661",
-        "sandbox_id": "24b5c852842e4661a26f23071f2d94d0",
+        "sandbox_id": "1fa8a176aec84b80b51f13166a4a5f90",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "pytest-dev__pytest-7571",
-        "sandbox_id": "408df85e69b04555b7eb34d411ecb335",
+        "sandbox_id": "5a483b04a88b4ec8bddf1bb46082cab7",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "django__django-16100",
-        "sandbox_id": "69cc37d082f749a39c2eb34f2546f535",
+        "sandbox_id": "4fcc64c51e89408095caf121ead0b525",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-19637",
-        "sandbox_id": "0554c158dd6d4cfea810cef09eab19ca",
+        "sandbox_id": "304e5c59772c4a9294650395a75016f0",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "scikit-learn__scikit-learn-12682",
-        "sandbox_id": "95dbfa4fa2894d639cb70533803baf01",
+        "sandbox_id": "ae0ff9acaa4549f795c92473f4fb4277",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "django__django-12713",
-        "sandbox_id": "e1dac7e816a84c9b950b52c552bce904",
+        "sandbox_id": "4404e07f640641d4b817c17a9a39c73c",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-10973",
-        "sandbox_id": "4bf01158d78c42bfbc78d44dbcbb14a4",
+        "sandbox_id": "c400e3a9e5014d9ea75da6f87e1903b2",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-23262",
-        "sandbox_id": "4371ddf273a74500b1ea29abf8555b1d",
-        "status": "success",
-        "resolved": true
-    },
-    {
-        "task_name": "sphinx-doc__sphinx-8721",
-        "sandbox_id": "28c7535af5564985ad10b7acf04fb8f4",
-        "status": "success",
-        "resolved": true
-    },
-    {
-        "task_name": "django__django-13346",
-        "sandbox_id": "a5b771cca0634d41bf6c100ad53ba39d",
+        "sandbox_id": "c8cb810d71d94f48922e7a36fe5cc6f6",
         "status": "success",
         "resolved": false
     },
     {
+        "task_name": "sphinx-doc__sphinx-8721",
+        "sandbox_id": "6e5f564156d94016b6e4f1c481f22d63",
+        "status": "success",
+        "resolved": false
+    },
+    {
+        "task_name": "django__django-13346",
+        "sandbox_id": "6cb3d08d3362422185e4877836b540ec",
+        "status": "success",
+        "resolved": true
+    },
+    {
         "task_name": "matplotlib__matplotlib-24970",
-        "sandbox_id": "7a3803f8a8d44fb09fcdf492a3e0154d",
+        "sandbox_id": "8b251f7e3e0c40ee82f0eacec88dc6aa",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-13343",
-        "sandbox_id": "9d184a11eb25446db7dc5aef7d33393c",
+        "sandbox_id": "ceb1cb178ba1412b89d622d3a1c8ba3e",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-13757",
-        "sandbox_id": "2bb940f8b83f428dbb91f92f0295b426",
+        "sandbox_id": "6220ebb40ab6443597674c09a014e6aa",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-22080",
-        "sandbox_id": "e094f070b22048e0b7b0d403c86c3050",
+        "sandbox_id": "e0de77a9158e46e78a67197843acd0e5",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-20916",
-        "sandbox_id": "eb655ac614924d6fa19789c0e2611acd",
+        "sandbox_id": "f39061d668204417a857f3796f023ce9",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-13121",
-        "sandbox_id": "d80b5ec7203b4052998a9fcba4385a99",
+        "sandbox_id": "99bd6c3f87534e02949274457df0fa89",
         "status": "success",
-        "resolved": false
+        "resolved": true
     },
     {
         "task_name": "scikit-learn__scikit-learn-10844",
-        "sandbox_id": "16ea1cd3b2364c82bcd1a200dade8ff0",
+        "sandbox_id": "89f3e57189264ff39eb3c85b70d82061",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "pylint-dev__pylint-8898",
-        "sandbox_id": "d60040c7e1a04d7cbb3975ceb3431331",
+        "sandbox_id": "c446bbadf6474bf7892debab1150b20e",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "matplotlib__matplotlib-24570",
-        "sandbox_id": "96ab3a62bb084d169f7fc1f2f60140ce",
+        "sandbox_id": "61af8f10910d4170aaea7480f6a03a4f",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-14999",
-        "sandbox_id": "10918cef86be40f787eb84fa36a0fd58",
+        "sandbox_id": "43cd34e65061469082fdf460b1575fd7",
         "status": "success",
-        "resolved": false
+        "resolved": true
     },
     {
         "task_name": "django__django-16263",
-        "sandbox_id": "73057350437249eeb38c93ac01e42b56",
+        "sandbox_id": "14b240041f7b472faa208fbe2e2ffc3b",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-11749",
-        "sandbox_id": "b8f312d7a20d4718acc24e0b56b49114",
+        "sandbox_id": "644d9bed71424be286fdb3a68689fbf4",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-20590",
-        "sandbox_id": "3ee4b876001d45cfab32d814a0afb38a",
+        "sandbox_id": "c4781f304d1642e984cbaa5a54de2d5c",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-13852",
-        "sandbox_id": "a42ef4254028432088a01800f08d6a59",
+        "sandbox_id": "d5b29ae898444a729b80b8c817f94608",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-13878",
-        "sandbox_id": "2fee7951aaa1498dbb170eb8a4efbbfb",
+        "sandbox_id": "84b82d7d73cf4644bd017a743feb4b32",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "django__django-13158",
-        "sandbox_id": "248332d03f52447f9496b433161081f9",
+        "sandbox_id": "5de7b29a36e242fea3b3aa402730b825",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sphinx-doc__sphinx-9591",
-        "sandbox_id": "a95512497bcb494fbd2ef8c059954bf8",
-        "status": "success",
-        "resolved": false
-    },
-    {
-        "task_name": "pydata__xarray-6461",
-        "sandbox_id": "ffbd664b709a4f0b9eb923193885761e",
+        "sandbox_id": "a602c0ddaf3d4c2d9dbdf1c3729e591d",
         "status": "success",
         "resolved": true
     },
     {
+        "task_name": "pydata__xarray-6461",
+        "sandbox_id": "ae03cd7b5514483f96b5dce760d79693",
+        "status": "success",
+        "resolved": false
+    },
+    {
         "task_name": "django__django-16631",
-        "sandbox_id": "8744847e76a64938961657d1cba4e737",
+        "sandbox_id": "095ee4de1a344fc3b5cd16e507d9db46",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-15278",
-        "sandbox_id": "fd6113c2556d40c19fa470663ad7e803",
+        "sandbox_id": "bd5e7048ba504109a22cfe7c0e883e8b",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-14787",
-        "sandbox_id": "66b1862aa3504d0d86a630dca1524d51",
+        "sandbox_id": "9ca81cc700c44691bb12bac3e033c4ee",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-16527",
-        "sandbox_id": "f70e5fa088784f97970df3a9feeef1fc",
+        "sandbox_id": "c92ae0d9cbde4f6ea6d4bc7e5585c510",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "matplotlib__matplotlib-22719",
-        "sandbox_id": "30f8095d14884014ab60aed4a3f0ebaf",
+        "sandbox_id": "208753c3e9534f40b2e018f4ebc09053",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sphinx-doc__sphinx-8595",
-        "sandbox_id": "bea4db065ace4adbac0873ba00c18fa9",
-        "status": "success",
-        "resolved": false
+        "status": "failed",
+        "error": "Failed to start sandbox because image_pull: Failed to pull image rock-registry.cn-hangzhou.cr.aliyuncs.com/swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8595. Error: Error response from daemon: failed to resolve reference \"rock-registry.cn-hangzhou.cr.aliyuncs.com/swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8595:latest\": failed to do request: Head \"https://rock-registry.cn-hangzhou.cr.aliyuncs.com/v2/swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8595/manifests/latest\": net/http: TLS handshake timeout\nOutput: Using default tag: latest\n, sandbox: Sandbox(sandbox_id=9dbe9faa6eb64282b88893973875d1b6, host_name='rock-worker-vpc-nt-b-336.rock-worker-vpc-nt-b-hs.chatos.svc.cluster.local', host_ip=10.1.81.187, image=rock-registry.cn-hangzhou.cr.aliyuncs.com/swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8595, cluster=vpc-nt-b)"
     },
     {
         "task_name": "django__django-13344",
-        "sandbox_id": "24eb50bf99524f99bfa1d7e0f726aca6",
+        "sandbox_id": "08bfe79473a942f889f2531b77a58bd0",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-13279",
-        "sandbox_id": "69d6dcd5f3db4c64b234ae4019dd1858",
+        "sandbox_id": "4e67e6a6c5a54d5abf309e663aacb890",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-16485",
-        "sandbox_id": "d0afff492e9e4de882165820ae63896a",
+        "sandbox_id": "48e0d959534643c190ec87e5b46a9523",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sphinx-doc__sphinx-8548",
-        "sandbox_id": "812b617e90cd433d950bbf541c24bf00",
+        "sandbox_id": "488e985669ce4269b21dad6794a085ba",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-15467",
-        "sandbox_id": "3882b1c1e84b439eb5796832455f45f5",
+        "sandbox_id": "ec95b905705a4657b08c65598f1f81d8",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-15503",
-        "sandbox_id": "9e6a487e209a4a22b0a13011b84ddb7b",
+        "sandbox_id": "964e5e6406db487fa06c4131633ff94c",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "pytest-dev__pytest-5787",
-        "sandbox_id": "59ea516747f74d1a83f44bceb716d759",
+        "sandbox_id": "10d51351f06a4d6393e7fc09ee121227",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-13809",
-        "sandbox_id": "f1c0d9f7e5904ae0a863a29d78d03f12",
+        "sandbox_id": "2ad2bc87e5e84a859e9a38a2e8aec9a3",
         "status": "success",
-        "resolved": false
+        "resolved": true
     },
     {
         "task_name": "pydata__xarray-2905",
-        "sandbox_id": "2bd51272adab402cb63f0d178f4aa612",
+        "sandbox_id": "ac42227f4ac9444f892c3d5fa289c657",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-13516",
-        "sandbox_id": "f0d0fad2157348b18c86abcee2150169",
+        "sandbox_id": "724e34dbb3124a1c9e311ea33afd403c",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "astropy__astropy-13453",
-        "sandbox_id": "ec0db75af2e449cc83cf525e4718aa71",
+        "sandbox_id": "d7d7e4007fd548cdbc050acd99708a04",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-16667",
-        "sandbox_id": "8d643899b0ea4dce9444f4e8102e7979",
+        "sandbox_id": "e4a0c3ca67894584aaa95e4d0b61df98",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-14053",
-        "sandbox_id": "89e26b5df22647969a27bbdf8d766586",
+        "sandbox_id": "02129703fbbe4669af1ce4e0b097354d",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "matplotlib__matplotlib-23299",
-        "sandbox_id": "74f4265ec0f84fe280b27828a86966a8",
+        "sandbox_id": "faca146b249f42cdb69920bc93f4c8a7",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "scikit-learn__scikit-learn-12585",
-        "sandbox_id": "2b436064b2ea43339be6e0eee1e4888b",
+        "sandbox_id": "038fe35d69124a0b85955640f20426c0",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "psf__requests-2931",
-        "sandbox_id": "6aca6898946a412dad4a6a572eb0e9cd",
+        "sandbox_id": "8ed631ad8c9b4e22a0a9f56cbd9c0ff1",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-14351",
-        "sandbox_id": "23d44d041eaf489683932c8e010d28ad",
+        "sandbox_id": "baf591a4dc554287a69fdfde1956c409",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-21379",
-        "sandbox_id": "4a26b3270d024717ac24b3ace9e00151",
+        "sandbox_id": "3ee11d886a52479c986a099b0967cdb8",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "pytest-dev__pytest-6197",
-        "sandbox_id": "83e5afd0aaef47bc8316f64b364e7073",
+        "sandbox_id": "79d418e1622d4a3d81e35db28a3094fa",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-12273",
-        "sandbox_id": "0e8096c8bb2d40bbbe232b30bdcadef1",
+        "sandbox_id": "d696ec96908b43a4bee07178c26a7634",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sphinx-doc__sphinx-8035",
-        "sandbox_id": "26de13e1a1bb42cca1b12a27c5c6426b",
+        "sandbox_id": "88f46ace2e304533803331fa8f6f7111",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-11099",
-        "sandbox_id": "2dbff9bcf7284d47b77808158c6a1d85",
+        "sandbox_id": "15fac3b6a922402aa847a2b3300fc2cd",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-16766",
-        "sandbox_id": "958ddea76dd14dcda5bd56fd1ab8c380",
+        "sandbox_id": "317b8331520e435e8a02aa72eb62fe8b",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-21930",
-        "sandbox_id": "677fed954f314d1f8e4186e1a00734a2",
+        "sandbox_id": "d15eb797d25a44a089e8130b05b2679a",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-15345",
-        "sandbox_id": "87bf44e4b9284f21891109f48d2215d7",
+        "sandbox_id": "241bb93c28b34c4c8c2db6b22b84f625",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "django__django-12754",
-        "sandbox_id": "4f7d53770268445893d5874e860cd539",
+        "sandbox_id": "f7c7604239df4d67aedce687ce00d177",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-14376",
-        "sandbox_id": "8817cb94f46f4dea9c15b23a580f8fc4",
+        "sandbox_id": "fca11aa616284d239e221cb04702b014",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-13569",
-        "sandbox_id": "31293853e1c9494c8b572594846250e8",
+        "sandbox_id": "3333546b92ec46c889c92aebbef85d14",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-20438",
-        "sandbox_id": "dd6a4efaa0a744d1a1fd0edd8fdcd838",
+        "sandbox_id": "1d7983f57e274a09b32546bc45df2699",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-13128",
-        "sandbox_id": "1fd43cb42f434d93b6226e920aad058a",
+        "sandbox_id": "203eb6188d1f415bbd1c8bc65b1f8f11",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-13964",
-        "sandbox_id": "a9eb0ff6eb72431aa623d3bf4e77b1b8",
+        "sandbox_id": "103e39ada6134dcf92850b54b9861088",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "django__django-11265",
-        "sandbox_id": "a0b843f0accf4a749b0c5b62b9886305",
+        "sandbox_id": "1416371eb6d54c35b8605564d3f2d8e3",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-13820",
-        "sandbox_id": "7d8f2ac877b9451abab5c167d51bfe2a",
+        "sandbox_id": "c0f62553b69947a790ec9c47a7c7cd38",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "matplotlib__matplotlib-24637",
-        "sandbox_id": "0713fa33c3df4fb38af8d4792c0fa2aa",
+        "sandbox_id": "9d9e7152981548ecab3d43f0f91b68cd",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "sphinx-doc__sphinx-8056",
-        "sandbox_id": "fc1055d01adc47f88175eaf1c2e445bc",
+        "sandbox_id": "508c2460293b4d84932b244e9c47deaf",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-13512",
-        "sandbox_id": "e9ffd455beb84fa2ac833d03405fc46f",
-        "status": "success",
-        "resolved": false
-    },
-    {
-        "task_name": "matplotlib__matplotlib-24026",
-        "sandbox_id": "d5c84850301046e1a46808e70fc86d61",
+        "sandbox_id": "b1c0a9f129d44e88b10fe6ccf9fcddf1",
         "status": "success",
         "resolved": true
     },
     {
+        "task_name": "matplotlib__matplotlib-24026",
+        "sandbox_id": "19171c8d682445d692791467287da989",
+        "status": "failed",
+        "error": "custom_install_cmd failed with exit code: 1, output: npm warn deprecated har-validator@5.1.5: this library is no longer supported\r\nnpm warn deprecated phin@3.7.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.\r\nnpm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142\r\nnpm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details."
+    },
+    {
         "task_name": "sympy__sympy-12489",
-        "sandbox_id": "a1e7d71cb0024efd98ccae3090c192fb",
+        "sandbox_id": "fcf1ec0407684757bdd0b605156ff0c9",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-20801",
-        "sandbox_id": "0d910f7da60748818a8dbd934c5632c4",
+        "sandbox_id": "69ba235fa8844831a339fa1250cbed2c",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-15732",
-        "sandbox_id": "7de3d70992e14f14ac03e059e1cb8640",
+        "sandbox_id": "8926a26f36814f1b92b81ad7d3383ffc",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-18698",
-        "sandbox_id": "4043117034534adca275078eae9c9cba",
+        "sandbox_id": "4f56f11339a948d9a0f0f859c7ed56b2",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "matplotlib__matplotlib-24149",
-        "sandbox_id": "a1948d0619914de08327ca4a622ab5cf",
+        "sandbox_id": "46e4a98bf7594d87bcbd0cfa1d4ca47e",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sphinx-doc__sphinx-9367",
-        "sandbox_id": "7a3d0026253e415a955a46bf4d36560e",
+        "sandbox_id": "5cbf883c008b45169372c49c7090fe25",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "pydata__xarray-3151",
-        "sandbox_id": "40e7b2640ba04c87b5ef7df5babe55b2",
+        "sandbox_id": "6bf46830e8e54a6c89f58a4b3f47dc27",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-11999",
-        "sandbox_id": "0bb0b9f51ab940be9d98d4bd389dbd35",
+        "sandbox_id": "e5fef5862e824528ae0ef370bcf84539",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "astropy__astropy-14508",
-        "sandbox_id": "d1e9bae9d3b14935a0f73c37653c2b2e",
+        "sandbox_id": "4228a3f1d4be44df8f08429dfd1cc992",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-23950",
-        "sandbox_id": "e35770bb17164f4db72036d0af76fa5d",
+        "sandbox_id": "51903c8f04b942fd881a488d0051a2a7",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-14792",
-        "sandbox_id": "38c95024d0d64127a4990e6ebe00dc4a",
+        "sandbox_id": "facef8d332a048b8b7edae41439434d7",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-17087",
-        "sandbox_id": "5f81daee66934f5b802677c2ff7c1ea8",
+        "sandbox_id": "588a4de0853e4e30840a7a2d5a512d19",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-16569",
-        "sandbox_id": "bc19c8ad4b8f4915b6ea67a184135671",
+        "sandbox_id": "a6d863307b50426ab8a4f4b6b3f6ed34",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-13012",
-        "sandbox_id": "07b1d5ef90e141d381bb061750566b46",
+        "sandbox_id": "3e8e905dd98e429fa54f56c8f936e301",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-13089",
-        "sandbox_id": "42b59ce0745344a88cff3480d7b678ef",
+        "sandbox_id": "7769cddd08f646c6809ec267c5f84d9c",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-16597",
-        "sandbox_id": "b1260507c1b540fb878e2b29295e5c4f",
+        "sandbox_id": "ccc9479d1ce84505a2c1778b2701606a",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "pytest-dev__pytest-8399",
-        "sandbox_id": "853042d809d04fa19959c5567007e3db",
+        "sandbox_id": "39b8f874b603406891fa45788a39de29",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "scikit-learn__scikit-learn-9288",
-        "sandbox_id": "0b71bd236d474076bd7259340e2862ab",
+        "sandbox_id": "8ec24a51aa974030aa19573e14da9eff",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-11490",
-        "sandbox_id": "9b0f654000dc48bfb4b156d0168fceb8",
+        "sandbox_id": "0faf27b79f774e858cccd4655b1e0032",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sphinx-doc__sphinx-10673",
-        "sandbox_id": "a8b7a71aaf014ab4b5e14afea15b4ecd",
+        "sandbox_id": "56bdad188c6541f3911a1ab31cee978a",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "sphinx-doc__sphinx-9698",
-        "sandbox_id": "a3d57b43e83d46fb832db7be68e83505",
+        "sandbox_id": "3408d1e0d21b48d2ab152c85598fdb87",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "psf__requests-1921",
-        "sandbox_id": "e9cb84f8b16541b2b82e5287c514abfe",
+        "sandbox_id": "19e6fb6516db4591bdbd94c101b47874",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-15741",
-        "sandbox_id": "34de68c29aa546c0bd0d8257833c986f",
+        "sandbox_id": "4c352309eda244f7ae516dfda2f31286",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-15380",
-        "sandbox_id": "e03d7a34194e46e5a55410ac1e1256f8",
+        "sandbox_id": "baebd9f67ca043378d39b567909a169b",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "scikit-learn__scikit-learn-11310",
-        "sandbox_id": "7d89cdcf57784f75820de0bf7fdfc57b",
+        "sandbox_id": "e1f5411a6d9f41d0bd98a5bcd2b5ba2c",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-11163",
-        "sandbox_id": "d7262b5675dc4f059b26b06ab087fe90",
+        "sandbox_id": "82380db56df440b3aa06acd01a1b8125",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sphinx-doc__sphinx-8638",
-        "sandbox_id": "0555417bbc2b4f6ba82518a1daa96970",
+        "sandbox_id": "1c8497317e7741a8a448932aa7e534e2",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-14580",
-        "sandbox_id": "810210754e4348f0ae2eee026eb4504d",
+        "sandbox_id": "f577065487e347b4ac7a51eb0bce40ef",
         "status": "success",
-        "resolved": false
+        "resolved": true
     },
     {
         "task_name": "sphinx-doc__sphinx-8593",
-        "sandbox_id": "be40d981e1b5473d9022e263517fe927",
+        "sandbox_id": "6406e74f7c124d2fa9b335d33b9580eb",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-16819",
-        "sandbox_id": "971382e390f44d7abda29a5940277788",
+        "sandbox_id": "f2aacb8a5a6344e9b9943017f317d24c",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-13372",
-        "sandbox_id": "05c136ed4f844ca6a0e40896d164dd42",
+        "sandbox_id": "f2bacd2bb3934989ba4bd518980007e0",
         "status": "success",
-        "resolved": false
+        "resolved": true
     },
     {
         "task_name": "django__django-11790",
-        "sandbox_id": "be289efc141a428fb97a2ece9b81f65b",
+        "sandbox_id": "147526b2f912409b88049d93594c8522",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "pytest-dev__pytest-10356",
-        "sandbox_id": "395c4c499e6e4357acb1535fa67da004",
+        "sandbox_id": "cca8c20736954eefa011c0d6102d10f0",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-14752",
-        "sandbox_id": "31a3672919dd4657b54585d8b8e35b24",
+        "sandbox_id": "4e39dad4359f4055bbbaad9db34da124",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-21847",
-        "sandbox_id": "a658cfd5636e45b694157fdb0341334e",
+        "sandbox_id": "a00ea7ebdcbd470c825b32786cb5dd43",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-16877",
-        "sandbox_id": "3c430516e56b4be89407c68f4b111d85",
+        "sandbox_id": "c53b0439fcbe4ff5b52e8d4d8a320b66",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "pytest-dev__pytest-5840",
-        "sandbox_id": "186c76c67e89469584a250888f5b0cdd",
+        "sandbox_id": "a5a2c6a7ff854926b7a55c46a4517279",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "scikit-learn__scikit-learn-13328",
-        "sandbox_id": "46ac8128d0864e26995c889bb8dcc91a",
+        "sandbox_id": "96596df5e29c416ea60235028825951a",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "astropy__astropy-14182",
-        "sandbox_id": "1db03b542b72465da0edbaf5288813ca",
+        "sandbox_id": "fa269f8038ec4f40a3becd21a2f47be0",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-15973",
-        "sandbox_id": "f79492ea13484ac19ce80862eefe5dfb",
+        "sandbox_id": "a43cf3f6a71d4e618ba74c01dd7c24b8",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sphinx-doc__sphinx-9230",
-        "sandbox_id": "064332211e0a40339cedc36946f198ea",
+        "sandbox_id": "597d021a0737465c85efc9f749f56a7c",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "pytest-dev__pytest-5631",
-        "sandbox_id": "ef78b5bee4ac48509493954901291855",
+        "sandbox_id": "f1c1276ef3ab4c97a746501d72597873",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-16450",
-        "sandbox_id": "a48cc40dd9cd4773ae631e2e06a091f5",
+        "sandbox_id": "6c681e0590b24ec58ebdda09dbe7a04e",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "matplotlib__matplotlib-20676",
-        "sandbox_id": "a55f35f1da974547a61422f3a838f219",
+        "sandbox_id": "a484ed4fc20542488fd1f3b06836046c",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-14855",
-        "sandbox_id": "5f99cdb4d1ea40568d034108452104ca",
+        "sandbox_id": "2b277535d5de42689cec0e14ffcc4a97",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-15104",
-        "sandbox_id": "049482108ca94555a7601a64564ee86c",
+        "sandbox_id": "d42d91bc7b7f48a68caa695afbb635f6",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-15916",
-        "sandbox_id": "36ef156c5f4f420383299c6da138ce47",
+        "sandbox_id": "004cdd8137864ee4a8576c854b4fb679",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-23824",
-        "sandbox_id": "1ef0e9c612204ad9bae328441dc7872f",
+        "sandbox_id": "9a77e0501d1c4efbaf59401c0b3b5fbd",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-11740",
-        "sandbox_id": "88962d3a7cbb4b4d9b4849bc6fece6f8",
+        "sandbox_id": "301e3794ba354030bb1b49caa96702b5",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "psf__requests-1142",
-        "sandbox_id": "ddeb84b87cb54a9cb4174f4e30ef8d55",
+        "sandbox_id": "eabf722d0d72436094c8e99694a2ff90",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sphinx-doc__sphinx-9229",
-        "sandbox_id": "1ce99a9c3fda4efb8d68cf0c97d690c5",
+        "sandbox_id": "3ca6d13c3f274a27be38b00ab245a89a",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-16429",
-        "sandbox_id": "505419204b584cf78383bd958a3d5510",
+        "sandbox_id": "a5bf606f18b8476fb95f4e592a1bb6e0",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-11292",
-        "sandbox_id": "c7bebedd2ba942f590e0538571c8182d",
+        "sandbox_id": "39308e85c72e49069b1f8eced0750b62",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "matplotlib__matplotlib-13989",
-        "sandbox_id": "962aa74a2e9b4957a4ccf608dbbc31ac",
+        "sandbox_id": "3564f087d5ae4fb9806dc750371e7579",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-15957",
-        "sandbox_id": "89e6b8643a3649a5a34e973dcb85844b",
+        "sandbox_id": "74e3b6a46ec146f4aae1cec7a1ac1352",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "pylint-dev__pylint-6528",
-        "sandbox_id": "3fb9919812be4f1387ff3958282f7f4f",
+        "sandbox_id": "3e8d7401be2d498b87358b4c92816f81",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-23534",
-        "sandbox_id": "2b8c38d2d59d4d72b5438d5f29d55d87",
+        "sandbox_id": "3cfec5631bc249aa9d5dc3a0ee46caa0",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-14155",
-        "sandbox_id": "a24d184b3010443194e0962364b8b611",
+        "sandbox_id": "4c520a7bb7c347a58287cba55544a10d",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-19346",
-        "sandbox_id": "e3a6092065ca46058d47f35c66ec3989",
+        "sandbox_id": "bdfbda4048cc4663b9843255b3ff1dea",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-11149",
-        "sandbox_id": "856117ce35774791a2bba70710d1c8dd",
+        "sandbox_id": "bd2d675a3dae4809bc96a81bf9352396",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-13615",
-        "sandbox_id": "e7ce599ef9bb4105bb43826e917abc01",
+        "sandbox_id": "a515ef96a24f4a78bf8e8a3b130b5f67",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-24661",
-        "sandbox_id": "e21ec4aefa634525bc65185d4288cfd3",
+        "sandbox_id": "c443f339db0548e99500f7960ff39e63",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-19495",
-        "sandbox_id": "7a737d71f7804b609cde8000e2183de3",
+        "sandbox_id": "463b3ef4324d4ee19abcaf89bc61be20",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "astropy__astropy-7166",
-        "sandbox_id": "0f7538fb1f654a97a223075014696fac",
+        "sandbox_id": "0574806438404d1988ec4db32a31d250",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sphinx-doc__sphinx-8551",
-        "sandbox_id": "af39c89e60164347982c6162433e1d81",
+        "sandbox_id": "173eef761f664ee48edcd315d93d153b",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-17318",
-        "sandbox_id": "4d4fe5050aae49878c430e76ac2ee5be",
+        "sandbox_id": "1124bf1740c14b8f9c99588da67fa844",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-14493",
-        "sandbox_id": "501c3e4bf0f24292837991c3b5dbcedb",
+        "sandbox_id": "ec2704b050f943eca1b12a6449485f03",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-11618",
-        "sandbox_id": "17b10596ed6e45269bd0ca6d6f37b7ee",
+        "sandbox_id": "3d449618f3ec4b5ab5966ae8b52a59f2",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-16938",
-        "sandbox_id": "e02fccabc7184e478c9fbf669d085871",
+        "sandbox_id": "a8054f2d48df4598acca3e41aa8c6676",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "astropy__astropy-14365",
-        "sandbox_id": "bb5c6a3fbece400481a9b70c08eb40ea",
+        "sandbox_id": "458edc9c73b54433aa74cc07c4ef6c04",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-14534",
-        "sandbox_id": "c3542ee6a9e5494884021b4515bab15f",
+        "sandbox_id": "7ba23b43452d41c29f71a665409aeb26",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-16315",
-        "sandbox_id": "2d0ca03b76494099bef53a99de7fd0d9",
+        "sandbox_id": "d657df9faa2145c8bb717fe96e586044",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "scikit-learn__scikit-learn-10908",
-        "sandbox_id": "37b348b7c2314480809e669a1acb8939",
+        "sandbox_id": "caa04b12fb094bff85ec2640d1ea81d3",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sphinx-doc__sphinx-9258",
-        "sandbox_id": "31a1fd8f158b4bca9adcc79bdee44e95",
+        "sandbox_id": "894f9f0ab1ba420189fe1bbb4893c853",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "pytest-dev__pytest-7521",
-        "sandbox_id": "f2fe63a3fdfc499c8c0f0dde4d3f7183",
+        "sandbox_id": "ada695558b774c11af187acbcf4d0342",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "scikit-learn__scikit-learn-25973",
-        "sandbox_id": "b0535a54020a436c97265f5a05df5582",
+        "sandbox_id": "542404a7bef54b3b83e35211b5f8470c",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-14011",
-        "sandbox_id": "90edcc492139482898d9c1ca851449c9",
+        "sandbox_id": "de8fa4911e7946c09a97c5503f10a479",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-15499",
-        "sandbox_id": "a0cebcafa91646c4be31c1bdc73eb58c",
+        "sandbox_id": "38aff4c608c241c7ae522b221fe92f1a",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-15525",
-        "sandbox_id": "6b7d53b1b92a4246b0c45276cf77f4ef",
+        "sandbox_id": "f595a4b7ce4f48f6823e44fbb24afd3f",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "psf__requests-2317",
-        "sandbox_id": "769ff348a1cb4a9eb9035be39b2f2033",
+        "sandbox_id": "0008b25887f44d96aa5c0432fb9ffa12",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-12039",
-        "sandbox_id": "6b0a51fa8d884d57bd0b006781aaa42a",
+        "sandbox_id": "87ceb2df6d6b4561b4f219a8a9d20906",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "scikit-learn__scikit-learn-12973",
-        "sandbox_id": "717040dc0798486a88d6d84ebf98b576",
+        "sandbox_id": "0a0755ded10b444c98354c0d816163ba",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-14434",
-        "sandbox_id": "0fe2edf2d57a469485ef3f835e9385c2",
+        "sandbox_id": "e2a894344235461cb51cc30c6a144300",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sphinx-doc__sphinx-9461",
-        "sandbox_id": "ef51f480827141bd896d76dd2be26b04",
+        "sandbox_id": "34defb949fe24051880de53269a0ab36",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-16502",
-        "sandbox_id": "2369705c477244ecbc9d1a080b62a107",
+        "sandbox_id": "d22aad29f5364c72bc6550136fa1aafb",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-12209",
-        "sandbox_id": "f74b22e0d770457f8baabcf81251c57d",
+        "sandbox_id": "75f6edab8df04a43b8ddf3a73ab232dd",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "pytest-dev__pytest-6202",
-        "sandbox_id": "147a6dc2e8734b8b95810dcea5591199",
+        "sandbox_id": "3cf8c6ff884c40bdb9ae3038250598aa",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "astropy__astropy-8872",
-        "sandbox_id": "a955136fe5d948439efb5a348696684b",
+        "sandbox_id": "a1cd99ca419143be8b3fa3e842f96cf8",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sphinx-doc__sphinx-7889",
-        "sandbox_id": "9d6f1115971f4532a2537eaf872cf24d",
+        "sandbox_id": "8aaa62eeca534eedb66c525536c0616f",
         "status": "success",
-        "resolved": false
+        "resolved": true
     },
     {
         "task_name": "django__django-13028",
-        "sandbox_id": "660a3d6ce1324d58999169a6960bd9c6",
+        "sandbox_id": "f2a1f73615b14d8998a3c7a34a91c8ce",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-15987",
-        "sandbox_id": "f79bf2be22ac483dab7718af64150e89",
+        "sandbox_id": "373d1fc17a7d4aae8dfa0926f0fdf404",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "django__django-15368",
-        "sandbox_id": "9b08d3502aa94cf897a55c921f65f9a0",
+        "sandbox_id": "1b28d4de12084128964a7b97a50cb23f",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "matplotlib__matplotlib-25311",
-        "sandbox_id": "a7395e3341164cbcbed71dc2d4f9c62a",
+        "sandbox_id": "2e4a7e6a818d44309720e5b28c17ad33",
         "status": "success",
-        "resolved": false
+        "resolved": true
     },
     {
         "task_name": "pydata__xarray-4966",
-        "sandbox_id": "ee91e965b6ab4451926fc063cfe83b54",
+        "sandbox_id": "72abedbc825548eea93ba727d3daaf03",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-19040",
-        "sandbox_id": "80ce8012f0024b7eb922f19303bb3d5a",
+        "sandbox_id": "34639ef260274eef8b2155fa32ca8c59",
         "status": "success",
-        "resolved": false
+        "resolved": true
     },
     {
         "task_name": "sphinx-doc__sphinx-10435",
-        "sandbox_id": "54a9a1ef65174ffabf0eb6b7ada9e675",
+        "sandbox_id": "ad2aaf34490f4de2be98b5e14c4e1bfa",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "matplotlib__matplotlib-25287",
-        "sandbox_id": "bf7e9f747ac04ed28cf2c31b0e6fcb87",
+        "sandbox_id": "bdcf49d1bfd24150a161855e93bc1ee8",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-15863",
-        "sandbox_id": "cd5af01dd7ba4b879d817b3b8bade55a",
+        "sandbox_id": "1163f2c09bad4e7c9bd273c078828186",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-13821",
-        "sandbox_id": "f74fe0fb865340f7aabb6d37ad3862e0",
+        "sandbox_id": "274980c443e14a5c8c1a39f5b3e942e1",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sympy__sympy-14531",
-        "sandbox_id": "4a8d45b824af44f385915debdc0da41f",
+        "sandbox_id": "7d2f6a766aef46538202e336e239cf9a",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "django__django-16801",
-        "sandbox_id": "09e04832715b4182b36fed96efba9333",
+        "sandbox_id": "4ebc6777deb3461eb99eb96c67aa8ae7",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "sphinx-doc__sphinx-9281",
-        "sandbox_id": "3257f76420914b518257610863ba831f",
+        "sandbox_id": "aac82ff588bf4fe7a6289a5573cc8bc3",
         "status": "success",
-        "resolved": false
+        "resolved": true
     },
     {
         "task_name": "sympy__sympy-15976",
-        "sandbox_id": "0433b0a585f34c3f9b16ae8a3d505bff",
+        "sandbox_id": "785c8558a9a546fab391fe6187a35eb3",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-16950",
-        "sandbox_id": "504e8e72329e467eb933efdc6ca7f629",
-        "status": "success",
-        "resolved": true
-    },
-    {
-        "task_name": "sympy__sympy-17139",
-        "sandbox_id": "72ad13e981494e1690726764f1cd46e0",
+        "sandbox_id": "74ed823aa3ce406d86395ab7c8e740ef",
         "status": "success",
         "resolved": false
     },
     {
+        "task_name": "sympy__sympy-17139",
+        "sandbox_id": "f52b32c470424e17966fd4675bd06ba5",
+        "status": "success",
+        "resolved": true
+    },
+    {
         "task_name": "matplotlib__matplotlib-14623",
-        "sandbox_id": "efc049944e1645059371b0baca1ce8fd",
+        "sandbox_id": "1a9847c2b75c4cf795548d1b055641ff",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "scikit-learn__scikit-learn-26194",
-        "sandbox_id": "002f111812484e15951791c53a42edc7",
+        "sandbox_id": "87a02b547e8e4ab99643f3d83652233d",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-15629",
-        "sandbox_id": "0053bbaea43d4e8fb5cbc505c2e13076",
+        "sandbox_id": "a99eb8c54dcf4c98b677411bb8f1a156",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-16493",
-        "sandbox_id": "cd6d1db76c714c619e3e5a97c4661dee",
+        "sandbox_id": "4c41ba34b8aa486baf0c99644d80b647",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-12262",
-        "sandbox_id": "4b0b7abf703941868b34b60967f3c800",
+        "sandbox_id": "95b4fe737b4145abac8d87c83e49b763",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-15382",
-        "sandbox_id": "48204143eab0457d9fab47c95862c0f1",
+        "sandbox_id": "957ede6001124f3bb353de1589789ed9",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-13406",
-        "sandbox_id": "e6ed65fedad84ac594954beecb95c4e0",
+        "sandbox_id": "7579a724b04342e8a4d2664292838050",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sphinx-doc__sphinx-7462",
-        "sandbox_id": "addacfb094444491886a5ff9781dfc2d",
+        "sandbox_id": "722f0b7eb592428c907abb5bb9375cef",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "pytest-dev__pytest-7982",
-        "sandbox_id": "439e34d581fd4be8b919d33612558539",
+        "sandbox_id": "e7251b714dc74f65bcd6a1bf582a980a",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "django__django-14089",
-        "sandbox_id": "4fc55d1536dc4ccf87e1708fdc289b82",
+        "sandbox_id": "92fe70c9ec604878b84d668fb32f2c64",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-13033",
-        "sandbox_id": "583ddee571d04b26bd9c38e42cffeed8",
+        "sandbox_id": "60480573302a412ebb1870f43832b3aa",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "matplotlib__matplotlib-26291",
-        "sandbox_id": "d1bc721b4bb94391aceb2aca54ad2283",
+        "sandbox_id": "4675604d31f74c8a9fd24059f20ec5b5",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "pydata__xarray-4629",
-        "sandbox_id": "57e18c80328342f18d9ddc242f17d45a",
+        "sandbox_id": "828eb87a045649949e987759c14b2dd6",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "django__django-11603",
-        "sandbox_id": "aab36c9b1d0e45e3b163d0d217f06a46",
+        "sandbox_id": "08e49938cfda4434a438e8d24c7e07d7",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "pylint-dev__pylint-4551",
-        "sandbox_id": "e16930079e0c436ebdafc9bdacb365bb",
+        "sandbox_id": "b3551cab83cf452ca7f6d7caf4219fa5",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-14170",
-        "sandbox_id": "8f5eb3fc44ee49cdb78ba8725062e490",
+        "sandbox_id": "8add5e7b34544ed4abe1891dc1d117b0",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "scikit-learn__scikit-learn-14629",
-        "sandbox_id": "b23b33062034429d9856316863b1c687",
+        "sandbox_id": "931caea69170443e8edf1f8439292388",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sphinx-doc__sphinx-8621",
-        "sandbox_id": "9aa81c7359b1403da7805112e322bb69",
+        "sandbox_id": "11451324e33845efb3992098afe2755c",
         "status": "success",
         "resolved": true
     },
     {
         "task_name": "matplotlib__matplotlib-25960",
-        "sandbox_id": "99e8601245774fa38391d5ca68e3dfe8",
+        "sandbox_id": "4f2dcac2705640719f085c1fd2def7b4",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "django__django-11848",
-        "sandbox_id": "593f08923fde430b8c67f3eeaf3aab21",
+        "sandbox_id": "5b44936782114aab827c8f70c1164551",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "pydata__xarray-6938",
-        "sandbox_id": "ec2c03109a0442c091c8eed61a75e27d",
+        "sandbox_id": "afbbb852220a4992b5af65e4abb8817b",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sympy__sympy-21612",
-        "sandbox_id": "134aa9decc224638b8f0087d4f563b22",
+        "sandbox_id": "b0302ab49efd48399c74b8be5be5718f",
         "status": "success",
         "resolved": false
     },
     {
         "task_name": "sphinx-doc__sphinx-7757",
-        "sandbox_id": "1a211fde701449f2958bb44b58ade489",
+        "sandbox_id": "07ef23d4d2eb45d7a3160e48b88cd013",
         "status": "success",
-        "resolved": true
+        "resolved": false
     },
     {
         "task_name": "django__django-12193",
-        "sandbox_id": "037f27f78fa54e5b829a65d65e9e90a1",
+        "sandbox_id": "923be728dee64372b1e50a8c9a82ab61",
         "status": "success",
         "resolved": false
     }
