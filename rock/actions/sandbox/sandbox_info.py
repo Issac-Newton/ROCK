@@ -24,3 +24,4 @@ class SandboxInfo(TypedDict, total=False):
     create_time: str
     start_time: str
     stop_time: str
+    scheduled_deletion_time: str  # 容器计划删除时间，仅当state为STOPPED时存在

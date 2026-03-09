@@ -21,6 +21,7 @@ if TYPE_CHECKING:
     ROCK_ENVHUB_DEFAULT_DOCKER_IMAGE: str | None = "python:3.11"
     ROCK_ENVHUB_DB_URL: str | None = f"sqlite:///{Path.home() / '.rock' / 'rock_envs.db'}"
     ROCK_DEFAULT_AUTO_CLEAR_TIME_MINUTES: int = 60 * 6  # 6 hours
+    ROCK_STOPPED_CONTAINER_RETENTION_MINUTES: int = 5  # 停止容器保留时间（分钟）
     ROCK_RAY_NAMESPACE: str | None = "xrl-sandbox"
     ROCK_SANDBOX_EXPIRE_TIME_KEY: str | None = "expire_time"
     ROCK_SANDBOX_AUTO_CLEAR_TIME_KEY: str | None = "auto_clear_time"
@@ -80,6 +81,7 @@ environment_variables: dict[str, Callable[[], Any]] = {
         "ROCK_ENVHUB_DB_URL", f"sqlite:///{Path.home() / '.rock' / 'rock_envs.db'}"
     ),
     "ROCK_DEFAULT_AUTO_CLEAR_TIME_MINUTES": lambda: int(os.getenv("ROCK_DEFAULT_AUTO_CLEAR_TIME_MINUTES", "360")),
+    "ROCK_STOPPED_CONTAINER_RETENTION_MINUTES": lambda: int(os.getenv("ROCK_STOPPED_CONTAINER_RETENTION_MINUTES", "5")),
     "ROCK_RAY_NAMESPACE": lambda: os.getenv("ROCK_RAY_NAMESPACE", "xrl-sandbox"),
     "ROCK_SANDBOX_EXPIRE_TIME_KEY": lambda: os.getenv("ROCK_SANDBOX_EXPIRE_TIME_KEY", "expire_time"),
     "ROCK_SANDBOX_AUTO_CLEAR_TIME_KEY": lambda: os.getenv("ROCK_SANDBOX_AUTO_CLEAR_TIME_KEY", "auto_clear_time"),

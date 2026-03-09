@@ -16,7 +16,7 @@ from rock.actions import (
 from rock.actions.sandbox.response import State
 from rock.actions.sandbox.sandbox_info import SandboxInfo
 from rock.admin.core.ray_service import RayService
-from rock.admin.core.redis_key import ALIVE_PREFIX, alive_sandbox_key, timeout_sandbox_key
+from rock.admin.core.redis_key import ALIVE_PREFIX, alive_sandbox_key, stopped_sandbox_key, timeout_sandbox_key
 from rock.admin.metrics.billing import log_billing_info
 from rock.admin.metrics.decorator import monitor_sandbox_operation
 from rock.admin.proto.request import ClusterInfo, UserInfo
@@ -175,17 +175,27 @@ class SandboxManager(BaseManager):
         if sandbox_info and sandbox_info.get("start_time"):
             sandbox_info["stop_time"] = get_iso8601_timestamp()
             log_billing_info(sandbox_info=sandbox_info)
+
+        # Update state in sandbox_info to stopped and mark for async deletion
+        sandbox_info["state"] = State.STOPPED
+        retention_minutes = self.rock_config.runtime.stopped_container_retention_minutes
+        scheduled_deletion_time_str = get_iso8601_timestamp(int(time.time()) + retention_minutes * 60)
+        sandbox_info["scheduled_deletion_time"] = scheduled_deletion_time_str
+
         try:
             await self._operator.stop(sandbox_id)
         except ValueError as e:
             logger.error(f"ray get actor, actor {sandbox_id} not exist", exc_info=e)
-            await self._clear_redis_keys(sandbox_id)
+            await self._move_sandbox_to_stopped(sandbox_id, sandbox_info)
         try:
             self._sandbox_meta.pop(sandbox_id)
         except KeyError:
             logger.debug(f"{sandbox_id} key not found")
-        logger.info(f"sandbox {sandbox_id} stopped")
-        await self._clear_redis_keys(sandbox_id)
+
+        logger.info(f"sandbox {sandbox_id} stopped and moved to async deletion queue")
+
+        # Move the sandbox info to stopped_sandbox_key rather than deleting it immediately
+        await self._move_sandbox_to_stopped(sandbox_id, sandbox_info)
 
     async def get_mount(self, sandbox_id):
         async with self._ray_service.get_ray_rwlock().read_lock():
@@ -212,14 +222,84 @@ class SandboxManager(BaseManager):
             logger.info(f"commit {sandbox_id} to {image_tag} finished, result {result}")
             return result
 
+    async def _move_sandbox_to_stopped(self, sandbox_id, sandbox_info: SandboxInfo):
+        """Move sandbox info to stopped state in Redis"""
+        if self._redis_provider:
+            # Get timeout info to preserve it
+            timeout_dict = await self._redis_provider.json_get(timeout_sandbox_key(sandbox_id), "$")
+            await self._redis_provider.json_delete(alive_sandbox_key(sandbox_id))
+
+            # Store sandbox info in stopped state
+            await self._redis_provider.json_set(stopped_sandbox_key(sandbox_id), "$", sandbox_info)
+
+            # Store timeout information for cleanup task
+            if timeout_dict and len(timeout_dict) > 0:
+                # Update the timeout to include scheduled deletion time
+                timeout_info = timeout_dict[0] if timeout_dict else {}
+                retention_minutes = self.rock_config.runtime.stopped_container_retention_minutes
+                scheduled_deletion_time = int(time.time()) + retention_minutes * 60
+                timeout_info["scheduled_deletion_time"] = str(scheduled_deletion_time)
+                # Update the auto clear time too if needed
+                await self._redis_provider.json_set(timeout_sandbox_key(sandbox_id), "$", timeout_info)
+
+            logger.info(f"sandbox {sandbox_id} moved to stopped state in redis")
+
     async def _clear_redis_keys(self, sandbox_id):
         if self._redis_provider:
             await self._redis_provider.json_delete(alive_sandbox_key(sandbox_id))
             await self._redis_provider.json_delete(timeout_sandbox_key(sandbox_id))
+            await self._redis_provider.json_delete(stopped_sandbox_key(sandbox_id))
             logger.info(f"sandbox {sandbox_id} deleted from redis")
 
     @monitor_sandbox_operation()
     async def get_status(self, sandbox_id) -> SandboxStatusResponse:
+        # First check if the sandbox is in STOPPED state
+        if self._redis_provider:
+            stopped_sandbox = await self._redis_provider.json_get(stopped_sandbox_key(sandbox_id), "$")
+            if stopped_sandbox and len(stopped_sandbox) > 0:
+                # Sandbox is in stopped state, return the stopped info
+                sandbox_info = stopped_sandbox[0]
+                is_alive = False
+                response = SandboxStatusResponse(
+                    sandbox_id=sandbox_id,
+                    status=sandbox_info.get("phases"),
+                    port_mapping=sandbox_info.get("port_mapping"),
+                    state=State.STOPPED,
+                    host_name=sandbox_info.get("host_name"),
+                    host_ip=sandbox_info.get("host_ip"),
+                    is_alive=is_alive,
+                    image=sandbox_info.get("image"),
+                    swe_rex_version=swe_version,
+                    gateway_version=gateway_version,
+                    user_id=sandbox_info.get("user_id"),
+                    experiment_id=sandbox_info.get("experiment_id"),
+                    namespace=sandbox_info.get("namespace"),
+                    cpus=sandbox_info.get("cpus"),
+                    memory=sandbox_info.get("memory"),
+                )
+                # Update Redis with the current status to maintain consistency
+                await self._redis_provider.json_set(stopped_sandbox_key(sandbox_id), "$", sandbox_info)
+                return response
+
+        # Check if sandbox exists in alive state
+        sandbox_exists_in_alive = False
+        if self._redis_provider:
+            alive_sandbox = await self._redis_provider.json_get(alive_sandbox_key(sandbox_id), "$")
+            if alive_sandbox and len(alive_sandbox) > 0:
+                sandbox_exists_in_alive = True
+
+        # If sandbox doesn't exist in alive state, check if it was running before
+        # If it exists in stopped state, already handled above
+        if not sandbox_exists_in_alive:
+            # Sandbox either really doesn't exist or has been deleted/cleaned up
+            # Return a status response indicating it's not alive
+            return SandboxStatusResponse(
+                sandbox_id=sandbox_id,
+                is_alive=False,
+                state=State.STOPPED,  # Consider as stopped when it's not found
+            )
+
+        # Sandbox is in alive state, check with the operator
         sandbox_info: SandboxInfo = await self._operator.get_status(sandbox_id=sandbox_id)
         is_alive = sandbox_info.get("state") == State.RUNNING
         self._update_sandbox_alive_info(sandbox_info, is_alive)
@@ -321,7 +401,8 @@ class SandboxManager(BaseManager):
         if not self._redis_provider:
             return
         logger.debug("check job background")
-        async for key in self._redis_provider.client.scan_iter(match=f"{ALIVE_PREFIX}*", count=100):
+        # Check for expired ALIVE sandboxes (original behavior)
+        async for key in self._redis_provider.client.scan_iter(match=f"{ALIVE_PREFIX}*"):
             sandbox_id = key.removeprefix(ALIVE_PREFIX)
             try:
                 is_expired = await self._is_expired(sandbox_id)
@@ -334,6 +415,8 @@ class SandboxManager(BaseManager):
             except Exception as e:
                 logger.error("check_job_background Exception", exc_info=e)
                 continue
+
+        # We don't need to check for expired STOPPED sandboxes here as they are handled by the scheduler task
 
     async def get_sandbox_statistics(self, sandbox_id):
         actor_name = self.deployment_manager.get_actor_name(sandbox_id)

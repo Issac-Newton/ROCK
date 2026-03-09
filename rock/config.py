@@ -124,6 +124,7 @@ class K8sConfig:
 @dataclass
 class RuntimeConfig:
     enable_auto_clear: bool = False
+    stopped_container_retention_minutes: int = 5  # 停止容器保留时间（分钟）
     project_root: str = field(default_factory=lambda: env_vars.ROCK_PROJECT_ROOT)
     python_env_path: str = field(default_factory=lambda: env_vars.ROCK_PYTHON_ENV_PATH)
     envhub_db_url: str = field(default_factory=lambda: env_vars.ROCK_ENVHUB_DB_URL)
