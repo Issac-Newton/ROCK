@@ -173,40 +173,57 @@ class DockerDeployment(AbstractDeployment):
         """Returns the host path for the kata disk image file."""
         return os.path.join(self._config.kata_disk_base_path, f"{self._container_name}.img")
 
-    def _prepare_kata_disk(self) -> None:
-        """Create and format a sparse disk image for kata DinD on the host.
+    def _get_kata_loop_device_path(self) -> str:
+        """Returns the host path for the file that records the loop device name."""
+        return os.path.join(self._config.kata_disk_base_path, f"{self._container_name}.loop")
 
-        Only called when use_kata_runtime is enabled. Creates a sparse file
-        using truncate (no actual disk space consumed until written) and
-        formats it as ext4.
+    def _prepare_kata_disk(self) -> None:
+        """Create a sparse disk image, attach it to a loop device, and format as ext4.
+
+        Only called when use_kata_runtime is enabled. Creates a sparse file,
+        attaches it to a host loop device via losetup, and formats as ext4 with
+        label 'kata-docker'. The loop device is then passed to kata via --device,
+        which exposes it as a virtio-blk device inside the VM so that overlay2
+        can run on a real block-device-backed ext4 filesystem.
         """
         if not self._config.use_kata_runtime:
             return
 
         disk_path = self._get_kata_disk_image_path()
+        loop_path = self._get_kata_loop_device_path()
         os.makedirs(self._config.kata_disk_base_path, exist_ok=True)
         logger.info(f"Creating kata disk image: {disk_path} (size={self._config.kata_disk_size})")
 
+        loop_dev = None
         try:
             subprocess.check_call(
                 ["truncate", "-s", self._config.kata_disk_size, disk_path],
                 timeout=10,
             )
+            loop_dev = subprocess.check_output(
+                ["losetup", "-f", "--show", disk_path],
+                timeout=10,
+            ).decode().strip()
+            logger.info(f"Attached kata disk image to loop device: {loop_dev}")
             subprocess.check_call(
-                ["mkfs.ext4", "-F", disk_path],
+                ["mkfs.ext4", "-F", "-L", "kata-docker", loop_dev],
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.DEVNULL,
                 timeout=60,
             )
-            logger.info(f"Kata disk image created and formatted: {disk_path}")
-        except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as e:
+            with open(loop_path, "w") as f:
+                f.write(loop_dev)
+            logger.info(f"Kata disk image created and formatted: {disk_path} on {loop_dev}")
+        except (subprocess.CalledProcessError, subprocess.TimeoutExpired, OSError) as e:
             logger.error(f"Failed to prepare kata disk image {disk_path}: {e}", exc_info=True)
+            if loop_dev:
+                subprocess.run(["losetup", "-d", loop_dev], timeout=10)
             if os.path.exists(disk_path):
                 os.remove(disk_path)
             raise
 
     def _cleanup_kata_disk(self) -> None:
-        """Remove the kata disk image file from the host.
+        """Detach the loop device and remove the kata disk image from the host.
 
         Only called when use_kata_runtime is enabled. Silently ignores
         missing files to handle cases where preparation failed.
@@ -215,6 +232,17 @@ class DockerDeployment(AbstractDeployment):
             return
         if not self._container_name:
             return
+
+        loop_path = self._get_kata_loop_device_path()
+        if os.path.exists(loop_path):
+            try:
+                with open(loop_path) as f:
+                    loop_dev = f.read().strip()
+                subprocess.run(["losetup", "-d", loop_dev], timeout=10, check=False)
+                os.remove(loop_path)
+                logger.info(f"Kata loop device detached: {loop_dev}")
+            except OSError as e:
+                logger.warning(f"Failed to detach kata loop device: {e}", exc_info=False)
 
         disk_path = self._get_kata_disk_image_path()
         try:
@@ -395,11 +423,14 @@ class DockerDeployment(AbstractDeployment):
 
         env_arg.extend(["-e", f"ROCK_TIME_ZONE={env_vars.ROCK_TIME_ZONE}"])
 
-        # Kata DinD: prepare disk image and add volume mount + env var
+        # Kata DinD: prepare disk image and pass as block device via --device.
+        # kata converts the host loop device to a virtio-blk device inside the VM,
+        # giving Docker a real block-device-backed ext4 on which overlay2 works.
         if self._config.use_kata_runtime:
             self._prepare_kata_disk()
-            disk_path = self._get_kata_disk_image_path()
-            volume_args.extend(["-v", f"{disk_path}:/docker-disk.img"])
+            with open(self._get_kata_loop_device_path()) as f:
+                loop_dev = f.read().strip()
+            volume_args.extend(["--device", f"{loop_dev}:{loop_dev}"])
             env_arg.extend(["-e", "ROCK_KATA_RUNTIME=true"])
 
         time.sleep(random.randint(0, 5))

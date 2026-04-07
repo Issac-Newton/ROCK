@@ -28,13 +28,14 @@ is_nix() {
     fi
 }
 
-# Kata DinD: set up loop device and mount disk image for Docker storage
+# Kata DinD: mount the block device passed by kata as a virtio-blk device.
+# The host loop device is converted by kata to a virtio-blk device, so it
+# appears as a real block device inside the VM. We locate it by the ext4
+# label 'kata-docker' (set during mkfs on the host) to avoid hardcoding
+# the device path, which varies across kata configurations.
 setup_kata_dind() {
     mkdir -p /var/lib/docker
-    for i in $(seq 0 7); do
-        mknod -m 660 /dev/loop$i b 7 $i 2>/dev/null || true
-    done
-    mount -o loop /docker-disk.img /var/lib/docker
+    mount LABEL=kata-docker /var/lib/docker
     mount -o remount,rw /sys/fs/cgroup
     mount -o remount,rw /proc/sys
 }
