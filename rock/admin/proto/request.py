@@ -37,7 +37,7 @@ class SandboxStartRequest(BaseModel):
     """Password for Docker registry authentication. When both username and password are provided, docker login will be performed before pulling the image."""
     use_kata_runtime: bool = False
     """Whether to use kata container runtime (io.containerd.kata.v2) instead of --privileged mode."""
-    auto_delete_seconds: int = 0
+    auto_delete_seconds: int | None = None
     """The time for automatic container deletion, with the unit being seconds."""
 
 
