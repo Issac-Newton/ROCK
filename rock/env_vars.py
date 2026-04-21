@@ -25,6 +25,7 @@ if TYPE_CHECKING:
     ROCK_SANDBOX_EXPIRE_TIME_KEY: str | None = "expire_time"
     ROCK_SANDBOX_AUTO_CLEAR_TIME_KEY: str | None = "auto_clear_time"
     ROCK_TIME_ZONE: str = "Asia/Shanghai"
+    TZ: str = "CST-8"
     # Docker temp auth directory
     ROCK_DOCKER_TEMP_AUTH_DIR: str | None = None
 
@@ -129,6 +130,8 @@ environment_variables: dict[str, Callable[[], Any]] = {
         "pip install rl_rock[model-service]",
     ),
     "ROCK_TIME_ZONE": lambda: os.getenv("ROCK_TIME_ZONE", "Asia/Shanghai"),
+    # Standard POSIX TZ — passed to Docker containers so system commands (date, etc.) reflect the expected timezone
+    "TZ": lambda: os.getenv("TZ", "CST-8"),
     "ROCK_DOCUUM_INSTALL_URL": lambda: os.getenv(
         "ROCK_DOCUUM_INSTALL_URL", "https://raw.githubusercontent.com/stepchowfun/docuum/main/install.sh"
     ),

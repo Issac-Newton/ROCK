@@ -30,3 +30,30 @@ def test_service_status_dir_default():
         if original_env is not None:
             os.environ["ROCK_SERVICE_STATUS_DIR"] = original_env
             env_vars.ROCK_SERVICE_STATUS_DIR = original_env
+
+
+def test_tz_default():
+    original_tz = os.environ.pop("TZ", None)
+    try:
+        env_vars.__dict__.pop("TZ", None)
+
+        assert env_vars.TZ == "CST-8"
+    finally:
+        env_vars.__dict__.pop("TZ", None)
+        if original_tz is not None:
+            os.environ["TZ"] = original_tz
+
+
+def test_tz_reads_from_system_env():
+    original_tz = os.environ.get("TZ")
+    os.environ["TZ"] = "UTC"
+    try:
+        env_vars.__dict__.pop("TZ", None)
+
+        assert env_vars.TZ == "UTC"
+    finally:
+        env_vars.__dict__.pop("TZ", None)
+        if original_tz is None:
+            os.environ.pop("TZ", None)
+        else:
+            os.environ["TZ"] = original_tz

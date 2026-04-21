@@ -18,6 +18,7 @@ from rock.common.constants import DeploymentHookStep
 from rock.deployments.abstract import AbstractDeployment
 from rock.deployments.config import DockerDeploymentConfig
 from rock.deployments.constants import Port, Status
+from rock.deployments.docker_client import TempAuthDockerClient, TempAuthDockerClientError
 from rock.deployments.hooks.abstract import CombinedDeploymentHook, DeploymentHook
 from rock.deployments.runtime_env import DockerRuntimeEnv, LocalRuntimeEnv, PipRuntimeEnv, UvRuntimeEnv
 from rock.deployments.sandbox_validator import DockerSandboxValidator
@@ -38,7 +39,6 @@ from rock.utils import (
     timeout,
     wait_until_alive,
 )
-from rock.deployments.docker_client import TempAuthDockerClient, TempAuthDockerClientError
 
 __all__ = ["DockerDeployment", "DockerDeploymentConfig"]
 CHECK_CLEAR_INTERVAL_SECONDS = 300
@@ -57,7 +57,7 @@ class DockerDeployment(AbstractDeployment):
         Args:
             **kwargs: Keyword arguments (see `DockerDeploymentConfig` for details).
         """
-        registry_password = kwargs.pop('registry_password', None)
+        registry_password = kwargs.pop("registry_password", None)
         self._config = DockerDeploymentConfig(**kwargs)
         if registry_password:
             self._config.registry_password = registry_password
@@ -252,16 +252,14 @@ class DockerDeployment(AbstractDeployment):
             )
             return
 
-        self._service_status.update_status(
-            phase_name="image_pull", status=Status.RUNNING, message="image pull running"
-        )
+        self._service_status.update_status(phase_name="image_pull", status=Status.RUNNING, message="image pull running")
         logger.info(f"Pulling image {self._config.image!r}")
 
         try:
             with Timer(description=f"[{self._config.image}] Image pull"):
                 # Parse registry from image name
                 registry, _ = ImageUtil.parse_registry_and_others(self._config.image)
-                
+
                 # Create temp auth client with credentials if available
                 with TempAuthDockerClient(
                     registry=registry if self._config.registry_username else None,
@@ -276,9 +274,7 @@ class DockerDeployment(AbstractDeployment):
 
         except (subprocess.CalledProcessError, TempAuthDockerClientError) as e:
             msg = f"Failed to pull image {self._config.image}: {e}"
-            self._service_status.update_status(
-                phase_name="image_pull", status=Status.FAILED, message=msg
-            )
+            self._service_status.update_status(phase_name="image_pull", status=Status.FAILED, message=msg)
             raise DockerPullError(msg) from e
 
     @property
@@ -415,6 +411,7 @@ class DockerDeployment(AbstractDeployment):
             ]
 
         env_arg.extend(["-e", f"ROCK_TIME_ZONE={env_vars.ROCK_TIME_ZONE}"])
+        env_arg.extend(["-e", f"TZ={env_vars.TZ}"])
 
         # Kata DinD: prepare disk image and add volume mount + env var
         if self._config.use_kata_runtime:

@@ -1,3 +1,5 @@
+import os
+
 import pytest
 
 from rock import env_vars
@@ -48,6 +50,63 @@ async def test_docker_deployment(container_name):
     close_session_request = CloseBashSessionRequest(session_type="bash")
     await d.runtime.close_session(close_session_request)
     await d.stop()
+
+
+@pytest.mark.need_docker
+async def test_docker_deployment_passes_tz_env_to_container(container_name):
+    original_tz = os.environ.get("TZ")
+    os.environ["TZ"] = "EST5EDT"
+    try:
+        env_vars.__dict__.pop("TZ", None)
+
+        deployment_config = DockerDeploymentConfig(
+            image=env_vars.ROCK_ENVHUB_DEFAULT_DOCKER_IMAGE,
+            container_name=container_name,
+        )
+        d = get_deployment(deployment_config)
+        try:
+            await d.start()
+            assert await d.is_alive()
+
+            command = Command(command=["/bin/sh", "-lc", 'printf %s "$TZ"'])
+            tz_result = await d.runtime.execute(command)
+
+            assert tz_result.stdout.strip() == "EST5EDT"
+        finally:
+            await d.stop()
+    finally:
+        env_vars.__dict__.pop("TZ", None)
+        if original_tz is None:
+            os.environ.pop("TZ", None)
+        else:
+            os.environ["TZ"] = original_tz
+
+
+@pytest.mark.need_docker
+async def test_docker_deployment_tz_defaults_to_cst8_when_unset(container_name):
+    original_tz = os.environ.pop("TZ", None)
+    try:
+        env_vars.__dict__.pop("TZ", None)
+
+        deployment_config = DockerDeploymentConfig(
+            image=env_vars.ROCK_ENVHUB_DEFAULT_DOCKER_IMAGE,
+            container_name=container_name,
+        )
+        d = get_deployment(deployment_config)
+        try:
+            await d.start()
+            assert await d.is_alive()
+
+            command = Command(command=["/bin/sh", "-lc", 'printf %s "$TZ"'])
+            tz_result = await d.runtime.execute(command)
+
+            assert tz_result.stdout.strip() == "CST-8"
+        finally:
+            await d.stop()
+    finally:
+        env_vars.__dict__.pop("TZ", None)
+        if original_tz is not None:
+            os.environ["TZ"] = original_tz
 
 
 def test_docker_deployment_config_platform():
