@@ -29,28 +29,29 @@ TZ=Europe/London
 ### POSIX 格式
 
 ```
-TZ=CST-8
+TZ=<+08>-8
 TZ=EST5EDT
 TZ=UTC0
 ```
 
 - 直接在字符串中描述时区偏移规则，不依赖任何外部文件
 - 格式为 `<缩写><偏移>[<夏令时缩写>[<夏令时偏移>][,<切换规则>]]`
-- **注意 POSIX 偏移符号与 ISO 8601 相反**：`CST-8` 表示 UTC**+**8（负号 = 东偏移）
+- **注意 POSIX 偏移符号与 ISO 8601 相反**：`<+08>-8` 表示 UTC**+**8（负号 = 东偏移）
 - 不包含历史规则，表达的是固定偏移或简单的夏令时切换
 - 任何 Linux 系统均可解析，无需 tzdata
-- **缩写部分是任意字母串**（至少 3 个字符），glibc 不校验其是否为真实时区缩写。例如 `XXX-8` 与 `CST-8` 的偏移计算完全一致，唯一区别是 `date` 等命令输出的时区标识不同。默认选择 `CST` 是因为它是 China Standard Time 的惯用缩写，语义更清晰：
+- **缩写部分是任意标识符**，glibc 不校验其是否为真实时区缩写。使用 `<>` 角括号语法可以包含数字和符号。默认选择 `<+08>` 是因为它直接表达 UTC+8 含义，`date` 输出一目了然：
 
   ```bash
-  TZ=CST-8 date    # → Mon Apr 21 15:00:00 CST 2026   ← 缩写显示为 CST
-  TZ=XXX-8 date    # → Mon Apr 21 15:00:00 XXX 2026   ← 缩写显示为 XXX，时间相同
+  TZ='<+08>-8' date  # → Mon Apr 21 15:00:00 +08 2026   ← 缩写显示为 +08，直观
+  TZ=CST-8 date      # → Mon Apr 21 15:00:00 CST 2026   ← CST 有歧义（China/Central/Cuba）
+  TZ=XXX-8 date      # → Mon Apr 21 15:00:00 XXX 2026   ← 无意义缩写
   ```
 
 ### 本项目的选择
 
 | 变量 | 格式 | 默认值 | 消费方 | 原因 |
 |------|------|--------|--------|------|
-| `TZ` | POSIX | `CST-8` | 容器内系统命令（`date`、`ls -l`、`stat`） | 不依赖 tzdata，适配不可控镜像 |
+| `TZ` | POSIX | `<+08>-8` | 容器内系统命令（`date`、`ls -l`、`stat`） | 不依赖 tzdata，适配不可控镜像 |
 | `ROCK_TIME_ZONE` | IANA | `Asia/Shanghai` | Python 应用层（`pytz`、`zoneinfo`、logger） | Python 库需要 IANA 名称 |
 
 两者不能合并：POSIX 格式无法被 `pytz.timezone()` / `zoneinfo.ZoneInfo()` 解析；IANA 格式在无 tzdata 的容器内会静默回退为 UTC。
@@ -61,10 +62,10 @@ TZ=UTC0
 
 | 文件 | 修改类型 | 说明 |
 |------|------|------|
-| `rock/env_vars.py` | 修改 | 新增 `TZ` 环境变量读取，默认值为 `CST-8` |
+| `rock/env_vars.py` | 修改 | 新增 `TZ` 环境变量读取，默认值为 `<+08>-8` |
 | `rock/deployments/docker.py` | 修改 | 在 `docker run` 环境变量中追加 `TZ={env_vars.TZ}` |
 | `tests/unit/test_envs.py` | 修改 | 验证 `TZ` 默认值和系统环境读取逻辑 |
-| `tests/unit/rocklet/test_docker_deployment.py` | 修改 | 验证真实 Docker 容器内可读取到 `TZ=CST-8` |
+| `tests/unit/rocklet/test_docker_deployment.py` | 修改 | 验证真实 Docker 容器内可读取到 `TZ=<+08>-8` |
 
 ---
 
@@ -75,12 +76,12 @@ TZ=UTC0
 文件：`rock/env_vars.py`
 
 ```python
-"TZ": lambda: os.getenv("TZ", "CST-8")
+"TZ": lambda: os.getenv("TZ", "<+08>-8")
 ```
 
 含义：
 - 优先读取宿主机当前环境中的 `TZ`
-- 若未设置，则回退到 `CST-8`
+- 若未设置，则回退到 `<+08>-8`
 
 ### 变更 2：Docker sandbox 透传 `TZ`
 
@@ -97,7 +98,59 @@ env_arg.extend(["-e", f"TZ={env_vars.TZ}"])
 
 ---
 
-## Why POSIX (`CST-8`) Instead of IANA (`Asia/Shanghai`)
+## POSIX TZ 偏移算法
+
+POSIX TZ 的偏移符号与日常用法（ISO 8601）**相反**，这是理解 `<+08>-8` 的关键。
+
+### 核心公式
+
+POSIX 定义偏移量为"从本地时间换算到 UTC 所需加上的小时数"：
+
+```
+本地时间 + POSIX偏移 = UTC
+```
+
+因此：
+- 东八区（UTC+8）：本地 15:00 + (-8) = UTC 07:00 → POSIX 偏移为 `-8`
+- 美东（UTC-5）：本地 07:00 + 5 = UTC 12:00 → POSIX 偏移为 `5`
+- 格林威治（UTC+0）：本地 12:00 + 0 = UTC 12:00 → POSIX 偏移为 `0`
+
+简言之：**POSIX 符号 = ISO 符号取反**。
+
+### 常见时区的 POSIX TZ 值
+
+| 时区 | ISO 表示 | POSIX TZ | `date` 输出示例 |
+|------|----------|----------|-----------------|
+| 北京 (UTC+8) | +08:00 | `<+08>-8` | `15:00:00 +08` |
+| 东京 (UTC+9) | +09:00 | `<+09>-9` | `16:00:00 +09` |
+| 纽约 (UTC-5) | -05:00 | `EST5EDT` | `02:00:00 EST` |
+| 伦敦 (UTC+0) | +00:00 | `GMT0` | `07:00:00 GMT` |
+
+### 格式结构
+
+```
+TZ = <缩写><偏移> [<夏令时缩写>[<夏令时偏移>] [,<切换规则>]]
+```
+
+| 部分 | 规则 | 示例 |
+|------|------|------|
+| 缩写 | 3+ 字符，任意命名。含数字/符号时须用 `<>` 包裹 | `EST`、`<+08>` |
+| 偏移 | `[+\|-]hh[:mm[:ss]]`。正 = 西偏移（UTC-），负 = 东偏移（UTC+） | `-8`、`5` |
+| 夏令时 | 可选。缩写 + 偏移 + 切换规则 | `EDT,M3.2.0,M11.1.0` |
+
+### 为什么选择 `<+08>` 作为缩写
+
+POSIX 缩写部分是给 `date` 等命令显示用的标签，glibc 不校验其正确性。使用 `<+08>` 相比传统缩写的优势：
+
+| 缩写 | `date` 输出 | 问题 |
+|------|-------------|------|
+| `CST` | `15:00:00 CST` | CST 可指 China / Central (US) / Cuba Standard Time，有歧义 |
+| `XXX` | `15:00:00 XXX` | 无意义 |
+| `<+08>` | `15:00:00 +08` | 直接表达 UTC+8，无歧义 |
+
+---
+
+## Why POSIX (`<+08>-8`) Instead of IANA (`Asia/Shanghai`)
 
 1. **镜像不可控**
    - 无法保证业务镜像都带 `tzdata`（提供 `/usr/share/zoneinfo/` 数据）
@@ -121,17 +174,17 @@ env_arg.extend(["-e", f"TZ={env_vars.TZ}"])
 
 - 清除宿主机环境中的 `TZ`
 - 读取 `env_vars.TZ`
-- 预期结果：`CST-8`
+- 预期结果：`<+08>-8`
 
 ### 用例 2：读取宿主机环境
 
-- 宿主机设置 `TZ=CST-8`
+- 宿主机设置 `TZ=<+08>-8`
 - 读取 `env_vars.TZ`
-- 预期结果：`CST-8`
+- 预期结果：`<+08>-8`
 
 ### 用例 3：真实 Docker 容器验证
 
-- 设置宿主机环境 `TZ=CST-8`
+- 设置宿主机环境 `TZ=<+08>-8`
 - 启动真实 Docker sandbox
 - 在容器内执行：
 
@@ -139,7 +192,7 @@ env_arg.extend(["-e", f"TZ={env_vars.TZ}"])
 /bin/sh -lc 'printf %s "$TZ"'
 ```
 
-- 预期结果：输出 `CST-8`
+- 预期结果：输出 `<+08>-8`
 
 ---
 

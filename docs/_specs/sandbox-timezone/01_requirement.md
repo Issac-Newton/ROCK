@@ -15,7 +15,7 @@ ROCK 的 Docker sandbox 启动流程此前只向容器传递了 `ROCK_TIME_ZONE`
 
 在方案评估过程中，主要有两类候选路径：
 
-1. **当前方案**：向 `docker run` 传递标准环境变量 `TZ`，默认值设置为 `CST-8`
+1. **当前方案**：向 `docker run` 传递标准环境变量 `TZ`，默认值设置为 `<+08>-8`
 2. **备选方案**：向 `docker run` 传递 `TZ=Asia/Shanghai`，并依赖镜像内存在 `tzdata` / zoneinfo 数据
 
 ---
@@ -26,11 +26,11 @@ ROCK 的 Docker sandbox 启动流程此前只向容器传递了 `ROCK_TIME_ZONE`
 
 1. **Docker sandbox 启动时传递标准 `TZ` 环境变量**
    - 从宿主机当前系统环境读取 `TZ`
-   - 当宿主机未设置 `TZ` 时，默认使用 `CST-8`
+   - 当宿主机未设置 `TZ` 时，默认使用 `<+08>-8`
 
 2. **保持现有 `ROCK_TIME_ZONE` 行为不变**
    - `ROCK_TIME_ZONE` 使用 IANA 时区名（如 `Asia/Shanghai`），供 ROCK 日志、调度器、时间戳格式化等 Python 应用层逻辑使用
-   - `TZ` 使用 POSIX 格式（如 `CST-8`），供容器内系统层使用
+   - `TZ` 使用 POSIX 格式（如 `<+08>-8`），供容器内系统层使用
    - 两者职责不同，不做合并
 
 3. **让容器内文件时间和系统命令与用户时区一致**
@@ -54,12 +54,12 @@ ROCK 的 Docker sandbox 启动流程此前只向容器传递了 `ROCK_TIME_ZONE`
 
 ## Candidate Comparison
 
-### 方案 A：当前方案（`TZ=CST-8`）
+### 方案 A：当前方案（`TZ=<+08>-8`）
 
 **说明**：
 - 在 `docker run` 时传递 `-e TZ=<value>`
-- 默认值为 `CST-8`
-- `CST-8` 是 POSIX TZ 字符串，表达固定 `UTC+8`
+- 默认值为 `<+08>-8`
+- `<+08>-8` 是 POSIX TZ 字符串，表达固定 `UTC+8`
 
 **优点**：
 - 不依赖镜像内有 `tzdata`
@@ -70,7 +70,7 @@ ROCK 的 Docker sandbox 启动流程此前只向容器传递了 `ROCK_TIME_ZONE`
 **局限**：
 - 表达的是固定 `UTC+8`，不是完整 `Asia/Shanghai` 地理时区
 - 不包含历史夏令时/历史偏移规则
-- 输出的时区缩写可能是 `CST`，语义不如 `Asia/Shanghai` 直观
+- 输出的时区缩写为 `+08`，虽然直观但不如 `Asia/Shanghai` 标准
 
 ### 方案 B：`TZ=Asia/Shanghai` + `tzdata`
 
@@ -90,7 +90,7 @@ ROCK 的 Docker sandbox 启动流程此前只向容器传递了 `ROCK_TIME_ZONE`
 
 ### 差异总结
 
-| 维度 | 当前方案：`TZ=CST-8` | `TZ=Asia/Shanghai` + `tzdata` |
+| 维度 | 当前方案：`TZ=<+08>-8` | `TZ=Asia/Shanghai` + `tzdata` |
 |------|------|------|
 | 依赖镜像内 `tzdata` | 否 | 是 |
 | 适配不可控第三方镜像 | 强 | 弱 |
@@ -115,7 +115,7 @@ ROCK 的 Docker sandbox 启动流程此前只向容器传递了 `ROCK_TIME_ZONE`
    - 也不能要求调用方为了时区能力重新构建镜像
 
 3. **当前方案在约束下成功率最高**
-   - `CST-8` 不依赖 zoneinfo 数据库
+   - `<+08>-8` 不依赖 zoneinfo 数据库
    - 对最小依赖场景更稳
    - 可以直接通过 `docker run` 环境变量完成
 
@@ -128,7 +128,7 @@ ROCK 的 Docker sandbox 启动流程此前只向容器传递了 `ROCK_TIME_ZONE`
 ## Acceptance Criteria
 
 - **AC1**：Docker sandbox 启动时，`docker run` 包含 `TZ` 环境变量
-- **AC2**：当宿主机未设置 `TZ` 时，传入容器的默认值为 `CST-8`
+- **AC2**：当宿主机未设置 `TZ` 时，传入容器的默认值为 `<+08>-8`
 - **AC3**：当宿主机设置了 `TZ` 时，容器内读取到的值与宿主机一致
 - **AC4**：容器内执行 `printf %s "$TZ"` 返回期望值
 - **AC5**：容器内文件修改时间（`ls -l`、`stat`）按 `TZ` 指定的时区显示，前端获取后无时差偏差
@@ -148,7 +148,7 @@ ROCK 的 Docker sandbox 启动流程此前只向容器传递了 `ROCK_TIME_ZONE`
 
 ## Risks & Rollout
 
-- **风险**：`CST-8` 仅表达固定东八区，不是完整 `Asia/Shanghai` 语义
+- **风险**：`<+08>-8` 仅表达固定东八区，不是完整 `Asia/Shanghai` 语义
 - **风险**：部分应用若显式依赖 IANA zone name，仍可能需要上层自行处理
 - **回滚**：仅涉及 `rock/env_vars.py` 与 `rock/deployments/docker.py`，回滚成本低
 - **上线策略**：无数据库变更，无协议破坏，可直接随 admin / deployment 代码发布

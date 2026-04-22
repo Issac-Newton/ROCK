@@ -37,7 +37,7 @@ def test_tz_default():
     try:
         env_vars.__dict__.pop("TZ", None)
 
-        assert env_vars.TZ == "CST-8"
+        assert env_vars.TZ == "<+08>-8"
     finally:
         env_vars.__dict__.pop("TZ", None)
         if original_tz is not None:

@@ -83,7 +83,7 @@ async def test_docker_deployment_passes_tz_env_to_container(container_name):
 
 
 @pytest.mark.need_docker
-async def test_docker_deployment_tz_defaults_to_cst8_when_unset(container_name):
+async def test_docker_deployment_tz_defaults_to_plus08_when_unset(container_name):
     original_tz = os.environ.pop("TZ", None)
     try:
         env_vars.__dict__.pop("TZ", None)
@@ -100,7 +100,7 @@ async def test_docker_deployment_tz_defaults_to_cst8_when_unset(container_name):
             command = Command(command=["/bin/sh", "-lc", 'printf %s "$TZ"'])
             tz_result = await d.runtime.execute(command)
 
-            assert tz_result.stdout.strip() == "CST-8"
+            assert tz_result.stdout.strip() == "<+08>-8"
         finally:
             await d.stop()
     finally:
