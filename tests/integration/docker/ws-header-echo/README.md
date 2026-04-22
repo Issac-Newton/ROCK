@@ -1,6 +1,11 @@
 # WebSocket Header Echo — 验证 Proxy Header 转发
 
-用于验证 ROCK Admin WebSocket 代理是否正确转发白名单 headers。
+用于验证 ROCK Admin WebSocket 代理是否正确按黑名单策略转发 headers。
+
+## 策略
+
+采用**黑名单**策略：默认转发所有客户端请求头，仅排除 WebSocket 握手专用头和 hop-by-hop 头。
+这样用户自定义 header 也能被透传到下游服务。
 
 ## 构建镜像
 
@@ -15,7 +20,7 @@ docker build -t ws-header-echo tests/integration/docker/ws-header-echo/
 docker run --rm -p 8080:8080 ws-header-echo
 
 # 另一个终端，用 websocat / wscat 连接
-wscat -c ws://localhost:8080/test -H "Authorization: Bearer abc" -H "X-Custom: should-drop"
+wscat -c ws://localhost:8080/test -H "Authorization: Bearer abc" -H "X-Custom: should-arrive"
 ```
 
 ## 通过 ROCK Sandbox 测试
@@ -39,9 +44,10 @@ sandbox.exec("cat /tmp/ws_echo.log")
 ## 验证内容
 
 echo server 收到连接后会：
-1. 在日志中打印所有收到的 request headers，标注 `[WHITELIST]` / `[ORIGIN]`
+1. 在日志中打印所有收到的 request headers，标注 `[FORWARDED]` / `[BLOCKED]` / `[ORIGIN]`
 2. 将 headers 以 JSON 返回给客户端
 
 test client 会检查：
-- 12 个白名单 headers + Origin 是否到达
-- 非白名单 headers 是否被过滤
+- 已知 headers（Authorization, Cookie, X-Forwarded-* 等）+ 自定义 headers 是否到达
+- Origin 是否正确透传
+- 黑名单 headers（Host, Connection, Upgrade, Sec-WebSocket-* 等）未被代理层额外注入

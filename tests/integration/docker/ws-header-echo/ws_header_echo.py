@@ -17,19 +17,21 @@ logging.basicConfig(
 )
 logger = logging.getLogger("ws-header-echo")
 
-FORWARDED_WS_HEADER_NAMES = {
-    "authorization",
-    "cookie",
-    "x-forwarded-for",
-    "x-forwarded-host",
-    "x-forwarded-proto",
-    "x-real-ip",
-    "x-request-id",
-    "traceparent",
-    "tracestate",
-    "eagleeye-traceid",
-    "eagleeye-rpcid",
-    "eagleeye-userdata",
+BLOCKED_WS_HEADER_NAMES = {
+    "host",
+    "connection",
+    "upgrade",
+    "sec-websocket-key",
+    "sec-websocket-version",
+    "sec-websocket-extensions",
+    "sec-websocket-protocol",
+    "transfer-encoding",
+    "te",
+    "trailer",
+    "keep-alive",
+    "proxy-authorization",
+    "proxy-connection",
+    "content-length",
 }
 
 HOST = "0.0.0.0"
@@ -51,26 +53,21 @@ async def handler(websocket):
         lower_key = key.lower()
         if lower_key == "origin":
             tag = " [ORIGIN]"
-        elif lower_key in FORWARDED_WS_HEADER_NAMES:
-            tag = " [WHITELIST]"
+        elif lower_key in BLOCKED_WS_HEADER_NAMES:
+            tag = " [BLOCKED]"
+        else:
+            tag = " [FORWARDED]"
         logger.info("  %-30s : %s%s", key, value, tag)
     logger.info("-" * 60)
 
-    whitelist_found = {k: v for k, v in headers.items() if k.lower() in FORWARDED_WS_HEADER_NAMES}
     origin = headers.get("origin") or headers.get("Origin")
-    non_whitelist = {
-        k: v
-        for k, v in headers.items()
-        if k.lower() not in FORWARDED_WS_HEADER_NAMES
-        and k.lower() != "origin"
-        and not k.lower().startswith("sec-websocket")
-        and k.lower() not in ("host", "connection", "upgrade")
-    }
+    blocked = {k: v for k, v in headers.items() if k.lower() in BLOCKED_WS_HEADER_NAMES}
+    forwarded = {k: v for k, v in headers.items() if k.lower() not in BLOCKED_WS_HEADER_NAMES and k.lower() != "origin"}
 
     logger.info("SUMMARY:")
-    logger.info("  Origin:              %s", origin or "(not present)")
-    logger.info("  Whitelist headers:   %d found %s", len(whitelist_found), list(whitelist_found.keys()))
-    logger.info("  Non-whitelist extra: %d found %s", len(non_whitelist), list(non_whitelist.keys()))
+    logger.info("  Origin:            %s", origin or "(not present)")
+    logger.info("  Forwarded headers: %d found %s", len(forwarded), list(forwarded.keys()))
+    logger.info("  Blocked headers:   %d found %s", len(blocked), list(blocked.keys()))
     logger.info("=" * 60)
 
     response = {
@@ -80,10 +77,10 @@ async def handler(websocket):
         "headers": headers,
         "analysis": {
             "origin": origin,
-            "whitelist_headers": whitelist_found,
-            "non_whitelist_headers": non_whitelist,
-            "whitelist_count": len(whitelist_found),
-            "non_whitelist_count": len(non_whitelist),
+            "forwarded_headers": forwarded,
+            "blocked_headers": blocked,
+            "forwarded_count": len(forwarded),
+            "blocked_count": len(blocked),
         },
     }
 
@@ -99,7 +96,7 @@ async def handler(websocket):
 
 async def main():
     logger.info("Starting WebSocket Header Echo Server on %s:%d", HOST, PORT)
-    logger.info("Whitelisted header names: %s", sorted(FORWARDED_WS_HEADER_NAMES))
+    logger.info("Blocked header names: %s", sorted(BLOCKED_WS_HEADER_NAMES))
 
     stop = asyncio.get_event_loop().create_future()
 

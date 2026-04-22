@@ -7,3 +7,8 @@ ray:
 warmup:
     images:
       - "python:3.11"
+
+redis:
+    host: r-8vbig82p1n760lhfyb.redis.zhangbei.rds.aliyuncs.com
+    port: 6379
+    password: Admin@gal

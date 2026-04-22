@@ -110,6 +110,88 @@ async def http_proxy(self, sandbox_id, target_path, body, headers, method="POST"
     ...
 ```
 
+### 变更 4：WebSocket proxy 通用 headers 黑名单过滤透传
+
+需要在 `sandbox_proxy_service.websocket_proxy()` 内新增一层 header 提取和过滤逻辑，将客户端握手里的"通用请求头"转为上游二跳握手参数。
+
+**设计要点**：
+
+1. **将 `Origin` 单独处理**
+   - `websockets.connect()` 在 15.0.1 版本里提供 `origin=` 参数
+   - `Origin` 不作为普通 `additional_headers` 重复透传，避免语义混乱和重复 header
+
+2. **其余头走黑名单过滤**
+   - 黑名单：WebSocket 握手专用头（`Host`、`Connection`、`Upgrade`、`Sec-WebSocket-Key`、`Sec-WebSocket-Version`、`Sec-WebSocket-Extensions`、`Sec-WebSocket-Protocol`）和 hop-by-hop 头（`Transfer-Encoding`、`TE`、`Trailer`、`Keep-Alive`、`Proxy-Authorization`、`Proxy-Connection`、`Content-Length`）
+   - 不在黑名单中的头默认转发，确保用户自定义 header 能到达下游
+
+3. **无可转发头时保持兼容**
+   - 若客户端未携带任何非黑名单头，则 `origin=None`、`additional_headers=None`
+   - 这样代理行为与当前实现保持一致，不引入额外副作用
+
+**实现代码**（`rock/sandbox/utils/proxy.py`）：
+
+```python
+BLOCKED_WS_HEADER_NAMES = {
+    "host",
+    "connection",
+    "upgrade",
+    "sec-websocket-key",
+    "sec-websocket-version",
+    "sec-websocket-extensions",
+    "sec-websocket-protocol",
+    "transfer-encoding",
+    "te",
+    "trailer",
+    "keep-alive",
+    "proxy-authorization",
+    "proxy-connection",
+    "content-length",
+}
+
+
+def build_upstream_ws_headers(client_websocket):
+    origin = client_websocket.headers.get("origin") or client_websocket.headers.get("Origin")
+    additional_headers = []
+
+    for key, value in client_websocket.headers.items():
+        lower_key = key.lower()
+        if lower_key == "origin":
+            continue
+        if lower_key in BLOCKED_WS_HEADER_NAMES:
+            continue
+        additional_headers.append((key, value))
+
+    return origin, additional_headers or None
+```
+
+接入方式：
+
+```python
+origin, additional_headers = build_upstream_ws_headers(client_websocket)
+
+async with websockets.connect(
+    target_url,
+    ping_interval=None,
+    ping_timeout=None,
+    origin=origin,
+    additional_headers=additional_headers,
+    subprotocols=upstream_subprotocols,
+) as target_websocket:
+    ...
+```
+
+### 变更 5：测试覆盖扩展
+
+现有测试主要覆盖子协议转发，需要补充 header 透传相关单测。
+
+**新增测试点**：
+- `Origin` 存在时，`websockets.connect()` 收到相同 `origin=`
+- 已知头（`Authorization`、`Cookie`、`X-Forwarded-*`、`X-Request-Id`、`Traceparent`、`EagleEye-*`）存在时，`websockets.connect()` 收到 `additional_headers`
+- 用户自定义头（如 `x-my-custom`）能被正常转发到下游
+- 黑名单头（`Host`、`Connection`、`Upgrade`、`Sec-WebSocket-Key`、`Sec-WebSocket-Version`、`Sec-WebSocket-Extensions` 等）不得出现在 `additional_headers`
+- `Sec-WebSocket-Protocol` 继续通过 `subprotocols=` 转发，不能出现在 `additional_headers`
+- 无可转发头时，`origin` / `additional_headers` 为 `None`，保持向后兼容
+
 ---
 
 ## Execution Plan
@@ -131,6 +213,16 @@ async def http_proxy(self, sandbox_id, target_path, body, headers, method="POST"
 - 有 `port` 时，改用 `http://{host_ip}:{rocklet_mapped_port}/http_proxy/{path}?port={port}`
 - 无 `port` 时保持原逻辑不变
 
+### Step 4：新增 WebSocket 通用 header 黑名单过滤与透传逻辑
+- 文件：`rock/sandbox/utils/proxy.py`（独立模块）、`rock/sandbox/service/sandbox_proxy_service.py`（调用方）
+- 新增 `build_upstream_ws_headers()` helper，负责从 `client_websocket.headers` 中提取 `Origin` 并通过黑名单过滤 `additional_headers`
+- 在 `websocket_proxy()` 调用 `websockets.connect()` 时传入 `origin=` 和 `additional_headers=`
+- 保持现有 `subprotocols=` 协商逻辑不变
+
+### Step 5：补充 WebSocket header 透传测试
+- 文件：`tests/unit/sandbox/test_websocket_proxy_headers.py`
+- 新增 `Origin` 透传、已知 header 透传、自定义 header 透传、黑名单 header 过滤、兼容性测试
+
 ---
 
 ## Rollback & Compatibility
@@ -147,3 +239,6 @@ async def http_proxy(self, sandbox_id, target_path, body, headers, method="POST"
 - WebSocket proxy 自定义端口时，`path` 参数不生效（rocklet portforward 是纯 TCP 隧道，不感知 HTTP path）
 - rocklet `/http_proxy` 端点的 `port` 参数需要校验（复用 `validate_port_forward_port`）
 - rocklet 镜像需要重新发布才能生效
+- WebSocket header 透传采用黑名单策略，排除握手专用头和 hop-by-hop 头，允许用户自定义 header 透传
+- `Origin` 应通过 `websockets.connect(origin=...)` 传入；不要与 `additional_headers` 重复
+- `Sec-WebSocket-Protocol` 必须继续通过 `subprotocols=` 传递，避免和普通 header 透传逻辑冲突
