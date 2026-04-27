@@ -210,8 +210,11 @@ class SandboxProxyService:
         port: int | None = None,
         forward_ws_headers: bool = True,
     ):
+        logger.info("Starting WebSocket proxy: sandbox_id=%s, target_path=%s, port=%s", sandbox_id, target_path, port)
         target_url = await self.get_sandbox_websocket_url(sandbox_id, target_path, port=port)
-
+        logger.info(
+            f"WebSocket proxy target URL: {target_url} for sandbox_id: {sandbox_id}, target_path: {target_path}, port: {port}"
+        )
         client_subprotocols = getattr(client_websocket, "subprotocols", []) or []
         upstream_subprotocols = client_subprotocols if client_subprotocols else ["binary", "base64"]
         if forward_ws_headers:
