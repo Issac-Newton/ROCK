@@ -95,6 +95,8 @@ class _ImageResolver:
     对于 dockerfile image，启动一个 builder sandbox 完成 DinD 构建和推送。
     """
 
+    BUILD_SESSION = "build"
+
     def __init__(
         self,
         *,
@@ -110,10 +112,12 @@ class _ImageResolver:
         self._builder_image = builder_image
         self._sandbox_factory = _sandbox_factory
 
-    async def resolve(self, image: Image) -> str:
-        if not image.needs_build:
-            return image.image_name
+    def create_builder(self) -> Sandbox:
+        """Construct (but do not start) the builder sandbox.
 
+        Exposed so callers can start, customise (e.g. inject test-only NAT rules), then
+        hand the running builder to :meth:`resolve_with_builder`.
+        """
         builder_image = self._builder_image or env_vars.ROCK_IMAGE_BUILDER_IMAGE
         builder_cfg = SandboxConfig(
             image=builder_image,
@@ -124,35 +128,54 @@ class _ImageResolver:
             auto_clear_seconds=60 * 30,
         )
         factory = self._sandbox_factory or Sandbox
-        builder = factory(builder_cfg)
-        session = "build"
+        return factory(builder_cfg)
+
+    async def resolve(self, image: Image) -> str:
+        """Resolve `image` by managing the builder lifecycle internally."""
+        if not image.needs_build:
+            return image.image_name
+
+        builder = self.create_builder()
         try:
             await builder.start()
-            await builder.create_session(CreateBashSessionRequest(session=session))
-
-            # ── Phase 1: Start dockerd ──
-            await self._run_script(builder, session, _DOCKERD_SCRIPT, "/tmp/rock_dockerd.sh", "DOCKERD_OK", 120)
-
-            # ── Phase 2: Build image ──
-            content_hash = image.content_hash()
-            context_path = await self._upload_context(builder, session, image)
-            build_script = self._gen_build_script(image, content_hash, context_path)
-            build_output = await self._run_script(builder, session, build_script, "/tmp/rock_build.sh", "BUILD_OK", 600)
-            if "CACHE_HIT" in build_output:
-                logger.info("Image %s cache hit, skipping push", image.image_name)
-                return image.image_name
-
-            # ── Phase 3: Login and push ──
-            push_script = self._gen_push_script(image)
-            await self._run_script(builder, session, push_script, "/tmp/rock_push.sh", "PUSH_OK", 300)
-
-            logger.info("Successfully built and pushed image %s", image.image_name)
-            return image.image_name
+            return await self.resolve_with_builder(image, builder)
         finally:
             try:
                 await builder.stop()
             except Exception:
                 logger.warning("Failed to stop builder sandbox: %s", builder.sandbox_id, exc_info=True)
+
+    async def resolve_with_builder(self, image: Image, builder: Sandbox) -> str:
+        """Run the build/push pipeline against an externally-managed, already-started
+        builder sandbox.
+
+        The caller owns `builder`'s lifecycle (start/stop) and is free to perform any
+        environment-specific setup (firewall rules, mounts, etc.) before calling this.
+        """
+        if not image.needs_build:
+            return image.image_name
+
+        session = self.BUILD_SESSION
+        await builder.create_session(CreateBashSessionRequest(session=session))
+
+        # ── Phase 1: Start dockerd ──
+        await self._run_script(builder, session, _DOCKERD_SCRIPT, "/tmp/rock_dockerd.sh", "DOCKERD_OK", 120)
+
+        # ── Phase 2: Build image ──
+        content_hash = image.content_hash()
+        context_path = await self._upload_context(builder, session, image)
+        build_script = self._gen_build_script(image, content_hash, context_path)
+        build_output = await self._run_script(builder, session, build_script, "/tmp/rock_build.sh", "BUILD_OK", 600)
+        if "CACHE_HIT" in build_output:
+            logger.info("Image %s cache hit, skipping push", image.image_name)
+            return image.image_name
+
+        # ── Phase 3: Login and push ──
+        push_script = self._gen_push_script(image)
+        await self._run_script(builder, session, push_script, "/tmp/rock_push.sh", "PUSH_OK", 300)
+
+        logger.info("Successfully built and pushed image %s", image.image_name)
+        return image.image_name
 
     async def _run_script(
         self, builder, session: str, script: str, remote_path: str, success_marker: str, timeout: int

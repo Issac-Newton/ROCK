@@ -175,6 +175,11 @@ class Sandbox(AbstractSandbox):
                 cluster=self.config.cluster,
                 extra_headers=self.config.extra_headers,
             )
+            # Sync image's registry credentials to SandboxConfig so admin can pull the
+            # built image. Don't override caller-provided creds.
+            if image_obj.registry_username and not self.config.registry_username:
+                self.config.registry_username = image_obj.registry_username
+                self.config.registry_password = image_obj.registry_password
 
         url = f"{self._url}/start_async"
         headers = self._build_headers()
