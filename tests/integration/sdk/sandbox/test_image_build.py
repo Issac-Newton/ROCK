@@ -18,6 +18,8 @@ from rock.logger import init_logger
 from rock.sdk.sandbox.client import Sandbox
 from rock.sdk.sandbox.config import SandboxConfig
 from rock.sdk.sandbox.image import Image
+from rock.sdk.sandbox.image_resolver import _ImageResolver
+from rock.utils import ImageUtil
 
 logger = init_logger(__name__)
 
@@ -39,9 +41,19 @@ def _create_image(env_dir, registry_info, **kwargs):
     )
 
 
-def _create_config(image, admin_remote_server):
+def _create_config(image, admin_remote_server, registry_info=None):
+    """Build a SandboxConfig for the just-built image.
+
+    `image` is the already-resolved tag string (we pre-build via _build_with_loopback_nat
+    so the SDK's auto-resolve path inside Sandbox.start() isn't triggered here).
+    `registry_info` carries the credentials admin needs to pull the image.
+    """
     base_url = f"{admin_remote_server.endpoint}:{admin_remote_server.port}"
-    return SandboxConfig(image=image, memory="2g", cpus=1.0, startup_timeout=600, base_url=base_url)
+    kwargs = dict(image=image, memory="2g", cpus=1.0, startup_timeout=600, base_url=base_url)
+    if registry_info:
+        kwargs["registry_username"] = registry_info["registry_username"]
+        kwargs["registry_password"] = registry_info["registry_password"]
+    return SandboxConfig(**kwargs)
 
 
 @asynccontextmanager
@@ -65,7 +77,56 @@ async def _assert_file_content(sandbox, expected):
     assert result.output.strip() == expected
 
 
-# ── Fixtures ──
+# ── Fixtures / helpers ──
+
+
+async def _inject_loopback_nat(builder, port: int) -> None:
+    """NAT 127.0.0.1:port → builder.host_ip:port inside the builder.
+
+    The local_registry fixture serves on the host's loopback (`localhost:port`, i.e.
+    127.0.0.1:port). That address falls in 127.0.0.0/8 which dockerd trusts as insecure
+    by default, but from inside the builder (its own netns) 127.0.0.1 is the builder's
+    own loopback with no listener. Three things make the loopback URL actually reach
+    the host's docker-proxy:
+      1. enable route_localnet (kernel default forbids routing 127.x off lo)
+      2. OUTPUT DNAT      127.0.0.1:port → host_ip:port   (rewrite outgoing dst)
+      3. POSTROUTING MASQUERADE for host_ip:port          (rewrite src so reply routes back)
+    """
+    host_ip = builder.host_ip
+    cmd = (
+        "echo 1 | tee /proc/sys/net/ipv4/conf/all/route_localnet "
+        "/proc/sys/net/ipv4/conf/lo/route_localnet > /dev/null && "
+        f"iptables -t nat -A OUTPUT -p tcp -d 127.0.0.1 --dport {port} "
+        f"-j DNAT --to-destination {host_ip}:{port} && "
+        f"iptables -t nat -A POSTROUTING -p tcp -d {host_ip} --dport {port} -j MASQUERADE"
+    )
+    logger.info("Injecting builder loopback NAT: 127.0.0.1:%s -> %s:%s", port, host_ip, port)
+    obs = await builder.arun(cmd=cmd, session=_ImageResolver.BUILD_SESSION, mode="normal")
+    if obs.exit_code != 0:
+        raise RuntimeError(f"NAT setup failed (exit_code={obs.exit_code}): {obs.failure_reason or obs.output}")
+
+
+async def _build_with_loopback_nat(image: Image, admin_remote_server) -> str:
+    """Drive the build using a builder we own so we can inject test-only NAT.
+
+    Returns the resolved image name (string) once build+push completes.
+    """
+    base_url = f"{admin_remote_server.endpoint}:{admin_remote_server.port}"
+    resolver = _ImageResolver(base_url=base_url, cluster="default")
+    builder = resolver.create_builder()
+    await builder.start()
+    try:
+        await builder.create_session(CreateBashSessionRequest(session=_ImageResolver.BUILD_SESSION))
+        registry, _ = ImageUtil.parse_registry_and_others(image.image_name)
+        host_part, _, port_part = (registry or "").partition(":")
+        if (host_part.startswith("127.") or host_part == "localhost") and port_part:
+            await _inject_loopback_nat(builder, int(port_part))
+        return await resolver.resolve_with_builder(image, builder)
+    finally:
+        try:
+            await builder.stop()
+        except Exception:
+            logger.warning("Failed to stop builder sandbox: %s", builder.sandbox_id, exc_info=True)
 
 
 @pytest.fixture
@@ -93,9 +154,10 @@ def modified_env_dir(tmp_path):
 @pytest.mark.need_admin
 @pytest.mark.asyncio
 async def test_from_dockerfile_build_and_start(local_registry_info, admin_remote_server):
-    """Image.from_dockerfile() → Sandbox.start() → verify COPY file accessible."""
+    """Image.from_dockerfile() → build/push (via test-managed builder) → Sandbox.start()."""
     image = _create_image(TEST_DATA_DIR, local_registry_info)
-    config = _create_config(image, admin_remote_server)
+    resolved = await _build_with_loopback_nat(image, admin_remote_server)
+    config = _create_config(resolved, admin_remote_server, local_registry_info)
     async with _run_sandbox(config) as sandbox:
         await _assert_file_content(sandbox, EXPECTED_FILE_CONTENT)
 
@@ -103,19 +165,18 @@ async def test_from_dockerfile_build_and_start(local_registry_info, admin_remote
 @pytest.mark.need_admin
 @pytest.mark.asyncio
 async def test_from_dockerfile_cache_skip(local_registry_info, admin_remote_server):
-    """Second start with same Image should skip build (cache hit)."""
+    """Second build of the same Image should hit cache (CACHE_HIT) and skip push."""
     image = _create_image(TEST_DATA_DIR, local_registry_info)
-    config = _create_config(image, admin_remote_server)
-
-    async with _run_sandbox(config):
-        first_duration = time.monotonic()
-    first_duration = time.monotonic() - first_duration
 
     t0 = time.monotonic()
-    async with _run_sandbox(config) as sandbox:
-        second_duration = time.monotonic() - t0
-        await _assert_file_content(sandbox, EXPECTED_FILE_CONTENT)
+    resolved = await _build_with_loopback_nat(image, admin_remote_server)
+    first_duration = time.monotonic() - t0
 
+    t0 = time.monotonic()
+    resolved2 = await _build_with_loopback_nat(image, admin_remote_server)
+    second_duration = time.monotonic() - t0
+
+    assert resolved == resolved2
     logger.info("First build: %.1fs, second build: %.1fs", first_duration, second_duration)
     assert second_duration < first_duration
 
@@ -125,6 +186,7 @@ async def test_from_dockerfile_cache_skip(local_registry_info, admin_remote_serv
 async def test_from_dockerfile_rebuilds_on_content_change(local_registry_info, admin_remote_server, modified_env_dir):
     """Content change in env_dir triggers rebuild, new file content is picked up."""
     image = _create_image(modified_env_dir, local_registry_info)
-    config = _create_config(image, admin_remote_server)
+    resolved = await _build_with_loopback_nat(image, admin_remote_server)
+    config = _create_config(resolved, admin_remote_server, local_registry_info)
     async with _run_sandbox(config) as sandbox:
         await _assert_file_content(sandbox, MODIFIED_CONTENT)
