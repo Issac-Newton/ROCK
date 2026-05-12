@@ -101,14 +101,14 @@ class Image(BaseModel):
                 h.update(f.read_bytes())
         return h.hexdigest()
 
-    async def resolve(
+    async def build(
         self,
         *,
         base_url: str,
         cluster: str,
         extra_headers: dict[str, str] | None = None,
     ) -> str:
-        """将 Image 解析为镜像 tag 字符串。
+        """将 Image 构建为镜像 tag 字符串。
 
         对于 base image 直接返回 image_name。
         对于 dockerfile image，启动 builder sandbox 完成 DinD 构建和推送。
@@ -116,14 +116,14 @@ class Image(BaseModel):
         if not self.needs_build:
             return self.image_name
 
-        from rock.sdk.sandbox.image_resolver import _ImageResolver
+        from rock.sdk.sandbox.image_builder import ImageBuilder
 
-        resolver = _ImageResolver(
+        builder = ImageBuilder(
             base_url=base_url,
             cluster=cluster,
             extra_headers=extra_headers,
         )
-        return await resolver.resolve(self)
+        return await builder.build(self)
 
     @model_serializer(mode="wrap")
     def _serialize(self, handler):

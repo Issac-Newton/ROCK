@@ -18,7 +18,7 @@ from rock.logger import init_logger
 from rock.sdk.sandbox.client import Sandbox
 from rock.sdk.sandbox.config import SandboxConfig
 from rock.sdk.sandbox.image import Image
-from rock.sdk.sandbox.image_resolver import _ImageResolver
+from rock.sdk.sandbox.image_builder import ImageBuilder
 from rock.utils import ImageUtil
 
 logger = init_logger(__name__)
@@ -101,7 +101,7 @@ async def _inject_loopback_nat(builder, port: int) -> None:
         f"iptables -t nat -A POSTROUTING -p tcp -d {host_ip} --dport {port} -j MASQUERADE"
     )
     logger.info("Injecting builder loopback NAT: 127.0.0.1:%s -> %s:%s", port, host_ip, port)
-    obs = await builder.arun(cmd=cmd, session=_ImageResolver.BUILD_SESSION, mode="normal")
+    obs = await builder.arun(cmd=cmd, session=ImageBuilder.BUILD_SESSION, mode="normal")
     if obs.exit_code != 0:
         raise RuntimeError(f"NAT setup failed (exit_code={obs.exit_code}): {obs.failure_reason or obs.output}")
 
@@ -112,16 +112,16 @@ async def _build_with_loopback_nat(image: Image, admin_remote_server) -> str:
     Returns the resolved image name (string) once build+push completes.
     """
     base_url = f"{admin_remote_server.endpoint}:{admin_remote_server.port}"
-    resolver = _ImageResolver(base_url=base_url, cluster="default")
-    builder = resolver.create_builder()
+    image_builder = ImageBuilder(base_url=base_url, cluster="default")
+    builder = image_builder.create_builder()
     await builder.start()
     try:
-        await builder.create_session(CreateBashSessionRequest(session=_ImageResolver.BUILD_SESSION))
+        await builder.create_session(CreateBashSessionRequest(session=ImageBuilder.BUILD_SESSION))
         registry, _ = ImageUtil.parse_registry_and_others(image.image_name)
         host_part, _, port_part = (registry or "").partition(":")
         if (host_part.startswith("127.") or host_part == "localhost") and port_part:
             await _inject_loopback_nat(builder, int(port_part))
-        return await resolver.resolve_with_builder(image, builder)
+        return await image_builder.build_with_builder(image, builder)
     finally:
         try:
             await builder.stop()

@@ -170,7 +170,7 @@ class Sandbox(AbstractSandbox):
 
         if isinstance(self.config.image, Image):
             image_obj = self.config.image
-            self.config.image = await image_obj.resolve(
+            self.config.image = await image_obj.build(
                 base_url=self.config.base_url,
                 cluster=self.config.cluster,
                 extra_headers=self.config.extra_headers,

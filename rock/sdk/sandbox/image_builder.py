@@ -88,7 +88,7 @@ echo "PUSH_OK"
 """
 
 
-class _ImageResolver:
+class ImageBuilder:
     """将 Image 声明解析为镜像 tag 字符串。
 
     对于 base image 直接返回 tag。
@@ -116,7 +116,7 @@ class _ImageResolver:
         """Construct (but do not start) the builder sandbox.
 
         Exposed so callers can start, customise (e.g. inject test-only NAT rules), then
-        hand the running builder to :meth:`resolve_with_builder`.
+        hand the running builder to :meth:`build_with_builder`.
         """
         builder_image = self._builder_image or env_vars.ROCK_IMAGE_BUILDER_IMAGE
         builder_cfg = SandboxConfig(
@@ -130,22 +130,22 @@ class _ImageResolver:
         factory = self._sandbox_factory or Sandbox
         return factory(builder_cfg)
 
-    async def resolve(self, image: Image) -> str:
-        """Resolve `image` by managing the builder lifecycle internally."""
+    async def build(self, image: Image) -> str:
+        """Build `image` by managing the builder lifecycle internally."""
         if not image.needs_build:
             return image.image_name
 
         builder = self.create_builder()
         try:
             await builder.start()
-            return await self.resolve_with_builder(image, builder)
+            return await self.build_with_builder(image, builder)
         finally:
             try:
                 await builder.stop()
             except Exception:
                 logger.warning("Failed to stop builder sandbox: %s", builder.sandbox_id, exc_info=True)
 
-    async def resolve_with_builder(self, image: Image, builder: Sandbox) -> str:
+    async def build_with_builder(self, image: Image, builder: Sandbox) -> str:
         """Run the build/push pipeline against an externally-managed, already-started
         builder sandbox.
 
