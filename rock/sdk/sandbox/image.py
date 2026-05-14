@@ -16,6 +16,13 @@ class Image(BaseModel):
                               registry_username="user", registry_password="pass")
     """
 
+    # TODO: 
+    ## image_name的方式需要修改下
+        # registry_url: 由用户传入或者使用系统默认的
+        # namespace: 由用户传入或者使用系统默认的
+        # repository: 使用user_id
+        # tag: 使用content_hash，先不允许用户传入，
+            #  需要调研下，使用content_hash是否会有冲突概率，也即是否可以认为当前方案是完备的
     image_name: str | None = None
     dockerfile_path: str | None = None
     force_build: bool = False

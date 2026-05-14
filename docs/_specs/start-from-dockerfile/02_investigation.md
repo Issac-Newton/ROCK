@@ -10,38 +10,97 @@
 
 ### Daytona
 
-**核心类型：**
+Daytona 暴露给用户的核心类型有两个：`Image`（客户端构建定义）和 `Snapshot`（服务端持久快照），二者位于不同抽象层。
+
+#### `Image` — 客户端声明对象
+
+`Image` 是 Pydantic BaseModel，**不直接构造**，通过静态工厂方法创建。它仅描述"如何构建"，不持有任何服务端 ID，本身**从不在 Daytona 服务端存在**。
 
 ```python
 class Image(BaseModel):
-    """不直接构造，通过静态工厂方法创建。"""
-    _dockerfile: str = PrivateAttr(default="")
-    _context_list: list[Context] = PrivateAttr(default_factory=list)
+    """不直接构造，通过 from_dockerfile / base / debian_slim 等工厂方法创建。"""
+    _dockerfile: str = PrivateAttr(default="")          # 生成或读取的 Dockerfile 内容
+    _context_list: list[Context] = PrivateAttr(default_factory=list)  # COPY 依赖的本地上下文文件
 
     @staticmethod
-    def from_dockerfile(path: str | Path) -> "Image": ...
+    def from_dockerfile(path: str | Path) -> "Image":
+        """读取 Dockerfile，自动提取 COPY 指令依赖的上下文文件。"""
     @staticmethod
-    def base(image: str) -> "Image": ...
+    def base(image: str) -> "Image":
+        """从已有镜像 tag 构造，等价于 `FROM {image}`。"""
+    @staticmethod
+    def debian_slim(python_version) -> "Image": ...
 
-class Resources:
-    cpu: int | None = None
-    memory: int | None = None   # GiB
-    disk: int | None = None     # GiB
-    gpu: int | None = None
+    # 链式调用追加 Dockerfile 指令
+    def pip_install(self, *packages) -> "Image": ...
+    def run_commands(self, *commands) -> "Image": ...
+    def add_local_file(self, local_path, remote_path) -> "Image": ...
+    def env(self, vars: dict) -> "Image": ...
+```
 
+#### `Snapshot` — 服务端持久对象
+
+`Snapshot` 继承自 OpenAPI 生成的 `SnapshotDto`，是 **Daytona 服务端的预配置沙箱快照**，在服务端**永久存在直到手动删除**。
+
+```python
+class Snapshot(SnapshotDto):
+    id: str
+    name: str
+    image_name: str
+    state: SnapshotState   # PENDING / BUILDING / ACTIVE / ERROR / BUILD_FAILED
+    size: float | None
+    cpu: int; gpu: int; mem: int; disk: int   # GiB
+    entrypoint: list[str] | None
+    created_at: str; updated_at: str; last_used_at: str
+
+class CreateSnapshotParams(BaseModel):
+    name: str
+    image: str | Image                  # str=已有镜像名，Image=声明式构建
+    resources: Resources | None = None
+    entrypoint: list[str] | None = None
+    region_id: str | None = None
+
+class AsyncSnapshotService:
+    async def list() -> PaginatedSnapshots
+    async def get(name: str) -> Snapshot
+    async def create(params: CreateSnapshotParams, *, on_logs=None, timeout=0) -> Snapshot
+    async def delete(snapshot: Snapshot) -> None
+    async def activate(snapshot: Snapshot) -> Snapshot
+```
+
+#### Image 与 Snapshot 的关系
+
+`Image` 是**输入**（构建定义），`Snapshot` 是**输出**（命名持久快照）。一个 Image 可以传入 `snapshot.create()` 产出一个 Snapshot；也可以直接传入 `daytona.create()` 触发一次性构建（不产出命名 Snapshot）。
+
+```
+Image (客户端声明)
+    ├─→ snapshot.create(CreateSnapshotParams(name=..., image=Image)) ─→ 命名 Snapshot (服务端永久持有)
+    │                                                                       │
+    │                                                                       ▼
+    │                                                   daytona.create(CreateSandboxFromSnapshotParams(snapshot=name))
+    │
+    └─→ daytona.create(CreateSandboxFromImageParams(image=Image)) ─→ 内部临时构建（24h 隐式缓存，无命名 Snapshot）
+```
+
+#### 启动接口
+
+```python
 class CreateSandboxFromImageParams(BaseModel):
-    image: str | Image                          # 必填
+    image: str | Image                          # 必填，str 或 Image 声明
     resources: Resources | None = None
     env_vars: dict[str, str] | None = None
     auto_stop_interval: int | None = None       # 分钟
     auto_delete_interval: int | None = None
     network_block_all: bool | None = None
     # ... 其他可选字段
-```
 
-**启动接口：**
+class CreateSandboxFromSnapshotParams(BaseModel):
+    snapshot: str                               # 已存在的 Snapshot 名称
+    auto_stop_interval: int | None = None
+    auto_delete_interval: int | None = None
+    network_block_all: bool | None = None
+    # ... 其他可选字段（不含 image / resources，资源由 Snapshot 决定）
 
-```python
 class AsyncDaytona:
     async def create(
         self,
@@ -52,9 +111,61 @@ class AsyncDaytona:
     ) -> AsyncSandbox: ...
 ```
 
-- `Image.from_dockerfile(path)` 读取 Dockerfile，自动提取 COPY 依赖的上下文文件
-- `create()` 一步完成构建和启动，平台侧处理
-- 支持 Snapshot 缓存复用
+#### 关键观察：两条路径在服务端是同一构建流程
+
+从 SDK 源码 (`daytona/_async/daytona.py` 第 474-489 行) 可见，即使用户传 `CreateSandboxFromImageParams`，SDK 也会把 `Image` 序列化为 `CreateBuildInfo(dockerfile_content=..., context_hashes=...)` 发给服务端，服务端的处理流程（`PENDING_BUILD` 状态、流式 build_logs）与 `snapshot.create()` 完全相同。
+
+```python
+# AsyncDaytona._create() 内部
+if isinstance(params, CreateSandboxFromImageParams) and params.image:
+    if isinstance(params.image, str):
+        sandbox_data.build_info = CreateBuildInfo(
+            dockerfile_content=Image.base(params.image).dockerfile(),
+        )
+    else:
+        context_hashes = await AsyncSnapshotService.process_image_context(...)
+        sandbox_data.build_info = CreateBuildInfo(
+            context_hashes=context_hashes,
+            dockerfile_content=params.image.dockerfile(),
+        )
+```
+
+两条路径的差异仅在产物归属与生命周期：
+
+| 路径 | 调用 | 产物 | 生命周期 |
+|------|------|------|---------|
+| Image → 一次性构建 | `daytona.create(CreateSandboxFromImageParams(image=Image))` | 匿名构建产物 | 平台侧 24 小时隐式缓存，过期自动清理 |
+| Image → 命名 Snapshot | `daytona.snapshot.create(CreateSnapshotParams(name=..., image=Image))` 然后 `daytona.create(CreateSandboxFromSnapshotParams(snapshot=name))` | 命名 Snapshot | 永久持有，需 `snapshot.delete()` 显式清理 |
+
+#### Harbor 的实际使用模式
+
+Harbor 在 [harbor/src/harbor/environments/daytona.py](file:///root/harbor/src/harbor/environments/daytona.py) 第 165-217 行采取**外部预置 Snapshot + 客户端动态构建**的混合策略，**不在客户端代码内调用 `snapshot.create()`**：
+
+```python
+# 1. 检查外部预置的命名 Snapshot 是否已 ACTIVE
+snapshot_name = snapshot_template_name.format(name=environment_name)
+try:
+    snapshot = await daytona.snapshot.get(snapshot_name)
+    snapshot_exists = (snapshot.state == SnapshotState.ACTIVE)
+except Exception:
+    snapshot_exists = False
+
+if snapshot_exists:
+    # 热路径：复用命名 Snapshot
+    params = CreateSandboxFromSnapshotParams(snapshot=snapshot_name, ...)
+elif force_build or not docker_image:
+    # 冷路径：从 Dockerfile 一次性构建（仅 24h 隐式缓存）
+    image = Image.from_dockerfile(dockerfile_path)
+    params = CreateSandboxFromImageParams(image=image, ...)
+else:
+    # 备用路径：直接用 prebuilt image tag
+    image = Image.base(docker_image)
+    params = CreateSandboxFromImageParams(image=image, ...)
+
+await daytona.create(params=params)
+```
+
+命名 Snapshot 的生命周期完全由运维通过 Daytona Dashboard / CLI 管理。Harbor 客户端代码只负责"先查 Snapshot，命中就走快路径，否则走 Image 一次性构建"。
 
 ---
 
@@ -290,9 +401,13 @@ docker compose ... up --detach --wait
 
 ## 缓存机制
 
-### Daytona — Snapshot
+### Daytona — 双层缓存：命名 Snapshot（显式）+ 平台 24h 隐式缓存
 
-缓存基于外部预创建的 Snapshot。Snapshot 名称由调用方通过模板字符串指定（如 `harbor__{name}__snapshot`），运行时替换 `{name}` 为 `environment_name`。
+Daytona 的缓存有两层：
+
+**第一层：调用方显式管理的命名 Snapshot**（热缓存）
+
+调用方按命名约定（如 `harbor__{name}__snapshot`）查找预创建的 Snapshot，命中即走快路径：
 
 ```python
 snapshot_name = snapshot_template_name.format(name=environment_name)
@@ -304,9 +419,17 @@ if snapshot.state == SnapshotState.ACTIVE:
     params = CreateSandboxFromSnapshotParams(snapshot=snapshot_name, ...)
 ```
 
-- 缓存 key：调用方指定的 Snapshot 名称
-- 内容变更检测：无，Snapshot 必须外部预创建和更新
+- 缓存 key：调用方约定的 Snapshot 名称
+- 内容变更检测：无，Snapshot 必须由运维（Dashboard/CLI/`snapshot.create()`）外部预创建和更新
 - `force_build` 无法绕过 Snapshot（如果存在则始终使用）
+
+**第二层：Image 路径下平台侧 24 小时隐式缓存**（温缓存）
+
+当 Snapshot 不存在或 `force_build=True`，调用方走 `CreateSandboxFromImageParams(image=Image.from_dockerfile(...))`。SDK 把 Image 转为 `CreateBuildInfo(dockerfile_content, context_hashes)` 发给服务端，服务端按内容哈希自动缓存构建产物 24 小时（过期清理）。
+
+- 缓存 key：服务端按 `dockerfile_content` + `context_hashes` 计算
+- 内容变更检测：自动，但只在 24h 窗口内有效
+- 不产生命名 Snapshot，即不会进入第一层缓存
 
 ### E2B — Template 内容哈希
 
@@ -416,155 +539,147 @@ async with lock:
 
 ## 构建产物存储
 
-### Daytona — 平台托管 Snapshot
+> 本节统一从五个维度描述每个平台：**产物类型 / 存储位置 / 用户可见的管理 API / 生命周期 / 用户控制粒度**。E2B 的服务端实现（Firecracker pipeline、SHA-256 层哈希链等）放在小节末尾的"补充"作为深入参考。
 
-- **产物形式**：Snapshot（平台内部格式，非标准 Docker 镜像）。Snapshot 是一个预配置的沙箱快照，包含 `id`、`name`、`image_name`、`state`、`size`、`cpu/gpu/mem/disk` 等属性
-- **存储位置**：Daytona 平台内部 Object Storage（S3 兼容），用户不可直接访问底层存储，通过 SDK/API 管理
-- **生命周期**：声明式构建（`Image.from_dockerfile()`）产物自动缓存 24 小时；预创建 Snapshot 永久保留直到手动删除
-- **清理方式**：`daytona.snapshot.delete()` / CLI / Dashboard
+### Daytona — 两层产物：匿名构建产物 + 命名 Snapshot
 
-**构建流程（从 Image 到 Snapshot）：**
+Daytona 同一个底层存储承载两种命名的产物，调用方需明确选哪一种：
 
-1. `Image` 对象收集构建指令（Dockerfile 内容、`pip_install`、`run_commands`、`add_local_file` 等链式调用）
-2. 本地文件/目录通过 `ObjectStorage.upload()` 上传到平台 S3 兼容存储（bucket: `daytona-volume-builds`），返回 content hash
-3. 平台服务端根据 Image 定义自动创建 Snapshot
-4. 从 Snapshot 启动沙箱
+#### A. 匿名构建产物（`Image` 直走 `daytona.create()`）
 
-**Snapshot 管理接口：**
+- **产物类型**：服务端按 Dockerfile 内容 + 上下文哈希计算的匿名快照（无名字、无 `id` 暴露给调用方）
+- **存储位置**：Daytona 平台内部 Object Storage（S3 兼容），调用方不可直达底层
+- **管理 API**：**无**。调用方拿不到 ID，也不能 list/delete 这一层产物
+- **生命周期**：服务端自动缓存 **24 小时**，过期清理
+- **用户控制**：`Image.from_dockerfile(force_build=True)` 强制重建当次
 
-```python
-class AsyncSnapshotService:
-    async def create(params: CreateSnapshotParams, *, on_logs=None, timeout=0) -> Snapshot
-    async def get(name: str) -> Snapshot
-    async def list(page=None, limit=None) -> PaginatedSnapshots
-    async def delete(snapshot: Snapshot) -> None
-    async def activate(snapshot: Snapshot) -> Snapshot    # 激活已归档的 Snapshot
+#### B. 命名 Snapshot（`AsyncSnapshotService.create()`）
 
-class CreateSnapshotParams(BaseModel):
-    name: str                           # Snapshot 名称
-    image: str | Image                  # 镜像定义
-    resources: Resources | None = None  # CPU/GPU/内存/磁盘
-    entrypoint: list[str] | None = None
-    region_id: str | None = None        # 创建 Snapshot 的区域
-```
+- **产物类型**：注册到 Daytona 数据库的 Snapshot 对象（`id` / `name` / `state` / `image_name` / `size` / `cpu/gpu/mem/disk` 等字段）。**Snapshot 不是标准 Docker 镜像**，是平台专有快照格式
+- **存储位置**：同上，但产物在数据库中有名字、有状态、可查询
+- **管理 API**：完整的 CRUD 接口
 
-**构建上下文传输：**
+  ```python
+  class AsyncSnapshotService:
+      async def list(page=None, limit=None) -> PaginatedSnapshots
+      async def get(name: str) -> Snapshot
+      async def create(params: CreateSnapshotParams, *, on_logs=None, timeout=0) -> Snapshot
+      async def delete(snapshot: Snapshot) -> None
+      async def activate(snapshot: Snapshot) -> Snapshot   # 激活归档态的 Snapshot
+  ```
+- **生命周期**：永久持有，需手动删除
+- **用户控制**：`snapshot.delete()` / Dashboard / CLI
 
-```python
-class AsyncObjectStorage:
-    endpoint_url: str
-    aws_access_key_id: str
-    aws_secret_access_key: str
-    bucket_name: str   # 默认 "daytona-volume-builds"
+#### 构建上下文传输
 
-    async def upload(path: str, organization_id: str) -> str   # 返回 content hash
-```
+`Image` 对象的 `_context_list`（`COPY` 引用的本地文件）通过 `AsyncObjectStorage.upload()` 上传，bucket 由服务端 `get_push_access()` 动态下发（SDK 的默认 fallback bucket 是 `daytona-volume-builds`，但生产环境通常不用 fallback）。上传产生 content hash 数组随 `CreateBuildInfo(context_hashes=..., dockerfile_content=...)` 提交给服务端。
 
-### E2B — Firecracker microVM 快照
+---
 
-- **产物形式**：Firecracker microVM 快照（非标准 Docker 镜像），从 Dockerfile 构建后转换为 VM 快照
-- **存储位置**：云对象存储（GCP: GCS bucket / AWS: S3 bucket），元数据存于 PostgreSQL + Redis 缓存
-- **生命周期**：永久保留，无自动清理策略；构建失败时自动清理已上传对象
-- **清理方式**：`e2b template delete` CLI / API
+### E2B — 命名 Template
 
-**快照文件组成：**
+- **产物类型**：注册到 E2B 后端的 Template（暴露给调用方的标识是 `template_id` 或 `alias`）。底层是 Firecracker microVM 快照（rootfs/memfile/snapfile），但调用方不直接接触这一层
+- **存储位置**：E2B 平台云对象存储，元数据存数据库
+- **管理 API**：
 
-每个构建产物（以 `buildID` 为目录）包含以下文件：
+  ```python
+  class AsyncTemplate:
+      @staticmethod
+      async def build(template, name=None, *, alias=None, cpu_count=2, memory_mb=1024, skip_cache=False) -> BuildInfo
+      @staticmethod
+      async def alias_exists(alias: str) -> bool      # REST GET /templates/aliases/{alias}
+      # 删除走 CLI: `e2b template delete <name>`
+  ```
+- **生命周期**：永久保留，无自动清理；构建失败时服务端自动回收已上传对象
+- **用户控制**：
+  - 缓存复用：alias 相同则复用（Harbor 把 `dirhash[:8]` 嵌入 alias 实现内容寻址）
+  - 强制重建：`AsyncTemplate.build(skip_cache=True)`
+  - 删除：`e2b template delete` CLI / API
 
-| 文件 | 说明 |
-|------|------|
-| `rootfs.ext4` | ext4 文件系统镜像（VM 磁盘） |
-| `rootfs.ext4.header` | block 级别差异头（COW/去重） |
-| `memfile` | VM 内存快照（RAM 内容） |
-| `memfile.header` | 内存 block 差异头 |
-| `snapfile` | Firecracker VM 状态文件（CPU/设备状态） |
-| `metadata.json` | 模板元数据（内核版本、FC 版本、环境变量、启动命令、预取映射） |
+#### 补充：服务端实现细节（如不关心可跳过）
 
-**构建流程（从 Dockerfile 到 VM 快照）：**
+E2B 后端把 Dockerfile 拆成阶段流水线 `BaseBuilder → UserBuilder → StepBuilders(每条指令) → PostProcessing → Optimize`，每阶段计算 SHA-256 哈希作为缓存 key（输入含 `provision_version`、`disk_size`、`from_image`、`step_args`、`files_hash` 等），命中即跳过该阶段。每阶段产出 dirty-block 差异层(`rootfs.ext4.header`、`memfile.header`)。最终产物按 `buildID` 组织在 GCS/S3 (`TEMPLATE_BUCKET_NAME`)，构建缓存索引在另一个 bucket (`BUILD_CACHE_BUCKET_NAME`)。这部分对调用方完全不可见，仅决定缓存命中率。
 
-```
-OCI 镜像（Docker registry）
-    ↓ ToExt4()：提取 OCI layers → overlayFS → rsync 到 ext4
-rootfs.ext4（本地构建目录）
-    ↓ 启动 Firecracker VM（BusyBox init）→ 执行 provision.sh → 关机
-已配置的 rootfs.ext4
-    ↓ 启动 Firecracker VM（systemd）→ 逐步执行 Dockerfile 指令 → Pause()
-Layer N 快照：(rootfs.ext4.header, memfile.header, snapfile, metadata.json)
-    ↓ 并发上传到 GCS/S3
-对象存储中的模板产物（按 buildID 组织）
-    ↓ 注册到数据库（FinishTemplateBuild）
-可运行的沙箱模板
-```
+---
 
-每个 Dockerfile 步骤（RUN、COPY 等）生成一层独立的快照，只存储与上一层的 dirty blocks 差异，空间效率高。
+### Modal — 隐式哈希缓存（无显式产物）
 
-**构建 Pipeline（服务端）：**
+- **产物类型**：文件系统快照，**调用方完全无法引用**——SDK 不返回 `image_id` 给用户代码持有，下次调用时按内容重新计算哈希查找缓存
+- **存储位置**：Modal 平台内部，完全抽象
+- **管理 API**：**无**列表 / 查询 / 删除 API。Image 只是一个声明式 `_Image` 对象，调用 `Sandbox.create(image=image)` 时通过 gRPC `ImageGetOrCreate(image_definition_pb, force_build=...)` 提交给服务端，服务端按内容哈希返回已有或触发新构建
+- **生命周期**：随镜像定义自动缓存；定义变化（Dockerfile 内容、build_args、context_files、`force_build`）即触发重建
+- **用户控制**：
+  - 强制重建：`Image.from_dockerfile(force_build=True)` 或 `MODAL_FORCE_BUILD=1` 环境变量
+  - 无手动删除入口（旧产物由平台按使用情况和容量策略自行回收）
 
-构建按阶段执行，每个阶段是一个 `BuilderPhase` 接口：
+---
 
-```
-BaseBuilder → UserBuilder → StepBuilders（每条指令一个）→ PostProcessingBuilder → OptimizeBuilder
-```
+### Runloop — 命名 Blueprint + 独立的 build context 对象
 
-**存储架构：**
+- **产物类型**：Blueprint（平台托管的容器镜像），独立有 `id` / `name` / `status`(`queued`/`provisioning`/`building`/`failed`/`build_complete`) / `create_time_ms`。同名 Blueprint 可共存多个版本
+- **存储位置**：Runloop 平台内部
+- **管理 API**：
 
-| 存储层 | Bucket / 位置 | 用途 |
-|--------|--------------|------|
-| 模板存储 | `TEMPLATE_BUCKET_NAME`（GCS bucket） | 最终快照，永久保存 |
-| 构建缓存 | `BUILD_CACHE_BUCKET_NAME`（GCS bucket） | 层级缓存索引 + COPY 文件 tarball |
-| 本地 NFS 缓存 | `SharedChunkCacheDir` | block 级别 chunk 缓存（可选，feature flag 控制） |
-| 内存缓存 | TTL 25 小时的 `ttlcache` | Template 对象缓存，过期自动清理本地临时文件 |
+  ```python
+  client.api.blueprints.list(name=...)           # 私有列表
+  client.api.blueprints.list_public(name=...)    # 公开列表
+  client.blueprint.create(name=..., dockerfile=..., build_context=BuildContext(object_id=...))
+  client.blueprint.delete(blueprint_id)
+  ```
+- **特殊：构建上下文是独立托管对象**
 
-GCS 客户端通过 gRPC 初始化（`storage.NewGRPCClient`），认证依赖 GCP 默认应用凭证（ADC）。Bucket 名称通过环境变量 `TEMPLATE_BUCKET_NAME` 和 `BUILD_CACHE_BUCKET_NAME` 配置，由 Terraform 创建并通过 Nomad Job 注入。
+  ```python
+  storage_object = await sdk.storage_object.upload_from_dir(
+      dir_path=Path, name=str, ttl=timedelta,    # 上下文有自己的 TTL
+  ) -> StorageObject
+  ```
+  Blueprint 创建请求引用 `BuildContext(object_id=storage_object.id, type="object")`，因此构建上下文与 Blueprint 解耦：上下文短命（TTL 1h 即可），Blueprint 永久。
+- **生命周期**：Blueprint **永久保留并持续计费**（官方文档明确提醒）；StorageObject 按 TTL 自动过期
+- **用户控制**：
+  - 缓存复用：按 `name` 查 list，取最新 `build_complete`；**无内容哈希**，同名同 dockerfile 改了内容也不会触发重建
+  - 强制重建：调用 `blueprint.create()` 不复用旧 ID 即产生新 Blueprint
+  - 删除：`blueprint.delete()`（官方建议主动清理旧版本控制成本）
 
-**缓存去重机制（内容寻址哈希）：**
-
-每个 `BuilderPhase` 实现 `Hash()` 方法，计算当前层的 SHA-256：
-
-| 阶段 | 哈希输入 |
-|------|---------|
-| Base 层 | `SHA256(provision_version + disk_size + from_image)` |
-| Step 层 | `SHA256(上一层 hash + step_type + step_args + files_hash)` |
-| Finalize 层 | `SHA256(上一层 hash + "config-run-cmd")` |
-| Optimize 层 | `SHA256(上一层 hash + "optimize")` |
-
-缓存查找流程：计算层 hash → 查 `{cacheScope}/index/{hash}` 获取 `buildID` → 查 `{buildID}/metadata.json` 是否存在 → 命中则跳过构建。缓存按 `teamID` 隔离。一旦某层 cache miss，后续所有层强制重建。
-
-**生命周期管理：**
-
-- 构建成功：写入数据库（rootfs 大小、版本信息），标记状态为 `uploaded`
-- 构建失败：自动删除该 `buildID` 下所有已上传对象（`templateStorage.DeleteObjectsWithPrefix`）
-- 构建前：调用 `InvalidateUnstartedTemplateBuilds()` 清理旧的 pending 构建
-
-### Modal — 平台托管镜像缓存
-
-- **产物形式**：文件系统快照（平台内部格式），按层缓存（类似 Docker layer 但由平台管理）
-- **存储位置**：Modal 平台内部，完全抽象，用户无法直接访问
-- **生命周期**：根据镜像定义（Dockerfile 内容、上下文文件哈希）自动缓存，定义变化时自动重建
-- **清理方式**：无手动删除机制，`force_build=True` 或 `MODAL_FORCE_BUILD=1` 强制重建
-- **费用**：构建按计算时间计费，存储包含在平台费用中
-
-### Runloop — 平台托管 Blueprint
-
-- **产物形式**：容器镜像（平台内部存储），支持基于已有 Blueprint 增量构建（`base_blueprint_id`）
-- **存储位置**：Runloop 平台内部，用户通过 API/CLI 管理
-- **生命周期**：永久保留，**持续产生存储费用**（官方文档明确提醒）
-- **清理方式**：`blueprint.delete()` / API / CLI，官方建议清理旧版本
+---
 
 ### GKE — 用户自管 Artifact Registry
 
-- **产物形式**：标准 OCI/Docker 镜像
-- **存储位置**：用户自有的 Google Artifact Registry，按 region 存储
-- **生命周期**：用户完全自管，支持 cleanup policy（按 tag 状态、版本数、镜像年龄自动清理）
-- **清理方式**：`gcloud artifacts docker images delete` / Console / cleanup policy
-- **费用**：按 GB/月计费 + 跨 region 拉取的网络费用
+- **产物类型**：标准 OCI/Docker 镜像（这是六个平台中唯一让用户拿到原生 Docker 镜像的）
+- **存储位置**：**用户自有的** Google Artifact Registry，按 region 存储。Daytona/E2B/Modal/Runloop 都是平台托管，GKE 是用户托管
+- **管理 API**：
 
-### Docker — 本地 Docker daemon
+  ```bash
+  gcloud builds submit --tag <repo>/<name>:latest <env_dir>     # 构建并推送
+  gcloud artifacts docker images describe <image_url>           # 检查存在
+  gcloud artifacts docker images delete <image_url>             # 删除
+  ```
+  Repository 也支持 cleanup policy（按 tag 状态、版本数、镜像年龄自动清理）
+- **生命周期**：用户完全自管,Cloud Build 缓存层由 GCP 自动管理
+- **用户控制**：
+  - 缓存复用:tag 固定为 `{environment_name}:latest`,**无内容哈希**,内容变化但 tag 不变会静默复用旧镜像
+  - 强制重建：`force_build=True` 走 `gcloud builds submit` 覆盖 `:latest`
+  - 删除：CLI / Console / cleanup policy
+- **费用**：用户 Artifact Registry 按 GB/月计费 + 跨 region 拉取的出网费用
 
-- **产物形式**：标准 Docker 镜像，存储在本地 Docker daemon
-- **存储位置**：宿主机本地磁盘
-- **生命周期**：持久存在直到 `docker rmi` 或磁盘清理工具（如 `docuum`）自动清理
-- **清理方式**：`docker compose down --rmi all` / `docker image prune`
+---
+
+### Docker — 本地 Docker daemon（无远端存储）
+
+- **产物类型**：标准 Docker 镜像
+- **存储位置**：**宿主机本地磁盘**(无 push 到 registry)
+- **管理 API**：原生 Docker CLI
+
+  ```bash
+  docker images                                          # 列表
+  docker rmi <image>                                     # 删除
+  docker image prune                                     # 清理悬挂镜像
+  docker compose down --rmi all                          # 一并删除 compose 镜像
+  ```
+- **生命周期**：持久存在直到显式 `docker rmi` 或 `docuum` 等清理工具
+- **用户控制**：
+  - 缓存复用：Docker daemon 自动按 layer cache,Dockerfile 指令或文件内容变化即触发对应层及其后所有层重建（**自动内容感知**）
+  - 进程内并发去重：Harbor 通过类级别 `_image_build_locks: dict[name, asyncio.Lock]` 串行化同名镜像的并发构建,跨进程不生效
+  - 强制重建：`docker compose build --no-cache`
 
 ---
 
@@ -574,7 +689,7 @@ GCS 客户端通过 gRPC 初始化（`storage.NewGRPCClient`），认证依赖 G
 
 | 平台 | 接口模式 | 缓存 key | 内容变更检测 |
 |------|---------|---------|------------|
-| Daytona | `Image.from_dockerfile()` → `create()` | 调用方指定的 Snapshot 名称 | 无 |
+| Daytona | 热路径 `snapshot.get(name)` → `create(FromSnapshot)`；冷路径 `Image.from_dockerfile()` → `create(FromImage)` | 命名 Snapshot 名称（显式）+ 服务端构建定义哈希（24h 隐式） | 仅冷路径自动（24h 内） |
 | E2B | `from_dockerfile()` → `build()` → `create()` | `name__sha256[:8]` | 自动（目录哈希） |
 | Modal | `Image.from_dockerfile()` → `Sandbox.create()` | 平台侧计算（镜像定义哈希） | 自动（平台侧） |
 | Runloop | `upload` → `blueprint.create()` → `devbox.create()` | `harbor_{name}_blueprint` | 无 |
@@ -583,14 +698,21 @@ GCS 客户端通过 gRPC 初始化（`storage.NewGRPCClient`），认证依赖 G
 
 ### 构建产物与存储
 
-| 平台 | 产物形式 | 存储位置 | 构建上下文传输 | 清理方式 |
-|------|---------|---------|--------------|---------|
-| Daytona | Snapshot（平台专有格式） | 平台 S3 兼容存储，用户不可直接访问 | ObjectStorage 上传（`daytona-volume-builds` bucket） | `snapshot.delete()` / CLI |
-| E2B | Firecracker VM 快照（rootfs + memfile + snapfile） | GCS/S3 bucket（`TEMPLATE_BUCKET_NAME`），按 `buildID` 组织 | SDK 将指令序列化为 steps 发送 API | `template delete` CLI / API；失败自动清理 |
-| Modal | 文件系统快照（平台专有） | 平台内部，完全抽象 | SDK 序列化为 protobuf 发送 | 无手动删除；`force_build` 强制重建 |
-| Runloop | 容器镜像（平台内部） | 平台内部 | `storage_object.upload_from_dir()` | `blueprint.delete()` / API |
-| GKE | 标准 OCI/Docker 镜像 | 用户自有 Artifact Registry | `gcloud builds submit` 上传构建上下文 | `gcloud artifacts docker images delete` / cleanup policy |
-| Docker | 标准 Docker 镜像 | 本地 Docker daemon | 本地文件系统直接访问 | `docker image prune` / `docker compose down --rmi all` |
+| 平台 | 产物可见性 | 暴露给用户的标识 | 存储位置 | 默认生命周期 | 显式删除 API |
+|------|----------|---------------|---------|------------|------------|
+| Daytona（Image 路径） | 不可见 | 无 | 平台 S3 兼容存储 | 24h 自动过期 | 无（不可主动删） |
+| Daytona（Snapshot 路径） | 可见，平台专有快照 | `name` / `id` / `state` | 同上 | 永久 | `snapshot.delete()` |
+| E2B | 可见，命名 Template | `template_id` / `alias` | GCS/S3（平台托管） | 永久 | `e2b template delete` CLI |
+| Modal | 不可见 | 无（无 `image_id` 句柄） | 平台内部抽象 | 平台自行回收 | 无（仅 `force_build`） |
+| Runloop | 可见，命名 Blueprint | `id` / `name` / `status` | 平台内部 | 永久且持续计费 | `blueprint.delete()` |
+| GKE | 可见，标准 OCI 镜像 | 镜像 URL `repo/name:tag` | **用户自有** Artifact Registry | 永久（cleanup policy 可选） | `gcloud artifacts docker images delete` |
+| Docker | 可见，标准 Docker 镜像 | 本地 image name/id | **本地** Docker daemon | 永久直到 `docker rmi` | `docker rmi` / `docker image prune` |
+
+> **观察一**：六个平台只有 GKE 和 Docker 让用户拿到原生 OCI/Docker 镜像；其余四个均为平台专有的不透明产物。
+>
+> **观察二**：仅有 Daytona（Image 路径）和 Modal 不暴露产物 ID，其它都暴露命名标识，可以查、可以删。
+>
+> **观察三**：除 GKE 和 Docker 外，存储位置都在平台侧；Runloop 还会持续计费，意味着调用方需要主动管理生命周期。
 
 ### Harbor 使用方式参考
 
