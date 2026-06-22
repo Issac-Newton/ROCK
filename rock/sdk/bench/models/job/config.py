@@ -21,6 +21,7 @@ from rock.sdk.bench.models.trial.config import (
     RockEnvironmentConfig,  # noqa: F401 — re-exported for backward compat
     TaskConfig,
     VerifierConfig,
+    WorkflowConfig,
 )
 from rock.sdk.envhub.config import OssMirrorConfig
 from rock.sdk.job.config import JobConfig as _BaseJobConfig
@@ -157,6 +158,7 @@ class _HarborJobFields(BaseModel):
     debug: bool = False
     orchestrator: OrchestratorConfig = Field(default_factory=OrchestratorConfig)
     environment: EnvironmentConfig = Field(default_factory=EnvironmentConfig)
+    workflow: WorkflowConfig = Field(default_factory=WorkflowConfig)
     verifier: VerifierConfig = Field(default_factory=VerifierConfig)
     metrics: list[MetricConfig] = Field(default_factory=list)
     agents: list[AgentConfig] = Field(default_factory=lambda: [AgentConfig()])
@@ -192,6 +194,7 @@ class HarborJobConfig(_BaseJobConfig):
     environment_build_timeout_multiplier: float | None = None
     debug: bool = False
     orchestrator: OrchestratorConfig = Field(default_factory=OrchestratorConfig)
+    workflow: WorkflowConfig = Field(default_factory=WorkflowConfig)
     verifier: VerifierConfig = Field(default_factory=VerifierConfig)
     metrics: list[MetricConfig] = Field(default_factory=list)
     agents: list[AgentConfig] = Field(default_factory=lambda: [AgentConfig()])

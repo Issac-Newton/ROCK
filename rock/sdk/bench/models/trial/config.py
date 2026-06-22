@@ -96,6 +96,12 @@ class TaskConfig(BaseModel):
     source: str | None = None
 
 
+class WorkflowConfig(BaseModel):
+    name: str = "default"
+    import_path: str | None = None
+    kwargs: dict[str, Any] = Field(default_factory=dict)
+
+
 class ArtifactConfig(BaseModel):
     source: str
     destination: str | None = None
